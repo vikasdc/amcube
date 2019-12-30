@@ -1,0 +1,68 @@
+<%- include('../includes/header.ejs') %>
+<style>
+h2,h3,h4,h5,h6{
+    color:#000;
+}
+</style>
+</head>
+<body>
+  <%- include('../includes/adminnav.ejs') %>
+<main>
+  <div class="position-relative" style="min-height:80vh">
+    <section class="section-shaped my-0">
+      <div class="container container-lg">
+          <div class="row">
+                <%   var numberWithCommas = (x) =>{
+                    x=x.toString();
+                    var afterPoint = '';
+                    if(x.indexOf('.') > 0)
+                    afterPoint = x.substring(x.indexOf('.'),x.length);
+                    x = Math.floor(x);
+                    x=x.toString();
+                    var lastThree = x.substring(x.length-3);
+                    var otherNumbers = x.substring(0,x.length-3);
+                    if(otherNumbers != '')
+                        lastThree = ',' + lastThree;
+                    var res = otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + lastThree + afterPoint;
+                    return res;
+  
+                } %>
+              <div class="col my-5">
+                    <div class="row">
+                        <div class="col-md-10 mx-auto my-4">
+                            <div class="card shadow-sm border-0">
+                                <img src="<%=course.img%>" alt="" class="img-fluid">
+                                <div class="card-body">
+                                    <h2 class="text-dark"><%=course.title%></h2>
+                                    <h4 class="card-text text-underline text-dark">Description:</h4>
+                                    <div class="text-dark">
+                                            <%-course.description%>
+                                        </div>
+                                    <div class="my-2">
+                                        <span class="badge badge-pill badge-primary">Premium</span>
+                                        <span class="badge badge-pill badge-default">Offline</span> <br>
+                                    </div>
+                                    <h5 class="text-dark d-inline font-weight-bold mr-1"> ₹ <%= numberWithCommas(course.offerprice) %></h5>
+                                    <small class="d-lg-inline text-danger font-weight-bold h5"><del class="">₹ <%=numberWithCommas(course.actualprice) %></del> <% var price = course.actualprice - course.offerprice %> <% var y = price/course.actualprice*100 %> <%= y.toFixed(0) %>% off</small><br>
+                                    <a href="/admin/edit-course/<%=course._id %>?edit=true" class="btn btn-default btn-round mb-2 mt-3">Edit Course</a>
+                                    <form action="/admin/delete-course" method="post">
+                                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                        <input type="hidden" name="courseId" value="<%= course._id %>">
+                                        <button class="btn btn-danger btn-round mb-4">Delete Course</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+              </div>
+          </div>
+      </div>
+    </section>
+    
+  </div>
+
+</main>
+<%- include('../includes/adminend.ejs') %>
+</body>
+
+</html>

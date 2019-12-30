@@ -1,0 +1,70 @@
+<%- include('includes/header.ejs') %>
+</head>
+<body>
+  <%- include('includes/nav.ejs') %>
+<main>
+  <div class="position-relative">
+    <section class="section-shaped my-0" style="min-height:80vh">
+      <div class="container container-lg">
+          <div class="row">
+              <div class="col my-5">
+                    <h2 class="text-center display-3 text-black mb-4">Jobs & Internships Openings</h2>
+                    <% if(jobs.length > 0) { %>
+                      <%   var numberWithCommas = (x) =>{
+                        x=x.toString();
+                        var afterPoint = '';
+                        if(x.indexOf('.') > 0)
+                        afterPoint = x.substring(x.indexOf('.'),x.length);
+                        x = Math.floor(x);
+                        x=x.toString();
+                        var lastThree = x.substring(x.length-3);
+                        var otherNumbers = x.substring(0,x.length-3);
+                        if(otherNumbers != '')
+                            lastThree = ',' + lastThree;
+                        var res = otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + lastThree + afterPoint;
+                        return res;
+    
+                    } %>
+                          <div class="row justify-content-center">
+                            <% for(job of jobs) { %>
+                                <div class="col-md-6 rounded my-2 shadow-sm">
+                                  <div class="row">
+                                    <div class="col-md-5 p-0">
+                                      <img src="<%= job.img %>" alt="" class="img-fluid">
+                                    </div>
+                                    <div class="col-md-7">
+                                      <h5 class="text-dark mt-2"><%= job.title %></h5>
+                                      <h6 class="text-dark"><i class="fa fa-building mr-1" aria-hidden="true"></i><%= job.company%></h6>
+                                      <h6 class="text-dark"><i class="fa fa-map-marker mr-1" aria-hidden="true"></i><%= job.city%></h6>
+                                      <h6 class="text-dark"><i class="fa fa-money" aria-hidden="true"></i> <%=numberWithCommas(job.salary)%> PA</h6>
+                                      <h6 class="text-dark"><i class="fa fa-calendar" aria-hidden="true"></i> Last Date to Apply: <%=job.lastdate%></h6>
+                                      <% if(isLoggedin) { %>
+                                       <form action="/job-application" method="post">
+                                      <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                      <input type="hidden" name="jobId" value="<%=job._id%>">
+                                      <button class="btn btn-black text-white btn-block  btn-sm mt-2" type="submit">Apply Now  <i class="fa fa-arrow-circle-right" style="color:yellow"></i></button>
+                                      </form>
+                                        <% } else { %>
+                                          <a href="/login" class="btn btn-black text-white btn-block btn-sm mt-2 mb-2"> <i class="fa fa-sign-in mr-1" style="color:yellow" aria-hidden="true"></i> Login To Apply</a>
+                                        <% } %>
+                                    </div>
+                                  </div>
+                                </div>
+                                <% } %>
+                              </div>
+                              <% } else { %>
+                                <h3>No Jobs Available Now! Stay Tuned We'll Soon Post Jobs</h3>
+                                <% } %>
+              </div>
+          </div>
+      </div>
+    </section>
+
+  </div>
+
+</main>
+
+<%- include('includes/end.ejs') %>
+</body>
+
+</html>

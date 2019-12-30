@@ -1,0 +1,358 @@
+<%- include('../includes/header.ejs') %>
+<link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+<body>
+  <%- include('../includes/adminnav.ejs') %>
+<main>
+<div class="position-relative">
+<section class="section-shaped my-0" style="min-height:80vh">
+        <div class="row mt-3 mb-5">
+        <div class="col mx-3 p shadow-sm mb-5">          
+            <% if(path === '/admin/manage-testapplications') {  %>
+                <h2 class="text-center mt-3 mb-5">Registered Test Applicants</h2>
+                <% if(testApps.length>0) { %>
+                    <% var x = 0; %>
+                  <div class="table-responsive ">
+                        <table class="table table-hover table-striped table-bordered table-dark">
+                                <caption>List of Test Applicants</caption>
+                                <thead>
+                                  <tr>
+                                    <th scope="col">#S.NO</th>
+                                    <th scope="col">USERNAME</th>
+                                    <th scope="col">EMAIL</th>
+                                    <th scope="col">CONTACT</th>
+                                    <th scope="col">GENDER</th>
+                                    <th scope="col">DOB</th>
+                                    <th scope="col">DEGREE</th>
+                                    <th scope="col">ADDRESS</th>
+                                    <th scope="col">TEST-CITY</th>
+                                    <th scope="col">TEST-DATE</th>
+                                    <th scope="col">TEST-TIME</th>
+                                    <th scope="col">APPLIED-DATE</th>
+                                    <th scope="col">PAID</th>
+                                    <th scope="col">EDIT</th>
+                                    <th scope="col">DELETE</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                            <% for(testApp of testApps){ %>
+                                <% x++ %>
+                                              <tr>
+                                                <th scope="row"><%=x%></th>
+                                                <td class="text-capitalize"><%=testApp.username%></td>
+                                                <td><%=testApp.email%></td>
+                                                <td class="text-capitalize"><%=testApp.contact%></td>
+                                                <td class="text-capitalize"><%=testApp.gender%></td>
+                                                <td class="text-capitalize"><%=testApp.dob%></td>
+                                                <td class="text-capitalize"><%=testApp.degree%></td>
+                                                <td class="text-capitalize"><%=testApp.address%></td>
+                                                <td class="text-capitalize"><%=testApp.testCity%></td>
+                                                <td class="text-capitalize"><%=testApp.testDate%></td>
+                                                <td class="text-capitalize"><%=testApp.testTime%></td>
+                                                <td class="text-capitalize"><%=testApp.testAppliedDate%></td>
+                                                <td class="text-capitalize"><%=testApp.paid%></td>
+                                                <td class="text-capitalize">
+                                                  <a href="/admin/edit-test-application/<%=testApp._id%>?edit=true" class="btn btn-primary bg-gradient-primary btn-sm m-0">Edit</a>
+                                                </td>
+                                                
+                                                <td>
+                                                    <form action="/admin/delete-test-application" method="POST" class="m-0 p-0">
+                                                    <input type="hidden" name="_csrf" value="<%=csrfToken%>">
+                                                    <input type="hidden" name="testAppId" value="<%=testApp._id%>">
+                                                    <button class="btn btn-danger bg-gradient-danger btn-sm">Delete</button>
+                                                    </form>
+                                                </td>
+                                              </tr>
+                                <% } %>
+                            </tbody>
+                        </table>
+                  </div>
+                    <% } else { %>
+                        <h3 class="text-default"> No Test Applicants Found! :(</h3>
+                        <% } %>
+               <% } else if(path === '/admin/recruiter-apps') { %>
+                <h2 class="text-center mt-3 mb-5">Registered Recruiter Applicants </h2>
+                <% if(recapps.length>0) { %>
+                    <% var x = 0; %>
+                  <div class="table-responsive">
+                        <table class="table table-hover table-striped table-bordered table-dark">
+                                <caption>List of Recruiter Applicants</caption>
+                                <thead>
+                                  <tr>
+                                    <th scope="col">#S.NO</th>
+                                    <th scope="col">NAME</th>
+                                    <th scope="col">EMAIL</th>
+                                    <th scope="col">PHONE</th>
+                                    <th scope="col">COMPANY</th>
+                                    <th scope="col">JOB-TITLE</th>
+                                    <th scope="col">DATE</th>
+                                    <th scope="col">DELETE</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                            <% for(recapp of recapps){ %>
+                                <% x++ %>
+                                              <tr>
+                                                <th scope="row"><%=x%></th>
+                                                <td class="text-capitalize"><%=recapp.name%></td>
+                                                <td><%=recapp.email%></td>
+                                                <td class="text-capitalize"><%=recapp.phone%></td>
+                                                <td class="text-capitalize"><%=recapp.company%></td>
+                                                <td class="text-capitalize"><%=recapp.jobtitle%></td>
+                                                <td class="text-capitalize"><%=recapp.createdAt%></td>
+                                                <td>
+                                                    <form action="/admin/delete-recapp" method="POST" class="m-0 p-0">
+                                                    <input type="hidden" name="_csrf" value="<%=csrfToken%>">
+                                                    <input type="hidden" name="recId" value="<%=recapp._id%>">
+                                                    <button class="btn btn-danger bg-gradient-danger btn-sm">Delete</button>
+                                                    </form>
+                                                </td>
+                                              </tr>
+                                <% } %>
+                            </tbody>
+                        </table>
+                  </div>
+                    <% } else { %>
+                      <h3 class="text-default"> No Recruiter Applicants Found! :(</h3>
+                      <% } %>       
+               <% } else if(path === '/admin/test-payments') { %> 
+                <h2 class="text-center mt-3 mb-5">List of Test Payments</h2>
+                <% if(testpayments.length>0) { %>
+                    <% var x = 0; %>
+                  <div class="table-responsive">
+                        <table class="table table-hover table-striped table-bordered table-dark">
+                                <caption>List of Test Payments </caption>
+                                <thead>
+                                  <tr>
+                                    <th scope="col">#S.NO</th>
+                                    <th scope="col">PAYMENT_ID</th>
+                                    <th scope="col">STATUS</th>
+                                    <th scope="col">AMOUNT</th>
+                                    <th scope="col">NAME</th>
+                                    <th scope="col">EMAIL</th>
+                                    <th scope="col">PHONE</th>
+                                    <th scope="col">TEST DATE</th>
+                                    <th scope="col">TEST TIME</th>
+                                    <th scope="col">TEST CITY</th>
+                                    <th scope="col">Created At</th>
+                                    <th scope="col">DELETE</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                            <% for(testpayment of testpayments){ %>
+                                <% x++ %>
+                                              <tr>
+                                                <th scope="row"><%=x%></th>
+                                                <td class="text-capitalize"><%=testpayment.payment_id%></td>
+                                                <td class="text-capitalize"><%=testpayment.status%></td>
+                                                <td class="text-capitalize"><%=testpayment.amount%></td>
+                                                <td class="text-capitalize"><%=testpayment.buyer_name%></td>
+                                                <td class=""><%=testpayment.buyer_email%></td>
+                                                <td class="text-capitalize"><%=testpayment.buyer_phone%></td>
+                                                <td class="text-capitalize"><%=testpayment.testDate%></td>
+                                                <td class="text-capitalize"><%=testpayment.testTime%></td>
+                                                <td class="text-capitalize"><%=testpayment.testCity%></td>
+                                                <td class="text-capitalize"><%=testpayment.createdAt%></td>
+                                                
+                                                <td>
+                                                    <form action="/admin/delete-test-payment" method="POST" class="m-0 p-0">
+                                                    <input type="hidden" name="_csrf" value="<%=csrfToken%>">
+                                                    <input type="hidden" name="testpaymentId" value="<%=testpayment._id%>">
+                                                    <button class="btn btn-danger bg-gradient-danger btn-sm">Delete</button>
+                                                    </form>
+                                                </td>
+                                              </tr>
+                                <% } %>
+                            </tbody>
+                        </table>
+                  </div>
+                    </div>
+                    <% } else { %>
+                        <h3 class="text-default"> No Test Payments Found! :(</h3>
+                        <% } %>
+                <% } else if(path === '/admin/manage-courseapplications') { %>
+                <h2 class="text-center mt-3 mb-5">Registered Course Applicants</h2>
+                <% if(courseApps.length>0) { %>
+                    <% var x = 0; %>
+                  <div class="table-responsive">
+                        <table class="table table-hover table-striped table-bordered table-dark">
+                                <caption>List of Course Applicants </caption>
+                                <thead>
+                                  <tr>
+                                    <th scope="col">#S.NO</th>
+                                    <th scope="col">USERNAME</th>
+                                    <th scope="col">EMAIL</th>
+                                    <th scope="col">CONTACT</th>
+                                    <th scope="col">COURSE-NAME</th>
+                                    <th scope="col">PRICE</th>
+                                    <th scope="col">ENROLL-DATE</th>
+                                    <th scope="col">PAID</th>
+                                    <th scope="col">EDIT</th>
+                                    <th scope="col">DELETE</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                            <% for(courseApp of courseApps){ %>
+                                <% x++ %>
+                                              <tr>
+                                                <th scope="row"><%=x%></th>
+                                                <td class="text-capitalize"><%=courseApp.username%></td>
+                                                <td><%=courseApp.email%></td>
+                                                <td class="text-capitalize"><%=courseApp.contact%></td>
+                                                <td class="text-capitalize"><%=courseApp.courseName%></td>
+                                                <td class="text-capitalize"><%=courseApp.coursePrice%></td>
+                                                <td class="text-capitalize"><%=courseApp.courseEnrollDate%></td>
+                                                <td class="text-capitalize"><%=courseApp.paid%></td>
+                                                <td>
+                                                  <a href="/admin/edit-course-application/<%=courseApp._id%>?edit=true" class="m-0 btn btn-primary bg-gradient-primary btn-sm">Edit
+                                                  </a>
+                                              </td>
+                                                <td>
+                                                    <form action="/admin/delete-course-application" method="POST" class="m-0 p-0">
+                                                    <input type="hidden" name="_csrf" value="<%=csrfToken%>">
+                                                    <input type="hidden" name="courseAppId" value="<%=courseApp._id%>">
+                                                    <button class="btn btn-danger bg-gradient-danger btn-sm">Delete</button>
+                                                    </form>
+                                                </td>
+                                              </tr>
+                                <% } %>
+                            </tbody>
+                        </table>
+                  </div>
+                    </div>
+                    <% } else { %>
+                        <h3 class="text-default"> No Course Applicants Found! :(</h3>
+                        <% } %>
+                    <% } else if(path === '/admin/manage-jobapplications') { %>
+                        <h2 class="text-center mt-3 mb-5">Registered Job Applicants </h2>
+                        <% if(jobApps.length>0) { %>
+                            <% var x = 0; %>
+                          <div class="table-responsive">
+                                <table class="table table-hover table-striped table-bordered table-dark">
+                                        <caption>List of Job Applicants</caption>
+                                        <thead>
+                                          <tr>
+                                            <th scope="col">#S.NO</th>
+                                            <th scope="col">USERNAME</th>
+                                            <th scope="col">EMAIL</th>
+                                            <th scope="col">CONTACT</th>
+                                            <th scope="col">JOB-TITLE</th>
+                                            <th scope="col">COMPANY</th>
+                                            <th scope="col">CITY</th>
+                                            <th scope="col">SALARY PA</th>
+                                            <th scope="col">APPLIED-DATE</th>
+                                            <th scope="col">DELETE</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                    <% for(jobApp of jobApps){ %>
+                                        <% x++ %>
+                                                      <tr>
+                                                        <th scope="row"><%=x%></th>
+                                                        <td class="text-capitalize"><%=jobApp.username%></td>
+                                                        <td><%=jobApp.email%></td>
+                                                        <td class="text-capitalize"><%=jobApp.contact%></td>
+                                                        <td class="text-capitalize"><%=jobApp.jobTitle%></td>
+                                                        <td class="text-capitalize"><%=jobApp.jobCompany%></td>
+                                                        <td class="text-capitalize"><%=jobApp.city%></td>
+                                                        <td class="text-capitalize"><%=jobApp.salary%></td>
+                                                        <td class="text-capitalize"><%=jobApp.jobAppliedDate%></td>
+                                                        <td>
+                                                            <form action="/admin/delete-job-application" method="POST" class="m-0 p-0">
+                                                            <input type="hidden" name="_csrf" value="<%=csrfToken%>">
+                                                            <input type="hidden" name="jobAppId" value="<%=jobApp._id%>">
+                                                            <button class="btn btn-danger bg-gradient-danger btn-sm">Delete</button>
+                                                            </form>
+                                                        </td>
+                                                      </tr>
+                                        <% } %>
+                                    </tbody>
+                                </table>
+                          </div>
+                            <% } else { %>
+                              <h3 class="text-default"> No Job Applicants Found! :(</h3>
+                              <% } %>
+                              <% } else if(path === '/admin/manage-bugapplications') { %>
+                                <h2 class="text-center mt-3 mb-5">Reported Bugs In The Website </h2>
+                                <% if(bugApps.length>0) { %>
+                                    <% var x = 0; %>
+                                  <div class="table-responsive">
+                                        <table class="table table-hover table-striped table-bordered table-dark">
+                                                <caption>List of Reported Bugs</caption>
+                                                <thead>
+                                                  <tr>
+                                                    <th scope="col">#S.NO</th>
+                                                    <th scope="col">USERNAME</th>
+                                                    <th scope="col">EMAIL</th>
+                                                    <th scope="col">Bug Desc.</th> 
+                                                  </tr>
+                                                </thead>
+                                                <tbody>
+                                            <% for(bugApp of bugApps){ %>
+                                                <% x++ %>
+                                                              <tr>
+                                                                <th scope="row"><%=x%></th>
+                                                                <td class="text-capitalize"><%=bugApp.name%></td>
+                                                                <td><%=bugApp.email%></td>
+                                                                <td class="text-capitalize small"><%=bugApp.bugmessage%></td>
+                                                                <td>
+                                                                    <form action="/admin/delete-bug-application" method="POST" class="m-0 p-0">
+                                                                    <input type="hidden" name="_csrf" value="<%=csrfToken%>">
+                                                                    <input type="hidden" name="bugAppId" value="<%=bugApp._id%>">
+                                                                    <button class="btn btn-danger bg-gradient-danger btn-sm">Delete</button>
+                                                                    </form>
+                                                                </td>
+                                                              </tr>
+                                                <% } %>
+                                            </tbody>
+                                        </table>
+                                  </div>
+                                    <% } else { %>
+                                      <h3 class="text-default"> No Bugs Found! :(</h3>
+                                      <% } %>
+                                   
+        
+
+                        <% } else { %>
+                        <h3 class="text-center">You've Entered into Wrong Content this will not work</h3>
+                        <% } %>
+                 </div>  
+            </div>
+    </section>
+  </div>
+</main>
+
+<footer class="footer bg-dark">
+        <!-- <div style="margin-top:100px"></div> -->
+        <div class="container container-lg">
+        
+          <div class="row align-items-center justify-content-md-between">
+            <div class="col-md-6">
+              <div class="copyright text-white">Copyright 
+                &copy; <script>document.write(new Date().getFullYear())</script>
+                <a href="" target="_blank">SkillsBrain</a>.
+              </div>
+            </div>
+            <div class="col-md-6">
+              <ul class="nav nav-footer justify-content-end">
+                <li class="nav-item">
+                  <a href="index.html" class="nav-link" target="_blank">SkillsBrain</a>
+                </li>
+                <li class="nav-item">
+                  <a href="" class="nav-link" target="_blank">About Us</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </footer>
+      <script type="text/javascript" src="../../assets/js/jquery.min.js"></script>
+      <script type="text/javascript" src="../../assets/js/popper.min.js"></script>
+      <script type="text/javascript" src="../../assets/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="../../assets/js/bootstrap-datepicker.min.js"></script>
+      <script type="text/javascript" src="../../assets/js/headroom.min.js"></script>
+      <script type="text/javascript" src="../../assets/js/nouislider.min.js"></script>
+      <script type="text/javascript" src="../../assets/js/argon.min.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,94 @@
+const mongoose = require('mongoose')
+const Schema = mongoose.Schema;
+let mnth = [1,2,3,4,5,6,7,8,9,10,11,12], d = new Date()
+const profileSchema = new Schema({
+        profileimg:{
+        type:String,
+        default:'assets/img/face1240.png'
+        },
+        username:{
+            type:String,
+            default:undefined
+        },
+        email:{
+            type:String,
+            default:undefined
+        },
+        contact:{
+            type:Number,
+            default:undefined
+        },
+        gender:{
+            type:String,
+            default:undefined
+        },
+        address:{
+            type:String,
+            default:undefined
+        },
+        dob:{
+            type:String,
+            default:undefined
+        },
+        parentcontact:{
+            type:Number,
+            default:undefined
+        },
+        yearofstudy:{
+            type:String,
+            default:undefined
+        },
+        degree:{
+            type:String,
+            default:undefined
+        },
+        specialization:{
+            type:String,
+            default:undefined
+        },
+        collegename:{
+            type:String,
+            default:undefined
+        },
+        tenthpassyear:{
+            type:Number,
+            default:undefined
+        },
+        twelveordippassyear:{
+            type:Number,
+            default:undefined
+        },
+        workedprojectname:{
+            type:String,
+            default:undefined
+        },
+        projectstartdate:{
+            type:String,
+            default:undefined
+        },
+        projectenddate:{
+            type:String,
+            default:undefined
+        },
+        pastjoborinternorg:{
+            type:String,
+            default:undefined
+        },
+    userId:{
+        type:Schema.Types.ObjectId,
+        ref:'User',
+        default:undefined
+    },
+    testId:{
+        type:Schema.Types.ObjectId,
+        ref:'TestApplication',
+        default:undefined
+    },
+    createdAt:{
+        type:String,
+        default:`${d.getDate()}/${mnth[d.getMonth()]}/${d.getFullYear()}`
+    },
+
+})
+
+module.exports = mongoose.model('Profile', profileSchema)

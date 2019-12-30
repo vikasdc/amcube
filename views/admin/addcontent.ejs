@@ -1,0 +1,325 @@
+<%- include('../includes/header.ejs') %>
+<link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+<body>
+  <%- include('../includes/adminnav.ejs') %>
+<main>
+<div class="position-relative">
+<section class="section-shaped my-0" style="min-height:80vh">
+    <div class="container container-lg">
+        <div class="row mt-5 mb-5">
+        <div class="col-md-8 mx-auto mt-5 mb-5">
+                <div class="card card-form shadow">
+            <% if(path === '/admin/add-course') { %>
+            <div class="card-header bg-dark">
+                    <h3 class="text-center text-white text-uppercase"><%= edit ===true ? 'Edit Course':'Add Course' %></h3>
+                    </div>
+                    <form action="/admin/<%=edit===true?'edit-course':'add-course'%>" method="POST">
+            <% } else if(path === '/admin/add-job') { %>
+                <div class="card-header bg-dark">
+                        <h3 class="text-center text-white text-uppercase"><%= edit ===true ? 'Edit Job':'Add Job' %></h3>
+                        </div>
+                        <form action="/admin/<%=edit===true?'edit-job':'add-job'%>" method="POST">
+                    <% } else if(path === '/admin/edit-test-application-payment') { %>
+                        <div class="card-header bg-dark">
+                                <h3 class="text-center text-white text-uppercase">Edit Test Payment</h3>
+                                </div>
+                                <form action="/admin/edit-test-application-payment" method="POST">
+                        <% } else if(path === '/admin/edit-course-application-payment') { %>
+                            <div class="card-header bg-dark">
+                                    <h3 class="text-center text-white text-uppercase">Edit Course Payment</h3>
+                                    </div>
+                                    <form action="/admin/edit-course-application-payment" method="POST">
+                    <% } else if(path === '/admin/add-test') { %>
+                        <div class="card-header bg-dark">
+                                <h3 class="text-center text-white text-uppercase"><%= edit ===true ? 'Edit Test':'Add Test' %></h3>
+                                </div>
+                                <form action="/admin/<%=edit===true?'edit-test':'add-test'%>" method="POST">
+                        <% } else { %>
+                            <h3>Someone Tried To Make Change In Code Contact Administrator!</h3>   
+                            <% } %>            
+                        <div class="card-body">
+                             <% if(path === '/admin/add-course') {  %>
+                                <div class="form-group">
+                                        <label for="" class="text-default">Course Title</label>
+                                        <div class="input-group input-group-alternative">
+                                            <div class="input-group-append">
+                                                <div class="input-group-text text-default">
+                                                    <i class="material-icons">title</i>
+                                                </div>
+                                            </div>
+                                            <input type="text" value="<%=edit===true?course.title:''%>" class="text-capitalize form-control text-default" name="title" placeholder="Enter Course Title" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="" class="text-default">Img</label>
+                                        <div class="input-group input-group-alternative">
+                                            <div class="input-group-append">
+                                                <div class="input-group-text text-default">
+                                                    <i class="material-icons">link</i>
+                                                </div>
+                                            </div>
+                                            <input type="text" value="<%=edit===true?course.img:''%>" class="form-control text-default" name="img" placeholder="Enter Course Img Url" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="" class="text-default">Description</label>
+                                        <div class="input-group input-group-alternative">
+                                            <textarea class="form-control text-default" name="description" placeholder="Enter Course Description" rows="25" cols="10" required>
+                                                    <%=edit===true?course.description:''%>    
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                            <label for="" class="text-default">OfferPrice</label>
+                                            <div class="input-group input-group-alternative">
+                                                <div class="input-group-append">
+                                                    <div class="input-group-text text-default">
+                                                        <i class="material-icons">attach_money</i>
+                                                    </div>
+                                                </div>
+                                                <input type="number" value="<%=edit===true?course.offerprice:''%>" class="form-control text-default" name="offerprice" id="" placeholder="Enter Offer Price" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                                <label for="" class="text-default">Actual Price</label>
+                                                <div class="input-group input-group-alternative">
+                                                    <div class="input-group-append">
+                                                        <div class="input-group-text text-default">
+                                                            <i class="material-icons">attach_money</i>
+                                                        </div>
+                                                    </div>
+                                                    <input type="number" value="<%=edit===true?course.actualprice:''%>" class="form-control text-default" name="actualprice" id="" placeholder="Enter Actual Price" required>
+                                                </div>
+                                            </div>
+                                            <div class="text-center mt-4">
+                                                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                                <% if(edit) { %> <input type="hidden" name="courseId" value="<%= course._id %>"> <% } %>
+                                                <button class="btn btn-dark" type="submit"><%= edit === true ? 'Update Course' : 'Add Course' %></button>
+                                            </div>
+                        <% } else if(path === '/admin/add-job') { %>
+                        <div class="form-group">
+                                <label for="" class="text-default">Job Title</label>
+                                <div class="input-group input-group-alternative">
+                                    <div class="input-group-append">
+                                        <div class="input-group-text text-default">
+                                            <i class="material-icons">title</i>
+                                        </div>
+                                    </div>
+                                    <input type="text" value="<%=edit===true?job.title:''%>" class="form-control text-default" name="title" placeholder="Enter Job Title" required>
+                                </div>
+                            </div>
+                        <div class="form-group">
+                                <label for="" class="text-default">Job Company Name</label>
+                                <div class="input-group input-group-alternative">
+                                    <div class="input-group-append">
+                                        <div class="input-group-text text-default">
+                                            <i class="material-icons">title</i>
+                                        </div>
+                                    </div>
+                                    <input type="text" value="<%=edit===true?job.company:''%>" class="form-control text-default" name="company" placeholder="Enter Comapny Name" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                    <label for="" class="text-default">Image Url</label>
+                                    <div class="input-group input-group-alternative">
+                                        <div class="input-group-append">
+                                            <div class="input-group-text text-default">
+                                                <i class="material-icons">insert_link</i>
+                                            </div>
+                                        </div>
+                                        <input type="text" value="<%= edit === true ? job.img : '' %>" class="form-control text-default" name="img" placeholder="Enter Image Url" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="text-default">Job City</label>
+                                    <div class="input-group input-group-alternative">
+                                        <div class="input-group-append">
+                                            <div class="input-group-text text-default">
+                                                <i class="material-icons">location_on</i>
+                                            </div>
+                                        </div>
+                                        <input type="text" value="<%= edit === true ? job.city : '' %>" class="form-control text-default" name="city" placeholder="Enter City Name" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                        <label for="" class="text-default">Salary</label>
+                                        <div class="input-group input-group-alternative">
+                                            <div class="input-group-append">
+                                                <div class="input-group-text text-default">
+                                                    <i class="material-icons">attach_money</i>
+                                                </div>
+                                            </div>
+                                            <input type="number" value="<%=edit===true?job.salary:''%>" class="form-control text-default" name="salary" id="" placeholder="Enter Salary PA" required required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">Last Date To Apply</label>
+                                        <div class="input-group input-group-alternative">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text text-default"><i class="fa fa-calendar"></i></span>
+                                            </div>
+                                                <input name="lastdate" value="<%=edit===true?job.lastdate:''%>" class="form-control text-default" placeholder="Last Date To Apply" required type="text">
+                                        </div>
+                                    </div>
+                                        <div class="text-center mt-4">
+                                            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                            <% if(edit) { %> <input type="hidden" name="jobId" value="<%= job._id %>"> <% } %>
+                                            <button class="btn btn-dark" type="submit"><%= edit === true ? 'Update Job' : 'Add Job' %></button>
+                                        </div>
+                                        <% } else if(path === '/admin/add-test'){ %>
+                                <div class="form-group">
+                                    <label for="" class="text-default">Test City</label>
+                                    <div class="input-group input-group-alternative">
+                                        <div class="input-group-append">
+                                            <div class="input-group-text text-default">
+                                                <i class="material-icons">location_on</i>
+                                            </div>
+                                        </div>
+                                        <input type="text" value="<%=edit===true?test.city:''%>" class="form-control text-default" name="city" placeholder="Enter Test City Name" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                        <label for="">Test Date</label>
+                                        <div class="input-group input-group-alternative">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text text-default">
+                                                        <i class="fa fa-calendar"></i>
+                                                </span>
+                                            </div>
+                                              <input name="testdate" value="<%=edit===true?test.testdate:''%>" class="form-control text-default" placeholder="Enter Test Date" required type="text">
+                                        </div>
+                                    </div>
+                                  <div class="row">
+                                      <div class="col-md-6">
+                                            <div class="form-group">
+                                                    <label for="" class="text-default">Time1 From</label>
+                                                        <input type="text" id="timepicker1" value="<%=edit===true?test.time1to:''%>" class="form-control text-default" name="time1from" placeholder="Enter Test Time1 From" required>
+                                                </div>
+                                      </div>
+                                      <div class="col-md-6">
+                                            <div class="form-group">
+                                                    <label for="" class="text-default">Time1 To</label>
+                                                        <input type="text" id="timepicker2" value="<%=edit===true?test.time1from:''%>" class="form-control text-default" name="time1to" placeholder="Enter Test Time1 To" required>
+                                                </div>
+                                      </div>
+                                  </div>
+                                  <div class="row">
+                                        <div class="col-md-6">  
+                                        <div class="form-group">
+                                                <label for="" class="text-default">Time2 From</label>
+                                                    <input type="text" id="timepicker3" value="<%=edit===true?test.time2from:''%>" class="form-control form-control-alternative text-default" name="time2from" placeholder="Enter Test Time2 From" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                                <div class="form-group">
+                                                        <label for="" class="text-default">Time2 To</label>
+                                                            <input type="text" id="timepicker4" value="<%=edit===true?test.time2to:''%>" class="form-control form-control-alternative text-default" name="time2to" placeholder="Enter Test Time2 To" required>
+                                                    </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                            <div class="col-md-6">  
+                                                    <div class="form-group">
+                                                            <label for="" class="text-default">Time3 From</label>
+                                                                <input type="text" id="timepicker5" value="<%=edit===true?test.time3from:''%>" class="form-control text-default" name="time3from" placeholder="Enter Test Time3 From" required>
+                                                        </div>
+                                            </div>
+                                            <div class="col-md-6">       
+                                            <div class="form-group">
+                                                    <label for="" class="text-default">Time3 To</label>
+                                                        <input type="text" id="timepicker6" value="<%=edit===true?test.time3to:''%>" class="form-control text-default" name="time3to" placeholder="Enter Test Time3 To" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                          <div class="text-center mt-4">
+                                              <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                              <% if(edit) { %> <input type="hidden" name="testId" value="<%= test._id %>"> <% } %>
+                                              <button class="btn btn-dark" type="submit"><%= edit === true ? 'Update Test' : 'Add Test' %></button>
+                                          </div>
+                                          <% } else if(path === '/admin/edit-test-application-payment') {  %>
+                                                        <div class="text-center mt-4">
+                                                            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                                            <input type="hidden" name="testAppId" value="<%= testApp._id %>">
+                                                            <button class="btn btn-dark" type="submit">Mark As Paid</button>
+                                                        </div>
+                                          <% } else if(path === '/admin/edit-course-application-payment') {  %>
+                                                        <div class="text-center mt-4">
+                                                            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                                            <input type="hidden" name="courseAppId" value="<%= courseApp._id %>">
+                                                            <button class="btn btn-dark" type="submit">Mark As Paid</button>
+                                                        </div>
+                                          <% } else { %>
+                                            <h3 class="text-center">You've Entered into Wrong Content this will not work</h3>
+                                            <% } %>
+                            </div>
+                  </form>
+                 </div>  
+            </div>
+           </div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="footer bg-dark">
+        <!-- <div style="margin-top:100px"></div> -->
+        <div class="container container-lg">
+        
+          <div class="row align-items-center justify-content-md-between">
+            <div class="col-md-6">
+              <div class="copyright text-white">Copyright 
+                &copy; <script>document.write(new Date().getFullYear())</script>
+                <a href="" target="_blank">Amcubes</a>.
+              </div>
+            </div>
+            <div class="col-md-6">
+              <ul class="nav nav-footer justify-content-end">
+                <li class="nav-item">
+                  <a href="index.html" class="nav-link" target="_blank">Amcubes</a>
+                </li>
+                <li class="nav-item">
+                  <a href="" class="nav-link" target="_blank">About Us</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </footer>
+      <script type="text/javascript" src="../../assets/js/jquery.min.js"></script>
+      <script type="text/javascript" src="../../assets/js/popper.min.js"></script>
+      <script type="text/javascript" src="../../assets/js/bootstrap.min.js"></script>
+      <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+<script>
+        $('#timepicker1').timepicker({
+            uiLibrary: 'bootstrap4',
+            format: 'hh.MM.TT'
+        });
+        $('#timepicker2').timepicker({
+            uiLibrary: 'bootstrap4',
+            format: 'hh.MM.TT'
+        });
+        $('#timepicker3').timepicker({
+            uiLibrary: 'bootstrap4',
+            format: 'hh.MM.TT'
+        });
+        $('#timepicker4').timepicker({
+            uiLibrary: 'bootstrap4',
+            format: 'hh.MM.TT'
+        });
+        $('#timepicker5').timepicker({
+            uiLibrary: 'bootstrap4',
+            format: 'hh.MM.TT'
+        });
+        $('#timepicker6').timepicker({
+            uiLibrary: 'bootstrap4',
+            format: 'hh.MM.TT'
+        });
+    </script>
+      <script type="text/javascript" src="../../assets/js/bootstrap-datepicker.min.js"></script>
+      <script type="text/javascript" src="../../assets/js/headroom.min.js"></script>
+      <script type="text/javascript" src="../../assets/js/nouislider.min.js"></script>
+      <script type="text/javascript" src="../../assets/js/argon.min.js"></script>
+
+</body>
+
+</html>

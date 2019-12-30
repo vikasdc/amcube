@@ -1,0 +1,251 @@
+<%- include('includes/header.ejs') %>
+<style>
+ol {
+  list-style: none;
+  padding: 0;
+}
+ol li {
+  padding-left: 1.3em;
+}
+ol li:before {
+  content: "\f00c"; /* FontAwesome Unicode */
+  font-family: FontAwesome;
+  display: inline-block;
+  margin-left: -1.3em; /* same as padding-left set on li */
+  width: 1.3em; /* same as padding-left set on li */
+  color:black;
+  font-size:1.8rem;
+}
+</style>
+</head>
+<body>
+  <header class="header-global">
+    <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-dark navbar-transparent py-1">
+      <div class="container container-lg">
+        <a class="navbar-brand mr-lg-5" href="/">
+          <span class="ml-1 h4 text-lowercase font-weight-bold text-white poppins"><span style="color:rgb(6, 57, 223)">am</span><span style="color:rgb(22, 190, 16)">cubes</span></span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbar_global">
+          <div class="navbar-collapse-header">
+            <div class="row">
+              <div class="col-6 collapse-brand">
+                <a href="/">
+                  <span class="ml-1 h4 text-lowercase font-weight-bold text-white poppins"><span style="color:rgb(5, 61, 216)">am</span><span style="color:rgb(22, 190, 16)">cubes</span></span>
+                </a>
+              </div>
+              <div class="col-6 collapse-close">
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
+                  <span></span>
+                  <span></span>
+                </button>
+              </div>
+            </div>
+          </div>
+          <ul class="navbar-nav ml-auto navbar-nav-hover align-items-lg-center">
+                <li class="nav-item <%= path === '/' ? 'active':'' %>">
+                  <a href="/" style="font-size:1em;" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item <%= path === '/courses' ? 'active':'' %>">
+                  <a href="/courses" style="font-size:1em;" class=" nav-link ">Courses</a>
+                </li>   
+                <li class="nav-item <%= path === '/jobs' ? 'active':'' %>">
+                    <a href="/jobs" style="font-size:1em;" class=" nav-link">Jobs/Interns</a>
+                  </li> 
+                  <li class="nav-item <%= path === '/tests' ? 'active':'' %>">
+                    <a href="/tests" style="font-size:1em;" class=" nav-link ">Tests</a>
+                  </li>
+                  <% if(!isLoggedin){ %>
+                    <li class="nav-item <%= path === '/login' ? 'active':'' %>">
+                      <a href="/login" style="font-size:1em;" class=" nav-link ">Login</a>
+                    </li>      
+                    <li class="nav-item <%= path === '/signup' ? 'active':'' %>">
+                        <a href="/signup" style="font-size:1em;" class=" nav-link ">Signup</a>
+                      </li>
+                      <li class="nav-item <%= path === '/recruiters' ? 'active':'' %>">
+                        <a href="/recruiters" style="font-size:1em;" class=" nav-link ">Recruiters</a>
+                      </li>
+                      <% } else { %>
+                      <li class="nav-item d-none d-md-block dropdown <%= path === '/dashboard' || '/profile' || '/settings', '/bugreport', '/account' ? 'active':'' %>">
+                            <a style="font-size:1em;" class=" nav-link text-capitalize  dropdown-toggle"id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= user.username %></a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="/account">Account</a>
+                                    <a class="dropdown-item" href="/dashboard">Dashboard</a>
+                                    <a class="dropdown-item" href="/profile">Profile</a>
+                                    <a class="dropdown-item" href="/settings">Settings & More</a>
+                                    <div class="dropdown-divider"></div>
+                                    <form action="/logout" method="post" class="m-0">
+                                      <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                      <button class="dropdown-item btn btn-link font-weight-normal text-capitalize">Logout</button>
+                                    </form>
+                                    <a class="dropdown-item" href="/bugreport">Report Bug</a>
+                                  </div>
+                          </li>
+                          <li class="nav-item d-md-none">
+                              <a class="nav-link" href="/account">Account</a>
+                          </li>
+                          <li class="nav-item d-md-none">
+                              <a class="nav-link" href="/dashboard">Dashboard</a>
+                            </li>
+                            <li class="nav-item d-md-none">
+                                <a class="nav-link" href="/profile">Profile</a>
+                              </li>
+                              <li class="nav-item d-md-none">
+                                  <a class="nav-link" href="/settings">Settings & More</a>
+                                </li>
+                                <li class="nav-item d-md-none">
+                                    <form action="/logout" method="post" class="m-0">
+                                      <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                      <button class="nav-link btn btn-link font-weight-normal text-capitalize">Logout</button>
+                                    </form>
+                                  </li>
+                                  <li class="nav-item d-md-none">
+                                      <a class="nav-link" href="/bugreport">Report Bug</a>
+                                    </li>
+                        <% } %>
+                       
+              </ul>
+
+      </div>
+  </div>
+</nav>
+</header>
+<main>
+  <div class="position-relative">
+    <section class="section-shaped bg-prp my-0">
+      <div class="container  shape-container d-flex">
+        <div class="col px-0" style="margin-top:220px;margin-bottom:100px;">
+          <div class="row">
+            <div class="col-lg-7 mt-0 mt-lg-5">
+               <h1 class="br text-white">Confused about your next exam?</h1>
+               <p class="ft text-white"  style="font-size:1.4rem;font-weight:600;">
+                Prepare for amcubes test under the guidance of our experts and crack next exam with the help of interactive session
+                </p>
+                <p class="ft text-white"  style="font-size:1.6rem;font-weight:600;">
+                    ₹ 3000 &nbsp; <del>₹ 6000</del> &nbsp; <span class="text-success small">50% off</span>
+                </p>
+               <div class="mt-3 mb-2">
+                <a href="https://www.instamojo.com/@codemania/le22bbc97fbc0472d9b724a10d9c6fe30/" rel="im-checkout" data-text="Buy Now" data-css-style="color:#ffffff; background:#fb6340; width:300px; border-radius:4px"   data-layout="vertical"></a>
+<script src="https://js.instamojo.com/v1/button.js"></script>
+               </div>
+            </div>  
+          </div>
+        </div>
+      </div>
+    </section>
+<section class="py-5 bg-secondary">
+  <div class="container">
+       <div class="row">
+           <div class="col-md-8 mx-auto">
+            <h1 class="text-center ft text-black font-weight-bold  mt-3 mb-5">What will you get</h1>
+           </div>
+       </div>
+    <div class="row">
+        <div class="col-md-7 order-2 order-lg-1 align-self-center mt-3">
+            <ol>
+                <li class="my-2 text-dark ft" style="font-size:1.8rem;font-weight:600;word-spacing: 2">
+                      2+ Hrs of interactive session about the pattern of exam
+                </li>
+                <li class="my-2 text-dark ft" style="font-size:1.8rem;font-weight:600;word-spacing: 2">
+                    30+ Hrs of interactive session on complete syllabus
+              </li>
+              <li class="my-2 text-dark ft" style="font-size:1.8rem;font-weight:600;word-spacing: 2">
+                amcubes communication skills certification
+               </li>
+            </ol>
+        </div>
+        <div class="col-md-5 order-1 order-md-2 my-3">
+              <img src="../assets/img/test.jpg" alt="" class="img-fluid">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-5 my-3">
+              <img src="../assets/img/exam-1.jpg" alt="" class="img-fluid">
+        </div>
+        <div class="col-md-6 ml-0 ml-md-5  align-self-center mt-3">
+          <ol>
+            <li class="my-2 text-dark ft" style="font-size:1.8rem;font-weight:600;word-spacing: 2">
+                amcubes basic computer skills certification
+               </li>
+               <li class="my-2 text-dark ft" style="font-size:1.8rem;font-weight:600;word-spacing: 2">
+                amcubes programming skills certification on c, c++, java, python
+               </li>
+          </ol>
+        </div>
+    </div>
+  </div>
+</section>
+  </div>
+</main>
+<footer class="footer bg-dark">
+  <!-- <div style="margin-top:100px"></div> -->
+  <div class="container container-lg">
+    <div class="row row-grid">
+      <div class="col-lg-4 order-2 text-center mb-2 mb-lg-5">
+        <h3 class=" font-weight-light text-white">Follow us on</h3>
+        <div class=" btn-wrapper mt-3">
+            <a target="_blank" href="https://twitter.com/amcubes3?s=08" class="btn btn-neutral btn-icon-only btn-twitter btn-round rounded-circle btn-lg" data-toggle="tooltip" data-placement="bottom" title="Follow us">
+               <i class="fa fa-twitter mt-2 pt-1"></i>
+            </a>
+            <a target="_blank" href="https://facebook.com/amcubes2019" class="btn btn-neutral btn-icon-only btn-facebook btn-round rounded-circle btn-lg" data-toggle="tooltip" title="Like us">
+              <i class="fa fa-facebook-square mt-2 pt-1"></i>
+            </a>
+            <a target="_blank" href="https://www.linkedin.com/company/amcubes" class="btn btn-neutral btn-icon-only btn-linkedin rounded-circle btn-lg btn-round" data-toggle="tooltip" title="Follow us">
+              <i class="fa fa-linkedin mt-2 pt-1 "></i>
+            </a>
+            <a target="_blank" href="https://instagram.com/amcubes2019" class="btn btn-neutral btn-icon-only btn-instagram btn-round rounded-circle btn-lg" data-toggle="tooltip" title="Follow us">
+              <i class="fa fa-instagram mt-2 pt-1"></i>
+            </a>
+          </div>
+          <h5 class="text-white mt-3">Working Hours</h5>
+          <p class="font-weight-normal text-white">Mon - Sun, 9AM - 9PM</p>
+      </div>
+      <div class="col-lg-4  order-1 mb-2 mb-lg-5 contact" >
+          <h3 class="text-primary font-weight-light text-white">Contact us <br></br></h3>
+          <h5 class="mb-0  font-weight-light text-white">91 Springboard, Mytri Square, 2-41/11, 6/2, Gachibowli - Miyapur Rd, Prashanth Nagar Colony, Hyderabad, Telangana 500084</h5>
+            <a class="h5 mb-0 mt-1 font-weight-light text-white" href="mailto:hello@amcubes.com">hello@amcubes.com</a> <br></br>
+           <a class="h5 mb-0 mt-1 font-weight-normal text-white" href="tel:+917702535506">+91-7989564009</a>
+        </div>
+        <div class="col-lg-4 mb-5 order-3">
+          <div id="map" class="rounded shadow"></div>
+        </div>
+    </div>
+  
+    <div class="row align-items-center justify-content-md-between">
+      <div class="col-md-6">
+        <div class="copyright text-white">Copyright 
+          &copy; <script>document.write(new Date().getFullYear())</script>
+          <a href="" class="text-white" target="_blank">amcubes</a>.
+        </div>
+      </div>
+      <div class="col-md-6">
+          <ul class="nav nav-footer justify-content-end">
+            <li class="nav-item">
+              <a href="" class="text-white mr-3">Amcubes</a>
+            </li>
+            <li class="nav-item">
+                <a href="#about" class="text-white mr-3">About Us</a>
+              </li>
+              <li class="nav-item">
+                  <a href="/terms&privacy" class="text-white" target="_blank">Terms & Privacy</a>
+                </li>
+          </ul>
+        </div>
+    </div>
+  </div>
+</footer>
+<script type="text/javascript" src="../assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="../assets/js/popper.min.js"></script>
+<script type="text/javascript" src="../assets/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../assets/js/bootstrap-datepicker.min.js"></script>
+<script type="text/javascript" src="../assets/js/headroom.min.js"></script>
+<script type="text/javascript" src="../assets/js/nouislider.min.js"></script>
+<script type="text/javascript" src="../assets/js/argon.min.js"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADzo1qNJPmONyIELJQa5Zs4oalk0nSJlw&callback=initMap"async defer></script>
+<script type="text/javascript" src="../assets/js/core/googlemaps.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+<script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="6ec3b1a6-40d5-4f49-89d7-e8bf8d1514fb";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
+</body>
+</html>

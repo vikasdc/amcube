@@ -1,0 +1,378 @@
+<%- include('includes/header.ejs') %>
+<style>
+ol {
+  list-style: none;
+  padding: 0;
+}
+ol li {
+  padding-left: 1.3em;
+}
+ol li:before {
+  content: "\f00c"; /* FontAwesome Unicode */
+  font-family: FontAwesome;
+  display: inline-block;
+  margin-left: -1.3em; /* same as padding-left set on li */
+  width: 1.3em; /* same as padding-left set on li */
+  color:black;
+  font-size:1.8rem;
+}
+</style>
+</head>
+<body>
+  <header class="header-global">
+    <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-dark navbar-transparent py-1">
+      <div class="container container-lg">
+        <a class="navbar-brand mr-lg-5" href="/">
+          <span class="ml-1 h4 text-lowercase font-weight-bold text-white poppins"><span style="color:rgb(6, 57, 223)">am</span><span style="color:rgb(22, 190, 16)">cubes</span></span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbar_global">
+          <div class="navbar-collapse-header">
+            <div class="row">
+              <div class="col-6 collapse-brand">
+                <a href="/">
+                  <span class="ml-1 h4 text-lowercase font-weight-bold text-white poppins"><span style="color:rgb(5, 61, 216)">am</span><span style="color:rgb(22, 190, 16)">cubes</span></span>
+                </a>
+              </div>
+              <div class="col-6 collapse-close">
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
+                  <span></span>
+                  <span></span>
+                </button>
+              </div>
+            </div>
+          </div>
+          <ul class="navbar-nav ml-auto navbar-nav-hover align-items-lg-center">
+                <li class="nav-item <%= path === '/' ? 'active':'' %>">
+                  <a href="/" style="font-size:1em;" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item <%= path === '/courses' ? 'active':'' %>">
+                  <a href="/courses" style="font-size:1em;" class=" nav-link ">Courses</a>
+                </li>   
+                <li class="nav-item <%= path === '/jobs' ? 'active':'' %>">
+                    <a href="/jobs" style="font-size:1em;" class=" nav-link">Jobs/Interns</a>
+                  </li> 
+                  <li class="nav-item <%= path === '/tests' ? 'active':'' %>">
+                    <a href="/tests" style="font-size:1em;" class=" nav-link ">Tests</a>
+                  </li>
+                  <% if(!isLoggedin){ %>
+                    <li class="nav-item <%= path === '/login' ? 'active':'' %>">
+                      <a href="/login" style="font-size:1em;" class=" nav-link ">Login</a>
+                    </li>      
+                    <li class="nav-item <%= path === '/signup' ? 'active':'' %>">
+                        <a href="/signup" style="font-size:1em;" class=" nav-link ">Signup</a>
+                      </li>
+                      <li class="nav-item <%= path === '/recruiters' ? 'active':'' %>">
+                        <a href="/recruiters" style="font-size:1em;" class=" nav-link ">Recruiters</a>
+                      </li>
+                      <% } else { %>
+                      <li class="nav-item d-none d-md-block dropdown <%= path === '/dashboard' || '/profile' || '/settings', '/bugreport', '/account' ? 'active':'' %>">
+                            <a style="font-size:1em;" class=" nav-link text-capitalize  dropdown-toggle"id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= user.username %></a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="/account">Account</a>
+                                    <a class="dropdown-item" href="/dashboard">Dashboard</a>
+                                    <a class="dropdown-item" href="/profile">Profile</a>
+                                    <a class="dropdown-item" href="/settings">Syllabus & More</a>
+                                    <div class="dropdown-divider"></div>
+                                    <form action="/logout" method="post" class="m-0">
+                                      <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                      <button class="dropdown-item btn btn-link font-weight-normal text-capitalize">Logout</button>
+                                    </form>
+                                    <a class="dropdown-item" href="/bugreport">Report Bug</a>
+                                  </div>
+                          </li>
+                          <li class="nav-item d-md-none">
+                              <a class="nav-link" href="/account">Account</a>
+                          </li>
+                          <li class="nav-item d-md-none">
+                              <a class="nav-link" href="/dashboard">Dashboard</a>
+                            </li>
+                            <li class="nav-item d-md-none">
+                                <a class="nav-link" href="/profile">Profile</a>
+                              </li>
+                              <li class="nav-item d-md-none">
+                                  <a class="nav-link" href="/settings">Syllabus & More</a>
+                                </li>
+                                <li class="nav-item d-md-none">
+                                    <form action="/logout" method="post" class="m-0">
+                                      <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                      <button class="nav-link btn btn-link font-weight-normal text-capitalize">Logout</button>
+                                    </form>
+                                  </li>
+                                  <li class="nav-item d-md-none">
+                                      <a class="nav-link" href="/bugreport">Report Bug</a>
+                                    </li>
+                        <% } %>
+                       
+              </ul>
+
+      </div>
+  </div>
+</nav>
+</header>
+<main>
+  <div class="position-relative">
+    <section class="section-shaped bg-primary my-0">
+      <div class="container  shape-container d-flex">
+        <div class="col px-0" style="margin-top:220px;margin-bottom:100px;">
+          <div class="row">
+            <div class="col-lg-7 mt-0 mt-lg-5">
+               <h1 class="br text-white">Amcubes alumnus are qualified to meet your requirements</h1>
+               <div class="mt-4 mb-2">
+                <a href="#more" class="btn btn-success">Learn More About Hiring <i class="fa fa-arrow-right ml-1" aria-hidden="true"></i></a>
+               </div>
+              <%if(recruiterSuccess){ %>
+                <p class="text-white font-weight-bold ft" style="font-size: 1.5rem">Thank you for reaching us we'll get back to you soon.</p>
+                <% } %>
+            </div>  
+          </div>
+        </div>
+      </div>
+    </section>
+<section class="py-5 bg-secondary">
+  <div class="container">
+       <div class="row">
+           <div class="col-md-8 mx-auto">
+            <h1 class="text-center ft text-black font-weight-bold  mt-3 mb-5">How Our Alumnus Are Different From Others</h1>
+           </div>
+       </div>
+    <div class="row">
+        <div class="col-md-7 order-2 order-lg-1 align-self-center mt-3">
+            <ol>
+                <li class="my-2 text-dark ft" style="font-size:1.8rem;font-weight:600;word-spacing: 2">
+                      1000+ hours of real-time coding experience
+                </li>
+                <li class="my-2 text-dark ft" style="font-size:1.8rem;font-weight:600;word-spacing: 2">
+                    Cross-team collaboration skills
+              </li>
+              <li class="my-2 text-dark ft" style="font-size:1.8rem;font-weight:600;word-spacing: 2">
+                No upfront hiring fee
+          </li>
+            </ol>
+        </div>
+        <div class="col-md-5 order-1 order-md-2 my-3">
+              <img src="../assets/img/women-code.jpg" alt="" class="img-fluid">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-5 my-3">
+              <img src="../assets/img/wc1.jpg" alt="" class="img-fluid">
+        </div>
+        <div class="col-md-6 ml-0 ml-md-5  align-self-center mt-3">
+            <h2 class="ft text-black font-weight-bold  mt-3 mb-5">1000+ hours of industry applicable code - experience</h1>
+        </div>
+    </div>
+  </div>
+</section>
+<section class="py-5">
+  <div class="container my-2">
+    <div class="row">
+      <div class="col-md-8 mx-auto">
+        <h1 class="text-center ft text-black font-weight-bold  mt-3 mb-5">Our Graduates Have Mastered The Leatest Technologies</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4  my-2">
+           <div class="card shadow text-center">
+             <div class="card-body">
+              <img src="../assets/img/icons/android.png" alt="" class="img-fluid rounded-circle p-4" style="background-color: #DF173C;">
+              <h4 class="ft text-black mt-4">Android Development</h4>
+              <p class="font-weight-normal text-black ft">Java, Kotlin, React Native, Python and more</p>
+             </div>
+           </div>
+      </div>
+        <div class="col-md-4  my-2">
+          <div class="card shadow text-center">
+            <div class="card-body">
+            <img src="../assets/img/icons/data.png" alt="" class="img-fluid rounded-circle p-4 bg-primary">
+            <h4 class="ft text-black mt-4">Data Science</h4>
+            <p class="font-weight-normal text-black ft"> Python, SQL Database, Apache Spark, Machine Learning and AI, Data Visualization,  Unstructured data</p>
+            </div>
+          </div>
+      </div>
+      <div class="col-md-4  my-2">
+        <div class="card shadow text-center">
+          <div class="card-body">
+          <img src="../assets/img/icons/app.png" alt="" class="img-fluid rounded-circle p-4" style="background-color: #A020F0">
+          <h4 class="ft text-black mt-4">iOS Development</h4>
+          <p class="font-weight-normal text-black ft">Swift, Objective-C, and Cocoa Touch.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-md-5 my-4">
+          <div class="card shadow text-center">
+              <div class="card-body">
+              <img src="../assets/img/icons/web.png" alt="" class="img-fluid rounded-circle p-4 bg-gradient-green">
+              <h4 class="ft text-black mt-4">Full Stack Web Development</h4>
+              <p class="font-weight-normal text-black ft">HTML, CSS, Javascript, Bootstrap, React, NodeJs, Angular, Ruby, Ruby On Rails, Python, Django, Mysql, Mongodb</p>
+              </div>
+            </div>
+      </div>
+      <div class="col-md-5 my-4">
+          <div class="card shadow text-center">
+              <div class="card-body">
+              <img src="../assets/img/icons/ux.png" alt="" class="img-fluid rounded-circle p-4 bg-gradient-dark">
+              <h4 class="ft text-black mt-4">User Experience Design</h4>
+              <p class="font-weight-normal text-black ft">User Research Methods, Design Sketching, Design Validation and more</p>
+              </div>
+            </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="py-5 bg-prp <%if(recruiterSuccess){%>bg-gradient-success<%}%>" id="more">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h1 class="ft text-center text-white font-weight-bold  mt-2 mb-4">Learn More About Hiring</h1>
+          <div class="row">
+              <div class="col-md-10 mx-auto">
+                <%if(recruiterSuccess){ %>
+                    <p class="text-white font-weight-bold ft text-center" style="font-size: 1.8rem">Thank you for reaching us we'll get back to you soon.</p>
+                     <% } else { %> 
+                        <form action="/recruiter" method="post">
+                            <div class="form-group mb-3">
+                                    <label for="name" class="text-white">Full Name</label>
+                                    <div class="input-group input-group-alternative">
+                                        <div class="input-group-prepend">
+                                        <span class="input-group-text text-black"><i class="fa fa-user"></i></span>
+                                        </div>
+                                        <input class="form-control" placeholder="Name" type="text" name="name" required>
+                                    </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                                <div class="form-group mb-3">
+                                                        <label for="email" class="text-white">Email</label>
+                                                        <div class="input-group input-group-alternative">
+                                                            <div class="input-group-prepend">
+                                                            <span class="input-group-text text-black"><i class="fa fa-envelope"></i></span>
+                                                            </div>
+                                                            <input class="form-control" placeholder="Email" type="email" name="email" required>
+                                                        </div>
+                                                        </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                                <div class="form-group mb-3">
+                                                        <label for="phone" class="text-white">Phone</label>
+                                                        <div class="input-group input-group-alternative">
+                                                            <div class="input-group-prepend">
+                                                            <span class="input-group-text text-black"><i class="fa fa-phone"></i></span>
+                                                            </div>
+                                                            <input class="form-control" placeholder="Phone" type="number" name="phone" required>
+                                                        </div>
+                                                        </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                            <div class="col-md-6">
+                                                    <div class="form-group mb-3">
+                                                            <label for="company" class="text-white">Company</label>
+                                                            <div class="input-group input-group-alternative">
+                                                                <div class="input-group-prepend">
+                                                                <span class="input-group-text text-black"><i class="fa fa-building"></i></span>
+                                                                </div>
+                                                                <input class="form-control" placeholder="Company" type="text" name="company" required>
+                                                            </div>
+                                                            </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                    <div class="form-group mb-3">
+                                                            <label for="jobtitle" class="text-white">JobTitle</label>
+                                                            <div class="input-group input-group-alternative">
+                                                                <div class="input-group-prepend">
+                                                                <span class="input-group-text text-black"><i class="fa fa-briefcase"></i></span>
+                                                                </div>
+                                                                <input class="form-control" placeholder="JobTitle" type="text" name="jobtitle" required>
+                                                            </div>
+                                                            </div>
+                                            </div>
+                                        </div>
+                                        <input type="hidden" name="_csrf" value="<%=csrfToken%>">
+                                        <div class="text-center">
+                                                <button type="submit" class="btn btn-dark mt-2 ">Submit Details<i class="fa fa-arrow-right ml-2" aria-hidden="true"></i></button>
+                                          </div>
+                        </form>
+                        <% } %>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</section>
+  </div>
+</main>
+<footer class="footer bg-dark">
+  <!-- <div style="margin-top:100px"></div> -->
+  <div class="container container-lg">
+    <div class="row row-grid">
+      <div class="col-lg-4 order-2 text-center mb-2 mb-lg-5">
+        <h3 class=" font-weight-light text-white">Follow us on</h3>
+        <div class=" btn-wrapper mt-3">
+            <a target="_blank" href="https://twitter.com/amcubes3?s=08" class="btn btn-neutral btn-icon-only btn-twitter btn-round rounded-circle btn-lg" data-toggle="tooltip" data-placement="bottom" title="Follow us">
+               <i class="fa fa-twitter mt-2 pt-1"></i>
+            </a>
+            <a target="_blank" href="https://facebook.com/amcubes2019" class="btn btn-neutral btn-icon-only btn-facebook btn-round rounded-circle btn-lg" data-toggle="tooltip" title="Like us">
+              <i class="fa fa-facebook-square mt-2 pt-1"></i>
+            </a>
+            <a target="_blank" href="https://www.linkedin.com/company/amcubes" class="btn btn-neutral btn-icon-only btn-linkedin rounded-circle btn-lg btn-round" data-toggle="tooltip" title="Follow us">
+              <i class="fa fa-linkedin mt-2 pt-1 "></i>
+            </a>
+            <a target="_blank" href="https://instagram.com/amcubes2019" class="btn btn-neutral btn-icon-only btn-instagram btn-round rounded-circle btn-lg" data-toggle="tooltip" title="Follow us">
+              <i class="fa fa-instagram mt-2 pt-1"></i>
+            </a>
+          </div>
+          <h5 class="text-white mt-3">Working Hours</h5>
+          <p class="font-weight-normal text-white">Mon - Sun, 9AM - 9PM</p>
+      </div>
+      <div class="col-lg-4  order-1 mb-2 mb-lg-5 contact" >
+          <h3 class="text-primary font-weight-light text-white">Contact us <br></br></h3>
+          <h5 class="mb-0  font-weight-light text-white">91 Springboard, Mytri Square, 2-41/11, 6/2, Gachibowli - Miyapur Rd, Prashanth Nagar Colony, Hyderabad, Telangana 500084</h5>
+            <a class="h5 mb-0 mt-1 font-weight-light text-white" href="mailto:hello@amcubes.com">hello@amcubes.com</a> <br></br>
+           <a class="h5 mb-0 mt-1 font-weight-normal text-white" href="tel:+917702535506">+91-7386890309</a>
+        </div>
+        <div class="col-lg-4 mb-5 order-3">
+          <div id="map" class="rounded shadow"></div>
+        </div>
+    </div>
+  
+    <div class="row align-items-center justify-content-md-between">
+      <div class="col-md-6">
+        <div class="copyright text-white">Copyright 
+          &copy; <script>document.write(new Date().getFullYear())</script>
+          <a href="" class="text-white" target="_blank">amcubes</a>.
+        </div>
+      </div>
+      <div class="col-md-6">
+          <ul class="nav nav-footer justify-content-end">
+            <li class="nav-item">
+              <a href="" class="text-white mr-3">Amcubes</a>
+            </li>
+            <li class="nav-item">
+                <a href="#about" class="text-white mr-3">About Us</a>
+              </li>
+              <li class="nav-item">
+                  <a href="/terms&privacy" class="text-white" target="_blank">Terms & Privacy</a>
+                </li>
+          </ul>
+        </div>
+    </div>
+  </div>
+</footer>
+<script type="text/javascript" src="../assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="../assets/js/popper.min.js"></script>
+<script type="text/javascript" src="../assets/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../assets/js/bootstrap-datepicker.min.js"></script>
+<script type="text/javascript" src="../assets/js/headroom.min.js"></script>
+<script type="text/javascript" src="../assets/js/nouislider.min.js"></script>
+<script type="text/javascript" src="../assets/js/argon.min.js"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADzo1qNJPmONyIELJQa5Zs4oalk0nSJlw&callback=initMap"async defer></script>
+<script type="text/javascript" src="../assets/js/core/googlemaps.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+<script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="6ec3b1a6-40d5-4f49-89d7-e8bf8d1514fb";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<%- include('../includes/header.ejs') %>
+</head>
+<body>
+  <%- include('../includes/adminnav.ejs') %>
+<main>
+  <div class="position-relative">
+    <section class="section-shaped my-0" style="min-height:80vh">
+      <div class="container container-lg">
+          <div class="row">
+              <div class="col my-5">
+                  <div class="text-right">
+                      <a href="/admin/add-test" class="btn btn-default btn-sm">Add Another Test</a>
+                  </div>
+                    <h2 class="text-center mb-4">Upcoming Tests</h2>
+                    <% if(test.length>0) { %>
+                        <div class="row">
+                            <% for(test of test){ %>
+                                <div class="col-md-4">
+                                    <div class="card p-0 shadow-sm bg-primary ">
+                                        <div class="card-body text-center">
+                                            <h5 class="text-white text-capitalize">
+                                                <i class="fa fa-map-marker mr-2"></i><%=test.city%>
+                                            </h5>
+                                            <h5 class="text-white text-capitalize">
+                                                <i class="fa fa-calendar mr-2" aria-hidden="true"></i> <%= test.testdate %>
+                                            </h5>
+                                            <h6 class="text-white"> Time1: From: <%= test.time1from %>, To: <%= test.time1to %> 
+                                            </h6>
+                                            <h6 class="text-white"> Time2: From: <%= test.time2from %>, To: <%= test.time2to %>
+                                            </h6>
+                                            <h6 class="text-white"> Time3: From: <%= test.time3from %>, To: <%= test.time3to %>
+                                            </h6>
+                                            <a href="/admin/edit-test/<%=test._id%>?edit=true" class="btn btn-white btn-sm">Edit Test</a>
+                                            <form action="/admin/delete-test" method="post" class="my-2">
+                                            <input type="hidden" name="_csrf" value="<%=csrfToken%>">
+                                            <input type="hidden" name="testId" value="<%=test._id%>">
+                                            <button class="btn btn-white btn-sm">Delete Test</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <% } %>
+                        </div>
+                        <% } else { %>
+                            <h3 class="text-default"> No Tests Found! :(</h3>
+                            <% } %>
+              </div>
+          </div>
+      </div>
+    </section>
+
+  </div>
+
+</main>
+
+<%- include('../includes/adminend.ejs') %>
+
+</body>
+
+</html>

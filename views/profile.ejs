@@ -1,0 +1,322 @@
+<%- include('includes/header.ejs') %>
+<style type="text/css">
+  #regiration_form fieldset:not(:first-of-type) {
+    display: none;
+  }
+  </style>
+<body>
+  <%- include('includes/nav.ejs') %>
+<main>
+  <div class="position-relative">
+    <section class="section-shaped my-0" style="min-height:80vh">
+      <div class="container container-lg">
+<div class="row mb-5">
+<div class="col-md-8 mx-auto mt-5 mb-5 p-4 shadow-sm">
+  <div class="text-center mb-4 mt-3">
+    <h3>COMPLETE YOUR PROFILE</h3>
+  </div>
+<div class="progress">
+    <div class="progress-bar progress-bar-striped progress-bar-animated active" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+  </div>
+  <form id="regiration_form" action="/profile-details"  method="post">
+  <fieldset>
+    <h3 class=" mb-3">Step 1: Fill Your Personal Details</h3>
+  <div class="form-group">
+      <label for="" class="h6">User Name</label>
+      <div class="input-group input-group-alternative">
+        <div class="input-group-prepend">
+          <div class="input-group-text text-default">
+            <i class="fa fa-user" aria-hidden="true"></i>
+          </div>
+        </div>
+        <input type="text" disabled value="<%= user.username %>" class="form-control text-default">
+      </div>
+    </div>
+    <div class="form-group">
+    <label for="" class="h6">Email</label>
+    <div class="input-group input-group-alternative">
+      <div class="input-group-prepend">
+        <div class="input-group-text text-default">
+          <i class="fa fa-envelope" aria-hidden="true"></i>
+        </div>
+      </div>
+      
+        <input type="email" disabled class="form-control text-default" value="<%= user.email %>">
+      
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="" class="h6">Mobile</label>
+    <div class="input-group input-group-alternative">
+      <div class="input-group-prepend">
+        <div class="input-group-text text-default">
+          <i class="fa fa-phone" aria-hidden="true"></i>
+        </div>
+      </div>
+      
+        <input type="tel" placeholder="Your Contact Number" class="form-control text-default" value="<%=user.contact%>" name="contact">
+      
+    </div>
+  </div>
+      <p for="" class="h6">Gender</p>
+      <div class="row">
+          <% if(profile.gender == 'male') { %>
+            <div class="col-3">
+              <div class="custom-control custom-radio mb-3">
+                <input name="gender" class="custom-control-input" id="customRadio1" type="radio" value="male" checked  required>
+                <label class="custom-control-label text-default" for="customRadio1">Male</label>
+              </div>
+            </div>
+            <% } else { %>
+              <div class="col-3">
+                  <div class="custom-control custom-radio mb-3">
+                    <input name="gender" class="custom-control-input" id="customRadio1" type="radio" value="male"  required>
+                    <label class="custom-control-label text-default" for="customRadio1">Male</label>
+                  </div>
+                </div>
+          
+          <% } %>
+          <% if(profile.gender === 'female') { %>
+            <div class="col-3">
+                <div class="custom-control custom-radio mb-3">
+                  <input name="gender" class="custom-control-input" checked id="customRadio2" type="radio" value="female"  required>
+                  <label class="custom-control-label text-default" for="customRadio2">Female</label>
+                </div>
+              </div>
+          </div>
+            <% } else { %>
+              <div class="col-3">
+                  <div class="custom-control custom-radio mb-3">
+                    <input name="gender" class="custom-control-input" id="customRadio2" type="radio" value="female"  required>
+                    <label class="custom-control-label text-default" for="customRadio2">Female</label>
+                  </div>
+                </div>
+            </div>
+          
+          <% } %>
+
+    <div class="form-group">
+      <label for="" class="h6">Address</label>
+      <div class="input-group input-group-alternative">
+        <div class="input-group-prepend">
+          <div class="input-group-text text-default">
+            <i class="fa fa-address-book" aria-hidden="true"></i>
+          </div>
+        </div>
+        
+          <textarea placeholder="Your Address.." name="address" id="" cols="60" rows="4"  required>
+            <%= profile.address %>
+          </textarea>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="">Date of Birth</label>
+      <div class="input-group input-group-alternative">
+          <div class="input-group-prepend">
+              <span class="input-group-text text-default"><i class="fa fa-calendar"></i></span>
+          </div>
+            <input name="dob" value="<%=profile.dob%>" class="form-control text-default" placeholder="Your DOB dd/mm/yy" required type="text">
+      </div>
+  </div>
+  <div class="form-group">
+      <label for="" class="h6">Parent's Contact</label>
+      <div class="input-group input-group-alternative">
+        <div class="input-group-prepend">
+          <div class="input-group-text text-default">
+            <i class="fa fa-phone" aria-hidden="true"></i>
+          </div>
+        </div>
+            <input type="number" value="<%=profile.parentcontact%>" name="parentcontact" class="form-control text-default" required placeholder="Parent's Contact">
+      </div>
+    </div>
+    <input type="button" name="password" class="next btn btn-default" value="Next" />
+  </fieldset>
+  <fieldset>
+    <h3 class="mb-3"> Step 2: Fill Your Educational Details</h3>
+              <div class="form-group">
+                <label for="" class="h6">Which year are you studying?</label>                                  
+                  <select name="yearofstudy" id="" class="form-control form-control-alternative text-default" required>
+                      <option value="<%= profile.yearofstudy %>" selected>
+                        <%= profile.yearofstudy %>
+                      </option>
+                    <option value="1st Year">1st Year</option>
+                    <option value="2nd Year">2nd Year</option>
+                    <option value="3rd Year">3rd Year</option>
+                    <option value="4th Year">4th Year</option>
+                    <option value="Graduated">Graduated</option>
+                  </select>
+              </div>
+              <div class="form-group">
+                <label for="" class="h6">Degree <span class="text-default">*</span></label>                                  
+                  <select name="degree" id="" class="form-control form-control-alternative text-default" required>
+                    
+                    <option value="n/a">Degree</option>
+                    <option value="<%= profile.degree %>" selected>
+                      <%= profile.degree %>
+                    </option>
+                    <option value="B-Tech">B-Tech</option>
+                    <option value="M-Tech">M-Tech</option>
+                    <option value="MBA">MBA</option>
+                    <option value="MBA">BBA</option>
+                    <option value="MBA">B-Pharmacy</option>
+                    <option value="MBA">M-Pharmacy</option>
+                    <option value="MBA">BBA</option>
+                    <option value="Diploma">Diploma</option>
+                    <option value="B-Tech">B-COM</option>
+                  </select>
+              </div>
+              <div class="form-group">
+                <label for="" class="h6">Specialization <span class="text-default">*</span></label>                                  
+                <div class="input-group input-group-alternative">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text text-default">
+                      <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                    </div>
+                  </div>
+                  <input type="text" name="specialization" id="" class="form-control text-default" value="<%= profile.specialization %>" placeholder="Eg. Btech-Cse">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="" class="h6">Name of Your College</label>
+                <div class="input-group input-group-alternative">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text text-default">
+                      <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                    </div>
+                  </div>
+                  <input type="text" name="collegename" id="" class="form-control text-default" value="<%= profile.collegename %>" placeholder="Your College Name">
+                </div>
+              </div>
+              <p class="h5">Past Education*</p>
+              <div class="form-group">
+                <label for="" class="h6">10th Passedout Year</label>                                  
+                  <select name="tenthpassyear" id="" class="form-control form-control-alternative text-default" required>
+                    <option value="">Year</option>
+                    <option value="<%= profile.tenthpassyear %>" selected>
+                      <%= profile.tenthpassyear %>
+                    </option>
+                    <option value="2016">2016</option>
+                    <option value="2015">2015</option>
+                    <option value="2014">2014</option>
+                    <option value="2013">2013</option>
+                    <option value="2012">2012</option>
+                    <option value="2011">2011</option>
+                    <option value="2010">2010</option>
+                    <option value="2009">2009</option>
+                    <option value="2008">2008</option>
+                  </select>
+              </div>
+              <div class="form-group">
+                <label for="" class="h6">12th / Diploma Passedout Year</label>                                  
+                  <select name="twelveordippassyear" id="" class="form-control form-control-alternative text-default" required>
+                    <option value="">Year</option>
+                    <option value="<%= profile.twelveordippassyear %>"  selected>
+                      <%= profile.twelveordippassyear %>
+                    </option>
+                    <option value="2019">2019</option>
+                    <option value="2018">2018</option>
+                    <option value="2017">2017</option>
+                    <option value="2016">2016</option>
+                    <option value="2015">2015</option>
+                    <option value="2014">2014</option>
+                    <option value="2013">2013</option>
+                    <option value="2012">2012</option>
+                    <option value="2011">2011</option>
+                    <option value="2010">2010</option>
+                  </select>
+              </div>
+    <input type="button" name="previous" class="previous btn btn-default" value="Previous" />
+    <input type="button" name="next" class="next btn btn-info" value="Next" />
+  </fieldset>
+  <fieldset>
+    <h3 class="mb-3">Step 3: Professional Details</h3>
+    <h5> Any Earlier Experience?</h5>
+        <div class="form-group">
+          <label for="" class="h6">Any Projects Worked on?</label>
+          <div class="input-group input-group-alternative">
+            <div class="input-group-prepend">
+              <div class="input-group-text text-default">
+                <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+              </div>
+            </div>
+            <input type="text" name="workedprojectname" id="" class="form-control text-default" value="<%=profile.workedprojectname %>" placeholder="(optional) Project Name">
+          </div>
+        </div>
+        <p class="h6">Project Start and End Date</p>
+        <div class="row align-items-center">
+          <div class="col">
+              <div class="form-group">
+                  <div class="input-group input-group-alternative">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text text-default"><i class="fa fa-calendar"></i></span>
+                      </div>
+                      <input class="form-control text-default" placeholder="(optional) Start date dd/mm/yy" name="projectstartdate" value="<%=profile.projectstartdate %>" type="text">
+                  </div>
+              </div>
+          </div>
+          <div class="col">
+              <div class="form-group">
+                  <div class="input-group input-group-alternative">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text text-default"><i class="fa fa-calendar"></i></span>
+                      </div>
+                      <input class="form-control text-default" placeholder="(optional) End date dd/mm/yy" name="projectenddate" value="<%=profile.projectenddate %>" type="text" >
+                  </div>
+              </div>
+          </div>
+      </div>
+        <div class="form-group">
+          <label for="" class="h6">Any Internship or Job? If Yes Company Name</label>
+          <div class="input-group input-group-alternative">
+            <div class="input-group-prepend">
+              <div class="input-group-text text-default">
+                <i class="fa fa-building" aria-hidden="true"></i>
+              </div>
+            </div>
+            <input type="text" name="pastjoborinternorg" id="" class="form-control text-default" value="<%=profile.pastjoborinternorg %>" placeholder="(optional) Your CompanyName">
+          </div>
+        </div>
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+    <input type="button" name="previous" class="previous btn btn-default" value="Previous" />
+      <button type="submit" class="btn btn-success">Submit</button>
+  </fieldset>
+  </form>
+           </div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<%- include('includes/end.ejs') %>
+<script>
+$(document).ready(function(){
+  var current = 1,current_step,next_step,steps;
+  steps = $("fieldset").length;
+  $(".next").click(function(){
+    current_step = $(this).parent();
+    next_step = $(this).parent().next();
+    next_step.show();
+    current_step.hide();
+    setProgressBar(++current);
+  });
+  $(".previous").click(function(){
+    current_step = $(this).parent();
+    next_step = $(this).parent().prev();
+    next_step.show();
+    current_step.hide();
+    setProgressBar(--current);
+  });
+  setProgressBar(current);
+  // Change progress bar action
+  function setProgressBar(curStep){
+    var percent = parseFloat(100 / steps) * curStep;
+    percent = percent.toFixed();
+    $(".progress-bar")
+      .css("width",percent+"%")
+      .html(percent+"%");   
+  }
+});
+</script>
+</body>
+
+</html>

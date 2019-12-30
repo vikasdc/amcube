@@ -1,0 +1,93 @@
+<header class="header-global">
+    <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-dark py-1" style="background-color:rgb(0, 0, 0); box-shadow: 1px 2px 3px black;">
+      <div class="container container-lg">
+        <a class="navbar-brand mr-lg-5" href="/">
+          <span class="ml-1 h4 text-lowercase font-weight-bold text-white poppins"><span style="color:rgb(18, 80, 216)">am</span><span style="color:rgb(22, 190, 16)">cubes</span></span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbar_global">
+          <div class="navbar-collapse-header">
+            <div class="row">
+              <div class="col-6 collapse-brand">
+                <a href="/">
+                  <span class="ml-1 h4 text-lowercase font-weight-bold text-white poppins"><span style="color:rgb(18, 80, 216)">am</span><span style="color:rgb(22, 190, 16)">cubes</span></span>
+                </a>
+              </div>
+              <div class="col-6 collapse-close">
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
+                  <span></span>
+                  <span></span>
+                </button>
+              </div>
+            </div>
+          </div>
+          <ul class="navbar-nav ml-auto navbar-nav-hover align-items-lg-center">
+                <li class="nav-item <%= path === '/' ? 'active':'' %>">
+                  <a href="/" style="font-size:1em;" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item <%= path === '/courses' ? 'active':'' %>">
+                  <a href="/courses" style="font-size:1em;" class=" nav-link ">Courses</a>
+                </li>   
+                <li class="nav-item <%= path === '/jobs' ? 'active':'' %>">
+                    <a href="/jobs" style="font-size:1em;" class=" nav-link">Jobs/Interns</a>
+                  </li> 
+                  <li class="nav-item <%= path === '/tests' ? 'active':'' %>">
+                    <a href="/tests" style="font-size:1em;" class=" nav-link ">Tests</a>
+                  </li>
+                  <li class="nav-item <%= path === '/recruiters' ? 'active':'' %>">
+                    <a href="/recruiters" style="font-size:1em;" class=" nav-link ">Recruiters</a>
+                  </li>
+                  <% if(!isLoggedin){ %>
+                    <li class="nav-item <%= path === '/login' ? 'active':'' %>">
+                      <a href="/login" style="font-size:1em;" class=" nav-link ">Login</a>
+                    </li>      
+                    <li class="nav-item <%= path === '/signup' ? 'active':'' %>">
+                        <a href="/signup" style="font-size:1em;" class=" nav-link ">Signup</a>
+                      </li>
+                      <% } else { %>
+                      <li class="nav-item d-none d-md-block dropdown <%= path === '/dashboard' || '/profile' || '/settings', '/bugreport', '/account' ? 'active':'' %>">
+                            <a style="font-size:1em;" class=" nav-link text-capitalize  dropdown-toggle"id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= user.username %></a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="/account">Account</a>
+                                    <a class="dropdown-item" href="/dashboard">Dashboard</a>
+                                    <a class="dropdown-item" href="/profile">Profile</a>
+                                    <a class="dropdown-item" href="/settings">Syllabus & More</a>
+                                    <div class="dropdown-divider"></div>
+                                    <form action="/logout" method="post" class="m-0">
+                                      <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                      <button class="dropdown-item btn btn-link font-weight-normal text-capitalize">Logout</button>
+                                    </form>
+                                    <a class="dropdown-item" href="/bugreport">Report Bug</a>
+                                  </div>
+                          </li>
+                          <li class="nav-item d-md-none">
+                              <a class="nav-link" href="/account">Account</a>
+                          </li>
+                          <li class="nav-item d-md-none">
+                              <a class="nav-link" href="/dashboard">Dashboard</a>
+                            </li>
+                            <li class="nav-item d-md-none">
+                                <a class="nav-link" href="/profile">Profile</a>
+                              </li>
+                              <li class="nav-item d-md-none">
+                                  <a class="nav-link" href="/settings">Syllabus & More</a>
+                                </li>
+                                <li class="nav-item d-md-none">
+                                    <form action="/logout" method="post" class="m-0">
+                                      <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                      <button class="nav-link btn btn-link font-weight-normal text-capitalize">Logout</button>
+                                    </form>
+                                  </li>
+                                  <li class="nav-item d-md-none">
+                                      <a class="nav-link" href="/bugreport">Report Bug</a>
+                                    </li>
+                        <% } %>
+                       
+              </ul>
+
+      </div>
+  </div>
+</nav>
+</header>

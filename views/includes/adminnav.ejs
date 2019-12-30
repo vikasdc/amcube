@@ -1,0 +1,73 @@
+<header class="header-global">
+    <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg bg-black navbar-dark py-1">
+      <div class="container container-lg">
+        <a class="navbar-brand mr-lg-5" href="/admin/dashboard">
+          <span class="ml-1 h4 text-lowercase font-weight-bold text-white poppins"><span style="color:rgb(18, 80, 216)">am</span><span style="color:rgb(22, 190, 16)">cubes</span></span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbar_global">
+          <div class="navbar-collapse-header">
+            <div class="row">
+              <div class="col-6 collapse-brand">
+                <a href="/admin/dashboard">
+                  <span class="ml-1 h4 text-lowercase font-weight-bold text-white poppins"><span style="color:rgb(18, 80, 216)">am</span><span style="color:rgb(22, 190, 16)">cubes</span></span>
+                </a>
+              </div>
+              <div class="col-6 collapse-close">
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
+                  <span></span>
+                  <span></span>
+                </button>
+              </div>
+            </div>
+          </div>
+          <ul class="navbar-nav ml-auto navbar-nav-hover align-items-lg-center">
+                <li class="nav-item <%= path === '/admin/dashboard' ? 'active':'' %>">
+                  <a href="/admin/dashboard" style="font-size:1em;" class="nav-link">Dashboard</a>
+                </li>
+                <li class="nav-item <%= path === '/admin/courses' ? 'active':'' %>">
+                  <a href="/admin/courses" style="font-size:1em;" class=" nav-link ">Courses</a>
+                </li>   
+                <li class="nav-item <%= path === '/admin/jobs' ? 'active':'' %>">
+                    <a href="/admin/jobs" style="font-size:1em;" class=" nav-link">Jobs</a>
+                  </li> 
+                  <li class="nav-item <%= path === '/admin/tests' ? 'active':'' %>">
+                    <a href="/admin/tests" style="font-size:1em;" class=" nav-link ">Tests</a>
+                  </li>
+                    <li class="nav-item d-none d-md-block dropdown">
+                      <a style="font-size:1em;" class=" nav-link text-capitalize  dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Applications</a>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <a class="dropdown-item" href="/admin/test-applications">Test Applications</a>
+                          <a class="dropdown-item" href="/admin/course-applications">Course Applications</a>
+                          <a class="dropdown-item" href="/admin/job-applications">Job Applications</a>
+                          <a class="dropdown-item" href="/admin/test-payments">Test Payments</>
+                          <a class="dropdown-item" href="/admin/bug-report-application">Reported Bugs</a>
+                            </div>
+                    </li> 
+                    <li class="nav-item d-md-none">
+                        <a class="dropdown-item" href="/admin/test-applications">Test Applications</a>
+                    </li>   
+                    <li class="nav-item d-md-none">
+                        <a class="dropdown-item" href="/admin/course-applications">Course Applications</a>
+                    </li> 
+                    <li class="nav-item d-md-none">
+                        <a class="dropdown-item" href="/admin/job-applications">Job Applications</a>
+                    </li> 
+                    <li class="nav-item d-md-none">
+                        <a class="dropdown-item" href="/admin/test-payments">Test Payments</a>
+                    </li> 
+                    <li class="nav-item d-md-none">
+                        <a class="dropdown-item" href="/admin/bug-report-application">Reported Bugs</a>
+                    </li> 
+                    <form action="/admin/logout" method="post" class="m-1">
+                      <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                      <button type="submit" class="px-0 btn btn-link text-white font-weight-normal text-capitalize" style="font-size:1em;">Logout</button>
+                      </form>    
+              </ul>
+
+      </div>
+  </div>
+</nav>
+</header>

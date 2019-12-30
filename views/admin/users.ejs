@@ -1,0 +1,63 @@
+<%- include('../includes/header.ejs') %>
+</head>
+<body>
+  <%- include('../includes/adminnav.ejs') %>
+<main>
+  <div class="position-relative">
+    <section class="section-shaped my-0" style="min-height:80vh">
+      <div class="container container-lg">
+          <div class="row">
+              <div class="col my-5 shadow-sm">
+                    <h2 class="text-center mt-3 mb-4">Registered Users</h2>
+                    <% if(users.length>0) { %>
+                        <% var x = 0; %>
+                      <div class="table-responsive">
+                            <table class="table table-hover table-striped table-bordered table-dark">
+                                    <caption>List of users</caption>
+                                    <thead>
+                                      <tr>
+                                        <th scope="col">#S.NO</th>
+                                        <th scope="col">USERNAME</th>
+                                        <th scope="col">EMAIL</th>
+                                        <th scope="col">CONTACT</th>
+                                        <th scope="col">DELETE</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                <% for(User of users){ %>
+                                    <% x++ %>
+                                                  <tr>
+                                                    <th scope="row"><%=x%></th>
+                                                    <td class="text-capitalize"><%=User.username%></td>
+                                                    <td><%=User.email%></td>
+                                                    <td><%=User.contact%></td>
+                                                    <td>
+                                                        <form action="/admin/delete-user" method="POST" class="m-0 p-0">
+                                                        <input type="hidden" name="_csrf" value="<%=csrfToken%>">
+                                                        <input type="hidden" name="userId" value="<%=User._id%>">
+                                                        <button class="btn btn-danger bg-gradient-danger btn-sm">Delete User</button>
+                                                        </form>
+                                                    </td>
+                                                  </tr>
+                                    <% } %>
+                                </tbody>
+                            </table>
+                      </div>
+                        </div>
+                        <% } else { %>
+                            <h3 class="text-default"> No Users Found! :(</h3>
+                            <% } %>
+              </div>
+          </div>
+      </div>
+    </section>
+
+  </div>
+
+</main>
+
+<%- include('../includes/adminend.ejs') %>
+
+</body>
+
+</html>

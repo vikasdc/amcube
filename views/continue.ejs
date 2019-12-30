@@ -1,0 +1,65 @@
+<%- include('includes/header.ejs') %>
+<body>
+  <header class="header-global">
+    <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg bg-black navbar-dark py-1">
+      <div class="container container-lg">
+        <a class="navbar-brand mr-lg-5" href="/">
+          <span class="ml-1 h4 text-white">Amcubes</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbar_global">
+          <div class="navbar-collapse-header">
+            <div class="row">
+              <div class="col-6 collapse-brand">
+                <a href="">
+                  <span class="ml-1">Amcubes</span>
+                </a>
+              </div>
+              <div class="col-6 collapse-close">
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
+                  <span></span>
+                  <span></span>
+                </button>
+              </div>
+            </div>
+          </div>
+      </div>
+  </div>
+</nav>
+</header>
+<main>
+  <div class="position-relative">
+    <section class="section-shaped my-0">
+      <div class="container container-lg">
+           <div class="row mb-5">
+            <div class="col-md-6 bg-black rounded mx-auto mt-5 mb-5 px-5 py-4 shadow-sm">
+                  <h4 class=" text-center text-white mb-4">Enter Your Contact to Proceed</h4>
+                   <form action="/contact-continue" class="mt-3" method="POST"> 
+                    <div class="form-group">
+                      <label for="" class="h6 text-white">Mobile</label>
+                      <div class="input-group input-group-alternative">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text text-default">
+                            <i class="fa fa-phone" aria-hidden="true"></i>
+                          </div>
+                        </div>                       
+                          <input type="tel" name="contact" placeholder="Enter Your Contact" class="form-control text-default" required>
+                      </div>
+                    </div>
+                    <div class="text-center mt-4">
+                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                        <button class="btn btn-primary btn-sm" type="submit">Proceed</button>
+                    </div>
+                </div>
+           </div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<%- include('includes/end.ejs') %>
+</body>
+
+</html>

@@ -1,0 +1,72 @@
+<%- include('includes/header.ejs') %>
+</head>
+<body>
+  <%- include('includes/nav.ejs') %>
+<main>
+  <div class="position-relative">
+    <section class="section-shaped my-0" style="min-height:80vh">
+      <div class="container container-lg">
+          <div class="row">
+              <div class="col my-5">
+                <% if(tests.length > 0) { %>
+                    <h2 class="text-center">Upcoming Tests</h2>
+                    <div class="row justify-content-center">
+                      <% for(test of tests) { %>
+                        <div class="col-md-12 shadow-sm bg-black my-3">
+                            <form action="/purchase-test" method="post">
+                            <div class="row">
+                              <div class="col-4 col-md-2 mx-auto  py-3 text-center">
+                              <h5 class="mb-2 text-white">City</h5>
+                              <h6 class="text-capitalize text-white"><%=test.city%></h6>
+                              </div>
+                              <div class="col-3 col-md-2 mx-auto py-3 text-center">
+                                <h5 class="mb-2 text-white">Date</h5>
+                                <h6 class=" text-white"><%=test.testdate%></h6>
+                              </div>
+                              <div class="col-6  col-md-5 col-xl-6 py-3 mx-auto">
+                               <h5 class="mb-2 text-center text-white">Time</h5>
+                              <div class="input-group input-group-alternative">
+                                <div class="input-group-prepend">
+                                  <div class="input-group-text text-default">
+                                    <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                  </div>
+                                </div>
+                                <select name="testTime" id="" class="form-control form-control-alternative text-default" required>
+                                  <option value="n/p">Select Test Time</option>
+                                  <option value="<%=test.time1from%>-<%=test.time1to%>"><%=test.time1from%> - <%=test.time1to%></option>
+                                  <option value="<%=test.time2from%>-<%=test.time2to%>"><%=test.time2from%> - <%=test.time2to%></option>
+                                  <option value="<%=test.time3from%>-<%=test.time3to%>"><%=test.time3from%> - <%=test.time3to%></option>
+                                </select>
+                              </div>
+                              </div>
+                              <div class=" col-md-3 col-lg-3 col-xl-2 pb-3 py-md-3">
+                                <div class="text-center mt-0 mt-md-4">
+                                    <% if(isLoggedin) { %>
+                                     <input type="hidden" name="_csrf" value="<%= csrfToken %>" required>
+                                     <input type="hidden" name="testId" value="<%=test._id%>" required  >
+                                     <button class="btn btn-default btn-sm mt-2" type="submit">Apply Now  <i class="fa fa-arrow-circle-right" style="color:yellow"></i></button>
+                                       <% } else { %>
+                                         <a href="/login" class="btn btn-primary btn-sm mt-2 mb-2"> <i class="fa fa-sign-in mr-1" style="color:yellow" aria-hidden="true"></i> Login To Apply</a>
+                                       <% } %>
+                                </div>
+                              </div>
+                            </div>
+                          </form>
+                          </div>
+                        <% } %>
+                    </div>
+                <% } else { %>
+                  <h3 class="my-4 text-center">No Tests Are Happening Right Now! <br> Stay Tuned We'll Soon Update!</h3>
+                  <% } %>
+              </div>
+          </div>
+      </div>
+    </section>
+
+  </div>
+
+</main>
+<%- include('includes/end.ejs') %>
+</body>
+
+</html>

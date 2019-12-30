@@ -1,0 +1,126 @@
+<%- include('includes/header.ejs') %>
+<body>
+  <%- include('includes/nav.ejs') %>
+<main>
+  <div class="position-relative">
+    <section class="section-shaped my-0" style="min-height:80vh">
+      <div class="container container-lg">
+           <div class="row mb-5">
+            <div class="col-md-6 mx-auto mt-5 mb-5 px-5 py-4 shadow-sm">
+                <% if(errorMessage) { %>
+                  <div class="alert bg-deep-red alert-dismissible fade show" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                      <span class="sr-only">Close</span>
+                    </button>
+                    <p class="font-weight-normal m-0"><%=errorMessage%></p>
+                  </div>
+               <% } %>
+                  <h4 class=" text-center mb-4">Account Details:</h4>
+                  <div class="row">
+                    <div class="col-md-4 mx-auto">
+                      <img src="<%=user.profileImg%>" alt="" class="img-fluid rounded-circle shadow mx-auto">
+                     <!-- <form action="/profile-img" method="post">
+                      <div class="form-group mt-4">
+                        <label for="" class="h6 text-center m-0">Upload Photo</label>
+                        <div class="input-group input-group-alternative">
+                          <div class="input-group-prepend">
+                            <div class="input-group-text text-default">
+                              <i class="fa fa-user" aria-hidden="true"></i>
+                            </div>
+                          </div>
+                          <input type="file" name="profileimg" id="" class="form-control form-control-file text-default" required>
+                          <div class="input-group-append">
+                              <div class="input-group-text text-default">
+                                <button class="btn btn-default btn-sm">Submit</button>
+                              </div>
+                            </div>
+                        </div>
+                      </div>
+                      </form> -->
+                    </div>
+                  </div>
+                  <form action="/edit-account" method="post">
+                    <div class="float-right"> 
+                      <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                      <button class="btn btn-default btn-sm" <%= edit === true ? 'disabled':''  %> >Edit Details</button>
+                    </div>
+                 </form>
+                   <form action="/account" class="mt-3" method="POST"> 
+                    <div class="form-group">
+                       <label for="" class="h6">User Name</label>
+                       <div class="input-group input-group-alternative <%=validationErrors.find(e => e.param === 'username') ? 'has-danger':'' %>">
+                         <div class="input-group-prepend">
+                           <div class="input-group-text <%=validationErrors.find(e => e.param === 'username') ? 'text-warning':'text-black' %>">
+                             <i class="fa fa-user" aria-hidden="true"></i>
+                           </div>
+                         </div>
+                          <input type="text" name="username"  autocomplete="name" <%= edit === true ? '':'disabled'  %> placeholder="Enter Your New Username" value="<%= user.username %>" class="form-control text-default" required>
+                       </div>
+                     </div>
+                     <div class="form-group">
+                      <label for="" class="h6">Email</label>
+                      <div class="input-group input-group-alternative <%=validationErrors.find(e => e.param === 'email') ? 'has-danger':'' %>">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text  <%=validationErrors.find(e => e.param === 'email') ? 'text-warning':'text-black' %>">
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                          </div>
+                        </div>
+                       
+                          <input type="email" name="email" autocomplete="email"  <%= edit === true ? '':'disabled'  %> placeholder="Enter Your New Email" class="form-control text-default" value="<%= user.email %>" required>
+                        
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="" class="h6">Contact</label>
+                      <div class="input-group input-group-alternative <%=validationErrors.find(e => e.param === 'contact') ? 'has-danger':'' %>">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text  <%=validationErrors.find(e => e.param === 'contact') ? 'text-warning':'text-black' %>">
+                            <i class="fa fa-phone" aria-hidden="true"></i>
+                          </div>
+                        </div>
+                       
+                          <input type="tel" name="contact" autocomplete="tel" required  <%= edit === true ? '':'disabled'  %> placeholder="Enter Your New Contact Number" class="form-control text-default" value="<%= user.contact %>">
+                        
+                      </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="h6">Password</label>
+                        <div class="input-group input-group-alternative <%=validationErrors.find(e => e.param === 'password') ? 'has-danger':'' %>">
+                          <div class="input-group-prepend">
+                            <div class="input-group-text  <%=validationErrors.find(e => e.param === 'password') ? 'text-warning':'text-black' %>">
+                              <i class="fa fa-lock" aria-hidden="true"></i>
+                            </div>
+                          </div>
+                            <input type="password" name="password"  autocomplete="new-password" placeholder="Enter Your New Password"  <%= edit === true ? '':'disabled'  %> class="form-control text-default" value="<%= user.password %>" required>
+                        </div>
+                      </div>
+                    <!-- <div class="form-group">
+                      <label for="" class="h6">Mobile</label>
+                      <div class="input-group input-group-alternative">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text text-default">
+                            <i class="fa fa-phone" aria-hidden="true"></i>
+                          </div>
+                        </div>
+                        
+                          <input type="tel" name="contact" autocomplete="off"  <%= edit === true ? '':'disabled'  %> placeholder="Enter Your New Contact" class="form-control text-default" value="<%= user.contact %>" >
+                       
+                      </div>
+                    </div> -->
+                    <div class="text-center mt-4">
+                        <input type="hidden" name="userId" value="<%= user._id %>">
+                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                        <button class="btn btn-default btn-sm" autocomplete="off"  <%= edit === true ? '':'disabled'  %>>Submit</button>
+                    </div>
+                </div>
+           </div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<%- include('includes/end.ejs') %>
+</body>
+
+</html>

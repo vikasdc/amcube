@@ -1,0 +1,103 @@
+<%- include('../includes/header.ejs') %>
+</head>
+<body>
+  <%- include('../includes/nav.ejs') %>
+<main>
+  <div class="position-relative" style="min-height: 70vh; background-image:url('../../assets/img/business.jpg'); background-size:cover; background-position:center">
+    <section class="section-shaped my-0">
+      <div class="container container-lg shape-container d-flex">
+        <div class="col px-0" style="margin: 100px 0px" >
+          <div class="row">
+            <div class="col-lg-5 mx-auto">
+                <div class="card card-form bg-secondary border-0 rounded shadow">
+                        <div class="card-header bg-white">
+                          <div class="text-black mb-2 font-weight-normal text-center">
+                            <h5 class="font-weight-normal m-0">Sign up for free</h5>
+                        </div>
+                                <!-- <div class="btn-wrapper text-center">
+                                    <a href="/twitter" class="btn btn-neutral btn-icon my-2">
+                                    <span class="btn-inner--icon">
+                                      <img src="../../assets/img/icons/twitter.svg">
+                                    </span>
+                                    <span class="btn-inner--text text-info">Twitter</span>
+                                    </a>
+                                    <a href="/google" class="btn btn-neutral btn-icon">
+                                    <span class="btn-inner--icon">
+                                      <img src="../../assets/img/icons/google.svg">
+                                    </span>
+                                    <span class="btn-inner--text">Google</span>
+                                    </a>
+                                 </div> -->
+                                 <% if(errorMessage) { %>
+                                  <div class="alert bg-deep-red mt-2 mb-0 alert-dismissible fade show" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                      <span class="sr-only">Close</span>
+                                    </button>
+                                    <p class="font-weight-normal m-0"><%=errorMessage%></p>
+                                    
+                                  </div>
+                                  <% } %>
+                                </div>
+                            <div class="card-body bg-black px-lg-5 py-lg-5">
+                                <div class="text-center text-muted mb-4">
+                                    <small>Or sign up with credentials</small>
+                                </div>
+                                <form action="/signup" method="POST">
+                                    <div class="form-group mb-3">
+                                        <div class="input-group input-group-alternative <%=validationErrors.find(e => e.param === 'username') ? 'has-danger':''%>">
+                                            <div class="input-group-prepend">
+                                            <span class="input-group-text text-black"><i class="fa fa-user"></i></span>
+                                            </div>
+                                            <input class="form-control" value="<%=oldInputs.username%>" placeholder="username" type="text" required name="username">
+                                        </div>
+                                        </div>
+                                    <div class="form-group mb-3">
+                                    <div class="input-group input-group-alternative <%=validationErrors.find(e => e.param === 'email') ? 'has-danger':''%>">
+                                        <div class="input-group-prepend">
+                                        <span class="input-group-text text-black"><i class="fa fa-envelope"></i></span>
+                                        </div>
+                                        <input class="form-control" value="<%=oldInputs.email%>" placeholder="Email" type="email" name="email" required>
+                                    </div>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                      <div class="input-group input-group-alternative <%=validationErrors.find(e => e.param === 'contact') ? 'has-danger':''%>">
+                                          <div class="input-group-prepend">
+                                          <span class="input-group-text text-black"><i class="fa fa-phone"></i></span>
+                                          </div>
+                                          <input type="number" value="<%=oldInputs.contact%>" class="form-control" placeholder="Contact" name="contact" required>
+                                      </div>
+                                      </div>
+                                    <div class="form-group">
+                                    <div class="input-group input-group-alternative <%=validationErrors.find(e => e.param === 'password') ? 'has-danger':''%>">
+                                        <div class="input-group-prepend">
+                                        <span class="input-group-text text-black"><i class="fa fa-lock"></i></span>
+                                        </div>
+                                        <input class="form-control" value="<%=oldInputs.password%>" placeholder="Password" type="password" name="password" required>
+                                    </div>
+                                    </div>
+                                        <div class="mb-2">
+                                          <a href="/login" class="small text-primary font-weight-normal">Already a Member?</a>
+                                        </div>
+                                    <div class="custom-control custom-control-alternative custom-checkbox">
+                                    <input class="custom-control-input" id=" customCheckLogin" type="checkbox" name="rememberme" required>
+                                    <label class="custom-control-label" for=" customCheckLogin">
+                                        <span>By signing up you agree for the <a href="/terms&privacy" class="text-underline">Terms & Privacy</a></span>
+                                    </label>
+                                    </div>
+                                    <div class="text-center">
+                                            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                    <button type="submit" class="btn bg-b text-white my-4 btn-round">Sign up <i class="fa fa-arrow-right ml-1" aria-hidden="true"></i></button>
+                                    </div>
+                                </form>
+                                </div>
+                        </div>
+               </div>
+
+  </div>
+
+</main>
+<%- include('../includes/end.ejs') %>
+</body>
+
+</html>

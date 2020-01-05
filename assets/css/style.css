@@ -1,25 +1,74 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans|Poppins|Lato&display=swap');
+h1,h2,h3,h4,h5,h6{
+    font-family: "Lato", sans-serif;
+}
+@media (max-width:576px){
+  .br{
+    font-family: "Lato", sans-serif;
+    color: #383651;
+    font-size: 33px;
+    line-height: 43px;
+    font-weight: 700;
+    text-align: left;
+    letter-spacing: -0.5px;
+  }
+  h1{
+    font-size:2rem;
+  }
+}
+.card-img-overlay {
+  background-color: rgba(#000, 0.4);
+}
+@media (min-width:576px) {
+  .br{
+    font-family: "Lato", sans-serif;
+    color: #383651;
+    font-size: 35px;
+    line-height: 45px;
+    font-weight: 700;
+    text-align: left;
+    letter-spacing: -0.5px;
+  }
+}
+
+@media (min-width:768px) {
+  .br{
+    font-family: "Lato", sans-serif;
+    color: #383651;
+    font-size: 42px;
+    line-height: 50px;
+    font-weight: 700;
+    text-align: left;
+    letter-spacing: -0.5px;
+  }
+}
+
+@media (min-width:992px) {
+  .br{
+    font-family: "Lato", sans-serif;
+    color: #383651;
+    font-size: 50px;
+    line-height: 56px;
+    font-weight: 700;
+    text-align: left;
+    letter-spacing: -0.5px;
+  }
+}
+
 .btn-round{
   border-radius: 20px;
 }
 .ft{
-  font-family: "Lato", sans-serif;
-}
-.br{
-  font-family: "Lato", sans-serif;
-  color: #383651;
-  font-size: 50px;
-  line-height: 56px;
-  font-weight: 700;
-  text-align: left;
-  letter-spacing: -0.5px;
+
 }
 .poppins{
   font-family: 'Poppins', sans-serif;
 }
 @media (max-width: 576px) {
   .navbar {
-    background-color: #212529; } }
+    background-color: #212529; }
+  
+  }
 
 @media (max-width: 992px) {
   #m1 {

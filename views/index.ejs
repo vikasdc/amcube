@@ -1,4 +1,90 @@
 <%- include('includes/header.ejs') %>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.theme.min.css">
+<style>
+.testimonial{
+    background: #F4F5F7;
+    text-align: center;
+    margin: 0 20px;
+}
+.testimonial .description{
+    padding: 40px 30px;
+    margin-bottom: 50px;
+    border-top: 1px solid #2660a4;
+    border-left: 1px solid #2660a4;
+    font-size: 15px;
+    color: #172B4D;
+    line-height: 30px;
+    text-align: left;
+    position: relative;
+}
+.testimonial .description:after{
+    content: "";
+    width: 50%;
+    height: 1px;
+    background: #2660a4;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+.testimonial .testimonial-content{ position: relative; }
+.testimonial .testimonial-content:before{
+    content: "";
+    width: 1px;
+    height: 20px;
+    background: #2660a4;
+    position: absolute;
+    top: -50px;
+    left: 50%;
+}
+.testimonial .testimonial-content:after{
+    content: "";
+    width: 2px;
+    height: 40px;
+    background: #2660a4;
+    position: absolute;
+    top: -70px;
+    left: 50%;
+    transform: skewX(-45deg);
+    transform-origin: 100% 100% 0;
+}
+.testimonial .pic{
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-right: 7px;
+}
+.testimonial .pic img{
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+}
+.testimonial .title{
+    display: inline-block;
+    font-size: 22px;
+    font-family: "Lato", sans-serif;
+    font-weight: 600;
+    color: #172B4D;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+}
+.owl-theme .owl-controls{
+    margin-top: 30px;
+}
+.owl-theme .owl-controls .owl-page span{
+    width: 15px;
+    height: 10px;
+    border-radius: 0;
+    background: #F5365C;
+    opacity: 0.8;
+    transition: all 0.3s ease 0s;
+}
+.owl-theme .owl-controls .owl-page.active span{
+    width: 35px;
+    background: #172B4D;
+}
+</style>
 </head>
 <body>
   <header class="header-global">
@@ -97,7 +183,7 @@
 <main>
   <div class="position-relative">
     <section class="section-shaped my-0">
-      <div class="shape shape-style-1 shape-primary bg-index" style="background-image: url('../assets/img/topis.jpeg');background-size:cover;background-repeat: no-repeat;filter: brightness(35%)">
+      <div class="shape shape-style-1 shape-skew bg-blue" style="background-image: url('../assets/img/dev.jpg');background-size:cover;background-repeat: no-repeat;filter: brightness(40%)">
         <span></span>
         <span></span>
         <span></span>
@@ -109,22 +195,31 @@
         <span></span>
       </div>
       <div class="container container-lg shape-container d-flex">
-        <div class="col px-0" style="margin-top:220px">
+        <div class="col px-0">
           <div class="row">
-            <div class="col-md-10 mx-auto mt-0 mt-lg-5">
-               <h1 class="br text-white text-center text-capitalize">National level test for best international internship offers</h1>
-               <div class="mt-4 text-center">
-                <a href="https://www.instamojo.com/codemania/am-cubes-national-level-test" class="btn btn-danger">Apply Now <i class="fa fa-arrow-right ml-1" aria-hidden="true"></i> </a>
-                <a href="/test-preparation" class="btn btn-success">Prepare For Test <i class="fa fa-arrow-right ml-1" aria-hidden="true"></i></a>
+            <div class="col-md-5 mt-0 mt-lg-5">
+               <h1 class="br text-white text-capitalize">Get closer to your dream internship</h1>
+               <p style="font-size: 17px;" class="text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, iusto.</p>
+               <div class="mt-4">
+                <a href="/tests" class="btn btn-white">Schedule Test <i class="fa fa-arrow-right ml-1" aria-hidden="true"></i> </a>
                </div>
             </div>  
           </div>
         </div>
       </div>
     </section>
+    <section class="py-5">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <h1 class="br text-default text-center text-capitalize"> From startups to Fortune 500s, amcubes offers internships and jobs from over 1000+ employers.</h1>
+          </div>
+        </div>
+      </div>
+    </section>
 <section class="py-5 bg-secondary">
   <div class="container">
-    <h1 class="text-center ft text-black font-weight-bold  mt-3 mb-5">Specialized Training Program</h1>
+    <!-- <h1 class="text-center ft text-black font-weight-bold  mt-3 mb-5">Specialized Training Program</h1>
       <div class="row">
         <div class="col-md-4 my-3">
           <div class="card shadow text-center">
@@ -162,71 +257,183 @@
                 </div>
               </div>
              </div>
-      </div>
-  </div>
-</section>
-<section class="py-5">
-  <div class="container my-2">
-    <div class="row">
-      <div class="col">
-        <h1 class="text-center ft text-black font-weight-bold  mt-3 mb-5">Dive into your passion</h1>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-4  my-2">
-           <div class="card shadow-sm text-center">
-             <div class="card-body">
-              <img src="../assets/img/icons/android.png" alt="" class="img-fluid rounded-circle p-4" style="background-color: #DF173C;">
-              <h4 class="ft text-black mt-4">Android Development</h4>
-              <p class="font-weight-normal text-black ft">Build powerful high-performance apps with Java, Kotlin, React Native, Python and more</p>
+      </div> -->
+      <h2 class="text-center ft text-black mt-3">How it works</h2>
+      <p class="text-center text-black" style="font-size:1.2rem;">Take amcubes test and apply for 1000+ internships</p>
+      <div class="row">
+        <div class="col-6 col-md-3  my-2">
+             <div class="card shadow-sm text-center">
+               <div class="card-body">
+                <img src="../assets/img/icons/timetable.png" alt="" class="img-fluid rounded p-4 bg-danger" >
+                <h4 class="ft text-black mt-4">Schedule Test</h4>
+               
+               </div>
              </div>
-           </div>
-      </div>
-        <div class="col-md-4  my-2">
+        </div>
+          <div class="col-6 col-md-3 my-2">
+            <div class="card shadow-sm text-center">
+              <div class="card-body">
+              <img src="../assets/img/icons/scoreboard.png" alt="" class="img-fluid rounded p-4 bg-primary">
+              <h4 class="ft text-black mt-4">Get Your Score</h4>
+             
+              </div>
+            </div>
+        </div>
+        <div class="col-6 col-md-3 my-2">
           <div class="card shadow-sm text-center">
             <div class="card-body">
-            <img src="../assets/img/icons/data.png" alt="" class="img-fluid rounded-circle p-4 bg-primary">
-            <h4 class="ft text-black mt-4">Data Science</h4>
-            <p class="font-weight-normal text-black ft">Intensive training for a career in artificial intelligence and machine learning</p>
+            <img src="../assets/img/icons/checklist.png" alt="" class="img-fluid rounded p-4 bg-success">
+            <h4 class="ft text-black mt-4">Get Shortlisted</h4>
+            
             </div>
           </div>
-      </div>
-      <div class="col-md-4  my-2">
-        <div class="card shadow-sm text-center">
-          <div class="card-body">
-          <img src="../assets/img/icons/app.png" alt="" class="img-fluid rounded-circle p-4" style="background-color: #A020F0">
-          <h4 class="ft text-black mt-4">iOS Development</h4>
-          <p class="font-weight-normal text-black ft">Create powerful iPhone and iPad apps with Swift, Objective-C, and Cocoa Touch. Learn CS with Python and C.</p>
+        </div>
+        <div class="col-6 col-md-3 my-2">
+          <div class="card shadow-sm text-center">
+            <div class="card-body">
+            <img src="../assets/img/icons/hiring.png" alt="" class="img-fluid rounded p-4 bg-warning">
+            <h4 class="ft text-black mt-4">Get Hired</h4>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="row justify-content-center">
-      <div class="col-md-5 my-4">
-          <div class="card shadow-sm text-center">
-              <div class="card-body">
-              <img src="../assets/img/icons/web.png" alt="" class="img-fluid rounded-circle p-4 bg-gradient-green">
-              <h4 class="ft text-black mt-4">Full Stack Web Development</h4>
-              <p class="font-weight-normal text-black ft">Learn the fundamentals of frontend, backend, servers, databases, APIs, and more. </p>
-              </div>
-            </div>
-      </div>
-      <div class="col-md-5 my-4">
-          <div class="card shadow-sm text-center">
-              <div class="card-body">
-              <img src="../assets/img/icons/ux.png" alt="" class="img-fluid rounded-circle p-4 bg-gradient-dark">
-              <h4 class="ft text-black mt-4">User Experience Design</h4>
-              <p class="font-weight-normal text-black ft">Master the entire UX design process and learn the basics of building for web and mobile.</p>
-              </div>
-            </div>
+</section>
+<section class="pt-5 pb-4">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h2 class="text-center ft text-black mb-4">Internships in india</h2>
       </div>
     </div>
-    <div class="text-center my-3">
-      <a href="/courses" class="btn btn-outline-primary">Explore Courses <i class="fa fa-arrow-right ml-1" aria-hidden="true"></i></a>
+    <div class="row">
+      <div class="col-4 col-md-2  my-2">
+           <a href="/tests">
+            <div class="card shadow-sm p-0 border-0">
+              <img src="../assets/img/cities/hyderabad.jpg" class="card-img-top" alt="Hyderabad">
+              <div class="card-body p-1">
+                <h5 class="card-title text-center text-black">Hyderabad</h5>
+              </div>
+            </div>
+           </a>
+      </div>
+      <div class="col-4 col-md-2  my-2">
+        <a href="/tests">
+          <div class="card shadow-sm p-0 border-0">
+            <img src="../assets/img/cities/Bangalore.jpg" class="card-img-top" alt="Banglore">
+            <div class="card-body p-1">
+              <h5 class="card-title text-center text-black">Banglore</h5>
+            </div>
+        </a>
+       </div>
+   </div> <div class="col-4 col-md-2  my-2">
+    <a href="/tests">
+      <div class="card shadow-sm p-0 border-0">
+        <img src="../assets/img/cities/delhi1.jpg" class="card-img-top" alt="Delhi">
+        <div class="card-body p-1">
+          <h5 class="card-title text-center text-black">Delhi</h5>
+        </div>
+      </div>
+    </a>
+</div> <div class="col-4 col-md-2  my-2">
+  <a href="/tests">
+    <div class="card shadow-sm p-0 border-0">
+      <img src="../assets/img/cities/kolkata-1.jpg" class="card-img-top" alt="Kolkata">
+      <div class="card-body p-1">
+        <h5 class="card-title text-center text-black">Kolkata</h5>
+      </div>
+    </div>
+  </a>
+</div> <div class="col-4 col-md-2  my-2">
+  <a href="/tests">
+    <div class="card shadow-sm p-0 border-0">
+      <img src="../assets/img/cities/chennai.jpg" class="card-img-top" alt="Chennai">
+      <div class="card-body p-1">
+        <h5 class="card-title text-center text-black">Chennai</h5>
+      </div>
+    </div>
+  </a>
+</div> <div class="col-4 col-md-2  my-2">
+  <a href="/tests">
+    <div class="card shadow-sm p-0 border-0">
+      <img src="../assets/img/cities/pune.jpg" class="card-img-top" alt="Pune">
+      <div class="card-body p-1">
+        <h5 class="card-title text-center text-black">Pune</h5>
+      </div>
+    </div>
+  </a>
+</div>
+<div class="col-4 col-md-2  my-2">
+  <a href="/tests">
+    <div class="card shadow-sm p-0 border-0">
+      <img src="../assets/img/cities/mumbai.jpg" class="card-img-top" alt="Mumbai">
+      <div class="card-body p-1">
+        <h5 class="card-title text-center text-black">Mumbai</h5>
+      </div>
+    </div>
+  </a>
+</div>
+     
     </div>
   </div>
 </section>
-<section class="py-5 bg-prp">
+<section class="py-5 bg-secondary">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h2 class="text-center ft text-black mb-4">Internships Abroad</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-4 col-md-2  my-2">
+           <div class="card shadow-sm p-0 border-0">
+            <img src="../assets/img/cities/silicon-valley.jpg" class="card-img-top" alt="Silicon Valley">
+            <div class="card-body p-1">
+              <h5 class="card-title text-center text-black">Silicon Valley</h5>
+            </div>
+          </div>
+      </div>
+      <div class="col-4 col-md-2  my-2">
+        <div class="card shadow-sm p-0 border-0">
+         <img src="../assets/img/cities/toronto.jpg" class="card-img-top" alt="Toronto">
+         <div class="card-body p-1">
+           <h5 class="card-title text-center text-black">Toronto</h5>
+         </div>
+       </div>
+   </div> <div class="col-4 col-md-2  my-2">
+    <div class="card shadow-sm p-0 border-0">
+     <img src="../assets/img/cities/london.jpg" class="card-img-top" alt="London">
+     <div class="card-body p-1">
+       <h5 class="card-title text-center text-black">London</h5>
+     </div>
+   </div>
+</div> <div class="col-4 col-md-2  my-2">
+  <div class="card shadow-sm p-0 border-0">
+   <img src="../assets/img/cities/dubai.jpg" class="card-img-top" alt="Dubai">
+   <div class="card-body p-1">
+     <h5 class="card-title text-center text-black">Dubai</h5>
+   </div>
+ </div>
+</div> <div class="col-4 col-md-2  my-2">
+  <div class="card shadow-sm p-0 border-0">
+   <img src="../assets/img/cities/hongkong.jpg" class="card-img-top" alt="Hongkong">
+   <div class="card-body p-1">
+     <h5 class="card-title text-center text-black">Hongkong</h5>
+   </div>
+ </div>
+</div> <div class="col-4 col-md-2  my-2">
+  <div class="card shadow-sm p-0 border-0">
+   <img src="../assets/img/cities/singapore.jpg" class="card-img-top" alt="Singapore">
+   <div class="card-body p-1">
+     <h5 class="card-title text-center text-black">Singapore</h5>
+   </div>
+ </div>
+</div>
+     
+    </div>
+  </div>
+</section>
+<!-- <section class="py-5 bg-prp">
   <div class="container">
     <div class="row">
       <div class="col-md-9 mx-auto text-center">
@@ -235,8 +442,8 @@
       </div>
     </div>
   </div>
-</section>
-    <section class="py-5 bg-secondary">
+</section> -->
+    <!-- <section class="py-5 bg-secondary">
      <div class="container">
          <div class="row">
            <div class="col-md-5 aligh-self-center">
@@ -255,8 +462,8 @@
            </div>
          </div>
      </div>
-    </section>
-    <section class="py-5">
+    </section> -->
+    <!-- <section class="py-5">
       <div class="container">
         <div class="row">
           <div class="col-md-5 aligh-self-center">
@@ -268,6 +475,150 @@
              </p>
           </div>
         </div>
+      </div>
+    </section> -->
+    <section class="py-5">
+       <div class="container">
+         <div class="row">
+           <div class="col">
+             <h2 class="ft text-black text-center mb-4">Amcubes Package</h2>
+             <div class="row">
+               <div class="col-md-4 my-2">
+                 <div class="card shadow-sm border-0">
+                  <img src="../assets/img/english.jpg" alt="" class="card-img-top">
+                   <div class="card-body">
+                      <h4 class="text-black text-center">English Certification</h4>
+                      <p class="card-text text-black text-center">Our industry experts and advanced AI based resume analyzer can help highlight your strengths.</p>
+                     <div class="text-center">
+                      <button class="btn btn-danger bg-gradient-danger">View & Buy <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+               <div class="col-md-4 my-2">
+                <div class="card shadow-sm border-0">
+                  <img src="../assets/img/technical.jpg" alt="" class="card-img-top">
+                  <div class="card-body">
+                     <h4 class="text-black text-center">Technical Certification</h4>
+                     <p class="card-text text-black text-center">Our industry experts and advanced AI based resume analyzer can help highlight your strengths.</p>
+                    <div class="text-center">
+                     <button class="btn btn-danger bg-gradient-danger">View & Buy <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 my-2">
+                <div class="card shadow-sm border-0">
+                  <img src="../assets/img/resume.jpg" alt="" class="card-img-top">
+                  <div class="card-body">
+                     <h4 class="text-black text-center">Resume Building</h4>
+                     <p class="card-text text-black text-center">Our industry experts and advanced AI based resume analyzer can help highlight your strengths.</p>
+                    <div class="text-center">
+                     <button class="btn btn-danger bg-gradient-danger">View & Buy <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+             </div>
+           </div>
+         </div>
+       </div>
+    </section>
+    <section class="py-5 bg-secondary">
+      <div class="container">
+        <h2 class="ft text-default text-center mb-5">What people say about amcubes</h2>
+            <div class="row">
+              <div class="col-md-12">
+                  <div id="testimonial-slider" class="owl-carousel">
+                      <div class="testimonial">
+                          <p class="description"> <i class="fa fa-quote-right" style="font-weight: 900;
+                            display: inline-block;
+                            float: left;
+                            padding: 0 15px 5px 0;
+                            font-size: 30px;
+                            color: #F5365C;
+                            text-align: center;
+                            position: relative;
+                            top: 8px;
+                            left: 0;" aria-hidden="true"></i>
+                              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda deleniti dolor ipsum molestias mollitia ut. Aliquam aperiam corporis cumque debitis delectus dignissimos. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                          </p>
+                          <div class="testimonial-content">
+                              <div class="pic">
+                                  <img src="../assets/img/face1240.jpg">
+                              </div>
+                              <h3 class="title ft">John Doe</h3>
+                          </div>
+                      </div>
+       
+                      <div class="testimonial">
+                          <p class="description">
+                            <i class="fa fa-quote-right" style="font-weight: 900;
+                            display: inline-block;
+                            float: left;
+                            padding: 0 15px 5px 0;
+                            font-size: 30px;
+                            color: #F5365C;
+                            text-align: center;
+                            position: relative;
+                            top: 8px;
+                            left: 0;" aria-hidden="true"></i>
+                              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda deleniti dolor ipsum molestias mollitia ut. Aliquam aperiam corporis cumque debitis delectus dignissimos. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                          </p>
+                          <div class="testimonial-content">
+                              <div class="pic">
+                                  <img src="../assets/img/f2240.jpg">
+                              </div>
+                              <h3 class="title">John Doe</h3>
+                          </div>
+                      </div>
+       
+                      <div class="testimonial">
+                          <p class="description">
+                            <i class="fa fa-quote-right" style="font-weight: 900;
+                            display: inline-block;
+                            float: left;
+                            padding: 0 15px 5px 0;
+                            font-size: 30px;
+                            color: #F5365C;
+                            text-align: center;
+                            position: relative;
+                            top: 8px;
+                            left: 0;" aria-hidden="true"></i>
+                              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda deleniti dolor ipsum molestias mollitia ut. Aliquam aperiam corporis cumque debitis delectus dignissimos. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                          </p>
+                          <div class="testimonial-content">
+                              <div class="pic">
+                                  <img src="../assets/img/face1240.jpg">
+                              </div>
+                              <h3 class="title">John Doe</h3>
+                          </div>
+                      </div>
+                      
+                      <div class="testimonial">
+                        <p class="description">
+                          <i class="fa fa-quote-right" style="font-weight: 900;
+                          display: inline-block;
+                          float: left;
+                          padding: 0 15px 5px 0;
+                          font-size: 30px;
+                          color: #F5365C;
+                          text-align: center;
+                          position: relative;
+                          top: 8px;
+                          left: 0;" aria-hidden="true"></i>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda deleniti dolor ipsum molestias mollitia ut. Aliquam aperiam corporis cumque debitis delectus dignissimos. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                        </p>
+                        <div class="testimonial-content">
+                            <div class="pic">
+                                <img src="../assets/img/f2240.jpg">
+                            </div>
+                            <h3 class="title">John Doe</h3>
+                        </div>
+                    </div>
+                  </div>
+              </div>
+          </div>
       </div>
     </section>
   </div>
@@ -296,10 +647,10 @@
           <p class="font-weight-normal text-white">Mon - Sun, 9AM - 9PM</p>
       </div>
       <div class="col-lg-4  order-1 mb-2 mb-lg-5 contact" >
-          <h3 class="text-primary font-weight-light text-white">Contact us <br></br></h3>
-          <h5 class="mb-0  font-weight-light text-white">91 Springboard, Mytri Square, 2-41/11, 6/2, Gachibowli - Miyapur Rd, Prashanth Nagar Colony, Hyderabad, Telangana 500084</h5>
+          <h3 class="text-primary font-weight-light text-white">Contact us <br></h3>
+          <h5 class="mb-0  font-weight-light text-white">4th Floor, 91 Springboard, Mytri Square, 2-41/11, 6/2, Gachibowli - Miyapur Rd, Prashanth Nagar Colony, Hyderabad, Telangana 500084</h5>
             <a class="h5 mb-0 mt-1 font-weight-light text-white" href="mailto:hello@amcubes.com">hello@amcubes.com</a> <br></br>
-           <a class="h5 mb-0 mt-1 font-weight-normal text-white" href="tel:+917702535506">+91-7386890309</a>
+           <a class="h5 mb-0 mt-1 font-weight-normal text-white" href="tel:+918309942409">+91-8309942409</a>
         </div>
         <div class="col-lg-4 mb-5 order-3">
           <div id="map" class="rounded shadow"></div>
@@ -340,5 +691,19 @@
 <script type="text/javascript" src="../assets/js/core/googlemaps.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 <script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="6ec3b1a6-40d5-4f49-89d7-e8bf8d1514fb";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"></script>
+ <script>
+ 
+$(document).ready(function(){
+    $("#testimonial-slider").owlCarousel({
+        items:2,
+        itemsDesktop:[1000,2],
+        itemsDesktopSmall:[979,2],
+        itemsTablet:[768,1],
+        pagination:true,
+        autoPlay:false
+    });
+});
+ </script>
 </body>
-</html>
+</html>         

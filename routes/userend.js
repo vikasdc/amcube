@@ -54,6 +54,16 @@ router.post('/purchase-course', isAuth, userEnd.postPurchaseCourse)
 
 router.post('/job-application', isAuth, userEnd.postApplyJob)
 
+router.get('/job-app-success', (req, res, next) => {
+    res.render('appstatus', {
+        docTitle:'Job Application Status',
+        path:'/jobappsuccess'
+    })
+})
+router.get('/english-certification', isAuth, userEnd.getEnglishCertification)
+router.get('/technical-cerification', isAuth, userEnd.getTechnicalCertification)
+router.get('/resume-building', isAuth, userEnd.getResumeBuilding)
+
 router.get('/terms&privacy', userEnd.getTermsPrivacy)
 
 module.exports = router;

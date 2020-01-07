@@ -188,14 +188,14 @@ app.use((req,res,next) => {
             path:'/404'
         })
 })
-app.use((error, req, res, next) => {
-    // let issue = "An Error Occured In The Amcubes Server Please Check it Out!";
+// let issue = "An Error Occured In The Amcubes Server Please Check it Out!";
 
-    // var mobileNo =  "8309942409";
-    //     msg91.send(mobileNo,issue, function(err, response){
-    //         console.log(err);
-    //         console.log(response);
-    //     });
+// var mobileNo =  "8309942409";
+//     msg91.send(mobileNo,issue, function(err, response){
+//         console.log(err);
+//         console.log(response);
+//     });
+app.use((error, req, res, next) => {
     res.status(500).render('errors/500', {
         docTitle:'500 ERROR',
         path:'/500'

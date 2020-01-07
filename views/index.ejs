@@ -116,14 +116,31 @@
                 <li class="nav-item <%= path === '/' ? 'active':'' %>">
                   <a href="/" style="font-size:1em;" class="nav-link">Home</a>
                 </li>
-                <li class="nav-item <%= path === '/courses' ? 'active':'' %>">
+                <!-- <li class="nav-item <%= path === '/courses' ? 'active':'' %>">
                   <a href="/courses" style="font-size:1em;" class=" nav-link ">Courses</a>
-                </li>   
-                <li class="nav-item <%= path === '/jobs' ? 'active':'' %>">
-                    <a href="/jobs" style="font-size:1em;" class=" nav-link">Jobs/Interns</a>
-                  </li> 
+                </li>    -->
                   <li class="nav-item <%= path === '/tests' ? 'active':'' %>">
                     <a href="/tests" style="font-size:1em;" class=" nav-link ">Tests</a>
+                  </li>
+                  
+                  <li class="nav-item dropdown <%= path === '/jobs' ? 'active':'' %>">
+                    <a style="font-size:1em;" class=" nav-link text-capitalize  dropdown-toggle"id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Intern Abroad</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="/jobs?city=Silicon%20Valley">Silicon Valley</a>
+                            <a class="dropdown-item" href="/jobs?city=Toronto">Toronto</a>
+                            <a class="dropdown-item" href="/jobs?city=London">London</a>
+                            <a class="dropdown-item" href="/jobs?city=Dubai">Dubai</a>
+                            <a class="dropdown-item" href="/jobs?city=HongKong">HongKong</a>
+                            <a class="dropdown-item" href="/jobs?city=Singapore">Singapore</a>
+                          </div>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a style="font-size:1em;" class=" nav-link text-capitalize  dropdown-toggle"id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Certifications</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="/english-certification">English Certification</a>
+                            <a class="dropdown-item" href="/technical-certification">Technical Certification</a>
+                            <a class="dropdown-item" href="/resume-building">Resume Building</a>
+                          </div>
                   </li>
                   <% if(!isLoggedin){ %>
                     <li class="nav-item <%= path === '/login' ? 'active':'' %>">
@@ -386,48 +403,60 @@
     </div>
     <div class="row">
       <div class="col-4 col-md-2  my-2">
-           <div class="card shadow-sm p-0 border-0">
-            <img src="../assets/img/cities/silicon-valley.jpg" class="card-img-top" alt="Silicon Valley">
-            <div class="card-body p-1">
-              <h5 class="card-title text-center text-black">Silicon Valley</h5>
+          <a href="/jobs?city=Silicon%20Valley">
+            <div class="card shadow-sm p-0 border-0">
+              <img src="../assets/img/cities/silicon-valley.jpg" class="card-img-top" alt="Silicon Valley">
+              <div class="card-body p-1">
+                <h5 class="card-title text-center text-black">Silicon Valley</h5>
+              </div>
             </div>
-          </div>
+          </a>
       </div>
       <div class="col-4 col-md-2  my-2">
-        <div class="card shadow-sm p-0 border-0">
-         <img src="../assets/img/cities/toronto.jpg" class="card-img-top" alt="Toronto">
-         <div class="card-body p-1">
-           <h5 class="card-title text-center text-black">Toronto</h5>
-         </div>
-       </div>
+        <a href="/jobs?city=Toronto">
+          <div class="card shadow-sm p-0 border-0">
+            <img src="../assets/img/cities/toronto.jpg" class="card-img-top" alt="Toronto">
+            <div class="card-body p-1">
+              <h5 class="card-title text-center text-black">Toronto</h5>
+            </div>
+          </div>
+        </a>
    </div> <div class="col-4 col-md-2  my-2">
+    <a href="/jobs?city=London">
+      <div class="card shadow-sm p-0 border-0">
+        <img src="../assets/img/cities/london.jpg" class="card-img-top" alt="London">
+        <div class="card-body p-1">
+          <h5 class="card-title text-center text-black">London</h5>
+        </div>
+      </div>
+    </a>
+</div> <div class="col-4 col-md-2  my-2">
+  <a href="/jobs?city=Dubai">
     <div class="card shadow-sm p-0 border-0">
-     <img src="../assets/img/cities/london.jpg" class="card-img-top" alt="London">
-     <div class="card-body p-1">
-       <h5 class="card-title text-center text-black">London</h5>
-     </div>
-   </div>
+      <img src="../assets/img/cities/dubai.jpg" class="card-img-top" alt="Dubai">
+      <div class="card-body p-1">
+        <h5 class="card-title text-center text-black">Dubai</h5>
+      </div>
+    </div>
+  </a>
 </div> <div class="col-4 col-md-2  my-2">
-  <div class="card shadow-sm p-0 border-0">
-   <img src="../assets/img/cities/dubai.jpg" class="card-img-top" alt="Dubai">
-   <div class="card-body p-1">
-     <h5 class="card-title text-center text-black">Dubai</h5>
-   </div>
- </div>
+  <a href="/jobs?city=HongKong">
+    <div class="card shadow-sm p-0 border-0">
+      <img src="../assets/img/cities/hongkong.jpg" class="card-img-top" alt="Hongkong">
+      <div class="card-body p-1">
+        <h5 class="card-title text-center text-black">Hongkong</h5>
+      </div>
+    </div>
+  </a>
 </div> <div class="col-4 col-md-2  my-2">
-  <div class="card shadow-sm p-0 border-0">
-   <img src="../assets/img/cities/hongkong.jpg" class="card-img-top" alt="Hongkong">
-   <div class="card-body p-1">
-     <h5 class="card-title text-center text-black">Hongkong</h5>
-   </div>
- </div>
-</div> <div class="col-4 col-md-2  my-2">
-  <div class="card shadow-sm p-0 border-0">
-   <img src="../assets/img/cities/singapore.jpg" class="card-img-top" alt="Singapore">
-   <div class="card-body p-1">
-     <h5 class="card-title text-center text-black">Singapore</h5>
-   </div>
- </div>
+  <a href="/jobs?city=Singapore">
+    <div class="card shadow-sm p-0 border-0">
+      <img src="../assets/img/cities/singapore.jpg" class="card-img-top" alt="Singapore">
+      <div class="card-body p-1">
+        <h5 class="card-title text-center text-black">Singapore</h5>
+      </div>
+    </div>
+  </a>
 </div>
      
     </div>
@@ -485,36 +514,36 @@
              <div class="row">
                <div class="col-md-4 my-2">
                  <div class="card shadow-sm border-0">
-                  <img src="../assets/img/english.jpg" alt="" class="card-img-top">
+                  <img src="../assets/img/english.jpg" alt="English Certification" class="card-img-top">
                    <div class="card-body">
                       <h4 class="text-black text-center">English Certification</h4>
                       <p class="card-text text-black text-center">Our industry experts and advanced AI based resume analyzer can help highlight your strengths.</p>
                      <div class="text-center">
-                      <button class="btn btn-danger bg-gradient-danger">View & Buy <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+                      <a class="btn btn-danger bg-gradient-danger" href="/english-certification">View & Buy <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
                      </div>
                    </div>
                  </div>
                </div>
                <div class="col-md-4 my-2">
                 <div class="card shadow-sm border-0">
-                  <img src="../assets/img/technical.jpg" alt="" class="card-img-top">
+                  <img src="../assets/img/technical.jpg" alt="Technical Certification" class="card-img-top">
                   <div class="card-body">
                      <h4 class="text-black text-center">Technical Certification</h4>
                      <p class="card-text text-black text-center">Our industry experts and advanced AI based resume analyzer can help highlight your strengths.</p>
                     <div class="text-center">
-                     <button class="btn btn-danger bg-gradient-danger">View & Buy <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+                     <a class="btn btn-danger bg-gradient-danger" href="/technical-certification">View & Buy <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
                     </div>
                   </div>
                 </div>
               </div>
               <div class="col-md-4 my-2">
                 <div class="card shadow-sm border-0">
-                  <img src="../assets/img/resume.jpg" alt="" class="card-img-top">
+                  <img src="../assets/img/resume.jpg" alt="Resume Building" class="card-img-top">
                   <div class="card-body">
                      <h4 class="text-black text-center">Resume Building</h4>
                      <p class="card-text text-black text-center">Our industry experts and advanced AI based resume analyzer can help highlight your strengths.</p>
                     <div class="text-center">
-                     <button class="btn btn-danger bg-gradient-danger">View & Buy <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+                     <a class="btn btn-danger bg-gradient-danger" href="/resume-building">View & Buy <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
                     </div>
                   </div>
                 </div>

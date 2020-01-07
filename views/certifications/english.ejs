@@ -1,22 +1,4 @@
-<%- include('includes/header.ejs') %>
-<style>
-ol {
-  list-style: none;
-  padding: 0;
-}
-ol li {
-  padding-left: 1.3em;
-}
-ol li:before {
-  content: "\f00c"; /* FontAwesome Unicode */
-  font-family: FontAwesome;
-  display: inline-block;
-  margin-left: -1.3em; /* same as padding-left set on li */
-  width: 1.3em; /* same as padding-left set on li */
-  color:black;
-  font-size:1.8rem;
-}
-</style>
+<%- include('../includes/header.ejs') %>
 </head>
 <body>
   <header class="header-global">
@@ -130,23 +112,32 @@ ol li:before {
 </header>
 <main>
   <div class="position-relative">
-    <section class="section-shaped bg-primary my-0">
-      <div class="container  shape-container d-flex">
-        <div class="col px-0" style="margin-top:220px;margin-bottom:100px;">
-          <div class="row">
-            <div class="col-lg-7 mt-0 mt-lg-5">
-               <h1 class="br text-white">Amcubes alumnus are qualified to meet your requirements</h1>
-               <div class="mt-4 mb-2">
-                <a href="#more" class="btn btn-success">Learn More About Hiring <i class="fa fa-arrow-right ml-1" aria-hidden="true"></i></a>
-               </div>
-              <%if(recruiterSuccess){ %>
-                <p class="text-white font-weight-bold ft" style="font-size: 1.5rem">Thank you for reaching us we'll get back to you soon.</p>
-                <% } %>
-            </div>  
+    <section class="section-shaped my-0">
+        <div class="shape shape-style-1 shape-skew bg-blue" style="background-image: url('../assets/img/dev.jpg'); height:550px;background-size:cover;background-repeat: no-repeat;filter: brightness(40%)">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="container container-lg shape-container d-flex">
+          <div class="col px-0">
+            <div class="row">
+              <div class="col-md-5">
+                 <h1 class="br text-white text-capitalize">Get closer to your dream internship</h1>
+                 <p style="font-size: 17px;" class="text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, iusto.</p>
+                 <div class="mt-4">
+                  <a href="/tests" class="btn btn-white">Schedule Test <i class="fa fa-arrow-right ml-1" aria-hidden="true"></i> </a>
+                 </div>
+              </div>  
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 <section class="py-5 bg-secondary">
   <div class="container">
        <div class="row">
@@ -240,86 +231,7 @@ ol li:before {
     </div>
   </div>
 </section>
-<section class="py-5 bg-prp <%if(recruiterSuccess){%>bg-gradient-success<%}%>" id="more">
-  <div class="container">
-    <div class="row">
-      <div class="col">
-        <h1 class="ft text-center text-white font-weight-bold  mt-2 mb-4">Learn More About Hiring</h1>
-          <div class="row">
-              <div class="col-md-10 mx-auto">
-                <%if(recruiterSuccess){ %>
-                    <p class="text-white font-weight-bold ft text-center" style="font-size: 1.8rem">Thank you for reaching us we'll get back to you soon.</p>
-                     <% } else { %> 
-                        <form action="/recruiter" method="post">
-                            <div class="form-group mb-3">
-                                    <label for="name" class="text-white">Full Name</label>
-                                    <div class="input-group input-group-alternative">
-                                        <div class="input-group-prepend">
-                                        <span class="input-group-text text-black"><i class="fa fa-user"></i></span>
-                                        </div>
-                                        <input class="form-control" placeholder="Name" type="text" name="name" required>
-                                    </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                                <div class="form-group mb-3">
-                                                        <label for="email" class="text-white">Email</label>
-                                                        <div class="input-group input-group-alternative">
-                                                            <div class="input-group-prepend">
-                                                            <span class="input-group-text text-black"><i class="fa fa-envelope"></i></span>
-                                                            </div>
-                                                            <input class="form-control" placeholder="Email" type="email" name="email" required>
-                                                        </div>
-                                                        </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                                <div class="form-group mb-3">
-                                                        <label for="phone" class="text-white">Phone</label>
-                                                        <div class="input-group input-group-alternative">
-                                                            <div class="input-group-prepend">
-                                                            <span class="input-group-text text-black"><i class="fa fa-phone"></i></span>
-                                                            </div>
-                                                            <input class="form-control" placeholder="Phone" type="number" name="phone" required>
-                                                        </div>
-                                                        </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                            <div class="col-md-6">
-                                                    <div class="form-group mb-3">
-                                                            <label for="company" class="text-white">Company</label>
-                                                            <div class="input-group input-group-alternative">
-                                                                <div class="input-group-prepend">
-                                                                <span class="input-group-text text-black"><i class="fa fa-building"></i></span>
-                                                                </div>
-                                                                <input class="form-control" placeholder="Company" type="text" name="company" required>
-                                                            </div>
-                                                            </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                    <div class="form-group mb-3">
-                                                            <label for="jobtitle" class="text-white">JobTitle</label>
-                                                            <div class="input-group input-group-alternative">
-                                                                <div class="input-group-prepend">
-                                                                <span class="input-group-text text-black"><i class="fa fa-briefcase"></i></span>
-                                                                </div>
-                                                                <input class="form-control" placeholder="JobTitle" type="text" name="jobtitle" required>
-                                                            </div>
-                                                            </div>
-                                            </div>
-                                        </div>
-                                        <input type="hidden" name="_csrf" value="<%=csrfToken%>">
-                                        <div class="text-center">
-                                                <button type="submit" class="btn btn-dark mt-2 ">Submit Details<i class="fa fa-arrow-right ml-2" aria-hidden="true"></i></button>
-                                          </div>
-                        </form>
-                        <% } %>
-              </div>
-          </div>
-      </div>
-    </div>
-  </div>
-</section>
+
   </div>
 </main>
 <footer class="footer bg-dark">

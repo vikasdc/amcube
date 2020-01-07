@@ -20,7 +20,7 @@
                   <h6 class="mt-2"><small class="text-warning">You can appear for test only if you have completed your profile</small></h6>
                 </div>
               </div>
-              <h4 class="text-center my-3 text-dark">Your Activity</h4>
+              <h5 class="text-center my-3 text-dark">Your Activity</h5>
               <% if(buyerStatus) { %>
                <% for(buyee of buyer){ %>
                 <div class="row mb-3">
@@ -37,10 +37,74 @@
                     <h6 class="text-center">You've purchased a test of ₹850 on 18/09/19! Your Exam is on 18/09/18 at 15:30. <br> Best of Luck <i class="fa fa-thumbs-up text-default" aria-hidden="true"></i></h6>
                   </div>
                 </div> -->
+                <div class="row">
+                  <div class="col">
+                    <h4 class=" mt-2 mb-3 text-center text-dark">Internships Abroad</h4>
+                    <div class="row my-2">
+                      <div class="col-4 col-md-2  my-2">
+                          <a href="/jobs?city=Silicon%20Valley">
+                            <div class="card shadow-sm p-0 border-0">
+                              <img src="../assets/img/cities/silicon-valley.jpg" class="card-img-top" alt="Silicon Valley">
+                              <div class="card-body p-1">
+                                <h5 class="card-title text-center text-black">Silicon Valley</h5>
+                              </div>
+                            </div>
+                          </a>
+                      </div>
+                      <div class="col-4 col-md-2  my-2">
+                        <a href="/jobs?city=Toronto">
+                          <div class="card shadow-sm p-0 border-0">
+                            <img src="../assets/img/cities/toronto.jpg" class="card-img-top" alt="Toronto">
+                            <div class="card-body p-1">
+                              <h5 class="card-title text-center text-black">Toronto</h5>
+                            </div>
+                          </div>
+                        </a>
+                   </div> <div class="col-4 col-md-2  my-2">
+                    <a href="/jobs?city=London">
+                      <div class="card shadow-sm p-0 border-0">
+                        <img src="../assets/img/cities/london.jpg" class="card-img-top" alt="London">
+                        <div class="card-body p-1">
+                          <h5 class="card-title text-center text-black">London</h5>
+                        </div>
+                      </div>
+                    </a>
+                </div> <div class="col-4 col-md-2  my-2">
+                  <a href="/jobs?city=Dubai">
+                    <div class="card shadow-sm p-0 border-0">
+                      <img src="../assets/img/cities/dubai.jpg" class="card-img-top" alt="Dubai">
+                      <div class="card-body p-1">
+                        <h5 class="card-title text-center text-black">Dubai</h5>
+                      </div>
+                    </div>
+                  </a>
+                </div> <div class="col-4 col-md-2  my-2">
+                  <a href="/jobs?city=HongKong">
+                    <div class="card shadow-sm p-0 border-0">
+                      <img src="../assets/img/cities/hongkong.jpg" class="card-img-top" alt="Hongkong">
+                      <div class="card-body p-1">
+                        <h5 class="card-title text-center text-black">Hongkong</h5>
+                      </div>
+                    </div>
+                  </a>
+                </div> <div class="col-4 col-md-2  my-2">
+                  <a href="/jobs?city=Singapore">
+                    <div class="card shadow-sm p-0 border-0">
+                      <img src="../assets/img/cities/singapore.jpg" class="card-img-top" alt="Singapore">
+                      <div class="card-body p-1">
+                        <h5 class="card-title text-center text-black">Singapore</h5>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+                     
+                    </div>
+                  </div>
+                </div>
                           <div class="row">
-                           <div class="col-md-12 mx-auto">
-                             <h3 class=" mt-3 mb-4 display-3 text-center text-dark">Recommended Courses For You</h3>
-                             <% if(courses.length > 0) { %>
+                           <div class="col-md-10 mx-auto">
+                             <h4 class=" mt-2 mb-3 text-center text-dark">Recommended for you</h4>
+                             <!-- <% if(courses.length > 0) { %>
                               <div class="row">
                                 <% for(course of courses) { %>
                                   <%   var numberWithCommas = (x) =>{
@@ -96,7 +160,45 @@
                                   </div>
                                   <% } else { %>
                                     <h4 class="text-center">No Courses Available Now! <br> Stay Tuned We'll Update Soon </h4>
-                                    <% } %>
+                                    <% } %> -->
+                                    <div class="row">
+                                      <div class="col-md-4 my-2">
+                                        <div class="card shadow-sm border-0">
+                                         <img src="../assets/img/english.jpg" alt="English Certification" class="card-img-top">
+                                          <div class="card-body">
+                                             <h4 class="text-black text-center">English Certification</h4>
+                                             <p class="card-text text-black text-center">Our industry experts and advanced AI based resume analyzer can help highlight your strengths.</p>
+                                            <div class="text-center">
+                                             <a class="btn btn-danger bg-gradient-danger" href="/english-certification">View & Buy <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="col-md-4 my-2">
+                                       <div class="card shadow-sm border-0">
+                                         <img src="../assets/img/technical.jpg" alt="Technical Certification" class="card-img-top">
+                                         <div class="card-body">
+                                            <h4 class="text-black text-center">Technical Certification</h4>
+                                            <p class="card-text text-black text-center">Our industry experts and advanced AI based resume analyzer can help highlight your strengths.</p>
+                                           <div class="text-center">
+                                            <a class="btn btn-danger bg-gradient-danger" href="/technical-certification">View & Buy <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                                           </div>
+                                         </div>
+                                       </div>
+                                     </div>
+                                     <div class="col-md-4 my-2">
+                                       <div class="card shadow-sm border-0">
+                                         <img src="../assets/img/resume.jpg" alt="Resume Building" class="card-img-top">
+                                         <div class="card-body">
+                                            <h4 class="text-black text-center">Resume Building</h4>
+                                            <p class="card-text text-black text-center">Our industry experts and advanced AI based resume analyzer can help highlight your strengths.</p>
+                                           <div class="text-center">
+                                            <a class="btn btn-danger bg-gradient-danger" href="/resume-building">View & Buy <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                                           </div>
+                                         </div>
+                                       </div>
+                                     </div>
+                                    </div>
                            </div>
                          </div>
             </div>

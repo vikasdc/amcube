@@ -27,18 +27,35 @@
                 <li class="nav-item <%= path === '/' ? 'active':'' %>">
                   <a href="/" style="font-size:1em;" class="nav-link">Home</a>
                 </li>
-                <li class="nav-item <%= path === '/courses' ? 'active':'' %>">
+                <!-- <li class="nav-item <%= path === '/courses' ? 'active':'' %>">
                   <a href="/courses" style="font-size:1em;" class=" nav-link ">Courses</a>
-                </li>   
-                <li class="nav-item <%= path === '/jobs' ? 'active':'' %>">
-                    <a href="/jobs" style="font-size:1em;" class=" nav-link">Jobs/Interns</a>
-                  </li> 
+                </li>    -->
                   <li class="nav-item <%= path === '/tests' ? 'active':'' %>">
                     <a href="/tests" style="font-size:1em;" class=" nav-link ">Tests</a>
                   </li>
-                  <li class="nav-item <%= path === '/recruiters' ? 'active':'' %>">
-                    <a href="/recruiters" style="font-size:1em;" class=" nav-link ">Recruiters</a>
+                  <li class="nav-item dropdown <%= path === '/jobs' ? 'active':'' %>">
+                    <a style="font-size:1em;" class=" nav-link text-capitalize  dropdown-toggle"id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Intern Abroad</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="/jobs?city=Silicon%20Valley">Silicon Valley</a>
+                            <a class="dropdown-item" href="/jobs?city=Toronto">Toronto</a>
+                            <a class="dropdown-item" href="/jobs?city=London">London</a>
+                            <a class="dropdown-item" href="/jobs?city=Dubai">Dubai</a>
+                            <a class="dropdown-item" href="/jobs?city=HongKong">HongKong</a>
+                            <a class="dropdown-item" href="/jobs?city=Singapore">Singapore</a>
+                          </div>
                   </li>
+                  <li class="nav-item dropdown">
+                    <a style="font-size:1em;" class=" nav-link text-capitalize  dropdown-toggle"id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Certifications</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="/english-certification">English Certification</a>
+                            <a class="dropdown-item" href="/technical-certification">Technical Certification</a>
+                            <a class="dropdown-item" href="/resume-building">Resume Building</a>
+                          </div>
+                  </li>
+                  <!-- <li class="nav-item <%= path === '/recruiters' ? 'active':'' %>">
+                    <a href="/recruiters" style="font-size:1em;" class=" nav-link ">Recruiters</a>
+                  </li> -->
+
                   <% if(!isLoggedin){ %>
                     <li class="nav-item <%= path === '/login' ? 'active':'' %>">
                       <a href="/login" style="font-size:1em;" class=" nav-link ">Login</a>

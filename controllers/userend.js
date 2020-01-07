@@ -77,7 +77,9 @@ exports.getCourseById = (req, res, next) => {
      })
 }
 exports.getJobs = (req,res,next) => {
-    Job.find().sort({_id:-1}).then(jobs =>{
+    const city = req.query.city
+    console.log(city)
+    Job.find({city}).sort({_id:-1}).then(jobs =>{
         res.render('jobsintern', {
             docTitle:'Jobs',
             path:'/jobs',
@@ -369,21 +371,21 @@ exports.postGetEditAccount = (req,res,next) => {
     })
 }
 exports.postApplyJob = (req, res, next) => {
-  TestApplication.findOne({email:req.session.user.email})
-  .then(testApplication => {
-      console.log(testApplication)
-  if(!testApplication){
-   return res.render('appstatus', {
-        docTitle:'Job Application Status',
-        path:'/jobappfailed'
-    })
-  }
-  if(!testApplication.paid){
-    return res.render('appstatus', {
-        docTitle:'Job Application Status',
-        path:'/jobappfailedpayment'
-    })
-  }
+//   TestApplication.findOne({email:req.session.user.email})
+//   .then(testApplication => {
+//       console.log(testApplication)
+//   if(!testApplication){
+//    return res.render('appstatus', {
+//         docTitle:'Job Application Status',
+//         path:'/jobappfailed'
+//     })
+//   }
+//   if(!testApplication.paid){
+//     return res.render('appstatus', {
+//         docTitle:'Job Application Status',
+//         path:'/jobappfailedpayment'
+//     })
+//   }
   const { jobId } = req.body;
   Job.findById(jobId).then(job => {
    const jobApplication = new JobApplication({
@@ -397,12 +399,7 @@ exports.postApplyJob = (req, res, next) => {
    })
    return jobApplication.save()
   }).then(jobApp => {
-   res.render('appstatus', {
-       docTitle:'Job Application Status',
-       path:'/jobappsuccess',
-       jobAppId:jobApp._id
-   })
-  })
+      return res.redirect('https://bit.ly/2s2mBEh')
   }).catch(err => {
         const error = new Error(err)
         error.httpStatusCode = 500
@@ -450,6 +447,24 @@ exports.postPurchaseCourse = (req, res, next) => {
         return next(error)
      })
 }
+exports.getEnglishCertification = (req, res, next) => {
+    res.render('certifications/english',{
+        docTitle:'English Certification',
+        path:'/english-certification'
+    })
+}
+exports.getTechnicalCertification = (req, res, next) => {
+    res.render('certifications/technical',{
+        docTitle:'Technical Certification',
+        path:'/technical-certification'
+    })
+}
+exports.getResumeBuilding = (req, res, next) => {
+    res.render('certifications/resume-building',{
+        docTitle:'Resume-building',
+        path:'/resume-building'
+    })
+}
 exports.postPurchaseTest = (req, res, next) => {
  const { testTime, testId } = req.body
  let testcity, testdate
@@ -482,11 +497,11 @@ exports.postPurchaseTest = (req, res, next) => {
        testApplication.save().then(testApp => {
         const data = new Insta.PaymentData();
               data.purpose = 'For Amcubes MockTest Fee Payment'
-              data.amount = 599
+              data.amount = 999
               data.phone = req.user.contact
               data.buyer_name = req.user.username
-              data.setRedirectUrl(`https://amcubes.com/dashboard?user_id=${req.user._id}`)
-              data.webhook = 'https://amcubes.com/dashboard'
+              data.setRedirectUrl(`http://amcubes.com/dashboard?user_id=${req.user._id}`)
+              data.webhook = 'http://amcubes.com/dashboard'
               data.send_email = true
               data.send_sms = true
               data.email = req.user.email

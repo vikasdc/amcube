@@ -1,0 +1,328 @@
+<%- include('../includes/header.ejs') %>
+</head>
+<body>
+  <header class="header-global">
+    <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-dark navbar-transparent py-1">
+      <div class="container container-lg">
+        <a class="navbar-brand mr-lg-5" href="/">
+          <span class="ml-1 h4 text-lowercase font-weight-bold text-white poppins"><span style="color:rgb(6, 57, 223)">am</span><span style="color:rgb(22, 190, 16)">cubes</span></span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbar_global">
+          <div class="navbar-collapse-header">
+            <div class="row">
+              <div class="col-6 collapse-brand">
+                <a href="/">
+                  <span class="ml-1 h4 text-lowercase font-weight-bold text-white poppins"><span style="color:rgb(5, 61, 216)">am</span><span style="color:rgb(22, 190, 16)">cubes</span></span>
+                </a>
+              </div>
+              <div class="col-6 collapse-close">
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
+                  <span></span>
+                  <span></span>
+                </button>
+              </div>
+            </div>
+          </div>
+          <ul class="navbar-nav ml-auto navbar-nav-hover align-items-lg-center">
+                <li class="nav-item <%= path === '/' ? 'active':'' %>">
+                  <a href="/" style="font-size:1em;" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item <%= path === '/courses' ? 'active':'' %>">
+                  <a href="/courses" style="font-size:1em;" class=" nav-link ">Courses</a>
+                </li>   
+                  <li class="nav-item <%= path === '/tests' ? 'active':'' %>">
+                    <a href="/tests" style="font-size:1em;" class=" nav-link ">Tests</a>
+                  </li>
+                  <li class="nav-item dropdown <%= path === '/jobs' ? 'active':'' %>">
+                    <a style="font-size:1em;" class=" nav-link text-capitalize  dropdown-toggle"id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Intern Abroad</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="/jobs?city=Silicon%20Valley">Silicon Valley</a>
+                            <a class="dropdown-item" href="/jobs?city=Toronto">Toronto</a>
+                            <a class="dropdown-item" href="/jobs?city=London">London</a>
+                            <a class="dropdown-item" href="/jobs?city=Dubai">Dubai</a>
+                            <a class="dropdown-item" href="/jobs?city=HongKong">HongKong</a>
+                            <a class="dropdown-item" href="/jobs?city=Singapore">Singapore</a>
+                          </div>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a style="font-size:1em;" class=" nav-link text-capitalize  dropdown-toggle"id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Certifications</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="/english-certification">English Certification</a>
+                            <a class="dropdown-item" href="/technical-certification">Technical Certification</a>
+                            <!-- <a class="dropdown-item" href="/resume-building">Resume Building</a> -->
+                          </div>
+                  </li>
+                  <% if(!isLoggedin){ %>
+                    <li class="nav-item <%= path === '/login' ? 'active':'' %>">
+                      <a href="/login" style="font-size:1em;" class=" nav-link ">Login</a>
+                    </li>      
+                    <li class="nav-item <%= path === '/signup' ? 'active':'' %>">
+                        <a href="/signup" style="font-size:1em;" class=" nav-link ">Signup</a>
+                      </li>
+                      <li class="nav-item <%= path === '/recruiters' ? 'active':'' %>">
+                        <a href="/recruiters" style="font-size:1em;" class=" nav-link ">Recruiters</a>
+                      </li>
+                      <% } else { %>
+                      <li class="nav-item d-none d-md-block dropdown <%= path === '/dashboard' || '/profile' || '/settings', '/bugreport', '/account' ? 'active':'' %>">
+                            <a style="font-size:1em;" class=" nav-link text-capitalize  dropdown-toggle"id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= user.username %></a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="/account">Account</a>
+                                    <a class="dropdown-item" href="/dashboard">Dashboard</a>
+                                    <a class="dropdown-item" href="/profile">Profile</a>
+                                    <a class="dropdown-item" href="/settings">Syllabus & More</a>
+                                    <div class="dropdown-divider"></div>
+                                    <form action="/logout" method="post" class="m-0">
+                                      <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                      <button class="dropdown-item btn btn-link font-weight-normal text-capitalize">Logout</button>
+                                    </form>
+                                    <a class="dropdown-item" href="/bugreport">Report Bug</a>
+                                  </div>
+                          </li>
+                          <li class="nav-item d-md-none">
+                              <a class="nav-link" href="/account">Account</a>
+                          </li>
+                          <li class="nav-item d-md-none">
+                              <a class="nav-link" href="/dashboard">Dashboard</a>
+                            </li>
+                            <li class="nav-item d-md-none">
+                                <a class="nav-link" href="/profile">Profile</a>
+                              </li>
+                              <li class="nav-item d-md-none">
+                                  <a class="nav-link" href="/settings">Syllabus & More</a>
+                                </li>
+                                <li class="nav-item d-md-none">
+                                    <form action="/logout" method="post" class="m-0">
+                                      <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                      <button class="nav-link btn btn-link font-weight-normal text-capitalize">Logout</button>
+                                    </form>
+                                  </li>
+                                  <li class="nav-item d-md-none">
+                                      <a class="nav-link" href="/bugreport">Report Bug</a>
+                                    </li>
+                        <% } %>
+                       
+              </ul>
+
+      </div>
+  </div>
+</nav>
+</header>
+<main>
+  <div class="position-relative">
+    <!-- <section class="section-shaped my-0">
+        <div class="shape shape-style-1 shape-skew bg-blue" style="background-image: url('../../assets/img/english.jpg'); height:650px;background-size:cover;background-repeat: no-repeat;filter: brightness(40%)">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="container container-lg shape-container d-flex">
+          <div class="col px-0">
+            <div class="row">
+              <div class="col-md-5">
+                 <h1 class="br text-white text-capitalize">Amcubes English Certification</h1>
+                 <p style="font-size: 17px;" class="text-white">Give your job hunt the English advantage with MyEnglish Certification. Assess and improve your English writing & speaking skills</p>
+                 <div class="mt-4">
+                  <a href="" class="btn btn-warning">Buy Now <i class="fa fa-arrow-right ml-1" aria-hidden="true"></i> </a>
+                 </div>
+              </div>  
+            </div>
+          </div>
+        </div>
+      </section> -->
+      <section class="section-shaped my-0" style="background-image: url('../../assets/img/technical.jpg'); background-position:center; height: 550px;">
+        <div class="overlay" style="background-color: rgba(0, 0, 0, 0.596); height: 550px;">
+          <div class="container  shape-container d-flex">
+            <div class="col px-0" style="margin-top:140px;margin-bottom:100px;">
+              <div class="row">
+                <div class="col-lg-7 mt-0 mt-lg-5">
+                   <h1 class="br text-white">Amcubes Technical Certification</h1>
+                   <p class="text-white ft">
+                    Amcubes brings you additional amcubes Certifications to showcase your skills to employers. Get yourself assessed on your professional skills, receive feedback on your strong and weak areas to improve and earn industry recognized certifications. Get closer to your dream job now !
+                   </p>
+                </div>  
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+<section class="py-5">
+  <div class="container">
+      <h3 class="text-center text-default mb-4 sm-br">Get certified in these technologies</h3>
+  <div class="row">
+      <div class="col-md-4 my-2">
+          <div class="card shadow-sm border-0" style="background-color: #EDF0FF;">
+              <div class="card-body text-center">
+                <img src="../../assets/img/icons/java.png" alt="" class="img-fluid">
+                <h5 class="text-default mt-3">Full Stack Developer : Java</h5>
+                <p>Turn your diverse programming knowledge into a full stack development job</p>
+                <button class="btn bg-purple-dark text-white shadow" data-toggle="modal" data-target="#modal1">Get Certified <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+              </div>
+          </div>
+      </div>
+      <div class="col-md-4 my-2">
+        <div class="card shadow-sm border-0" style="background-color: #EDF0FF;">
+            <div class="card-body text-center">
+              <img src="../../assets/img/icons/react.ico" alt="" class="img-fluid">
+              <h5 class="text-default mt-3">React Developer</h5>
+              <p>Turn your passion for React into a full-time job by using this certification</p>
+              <button class="btn bg-purple-dark text-white shadow" data-toggle="modal" data-target="#modal1">Get Certified <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 my-2">
+        <div class="card shadow-sm border-0" style="background-color: #EDF0FF;">
+            <div class="card-body text-center">
+              <img src="../../assets/img/icons/python.png" alt="" class="img-fluid">
+              <h5 class="text-default mt-3">Python Developer</h5>
+              <p>Showcase your programming skills to employers and enhance your job prospects.</p>
+              <button class="btn bg-purple-dark text-white shadow" data-toggle="modal" data-target="#modal1">Get Certified <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 my-2">
+        <div class="card shadow-sm border-0" style="background-color: #EDF0FF;">
+            <div class="card-body text-center">
+              <img src="../../assets/img/icons/mysql.png" alt="" class="img-fluid">
+              <h5 class="text-default mt-3">Back End Developer : Java + MySQL</h5>
+              <p>Showcase your programming skills to employers and enhance your job prospects</p>
+              <button class="btn bg-purple-dark text-white shadow" data-toggle="modal" data-target="#modal1">Get Certified <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 my-2">
+        <div class="card shadow-sm border-0" style="background-color: #EDF0FF;">
+            <div class="card-body text-center">
+              <img src="../../assets/img/icons/mongodb.png" alt="" class="img-fluid">
+              <h5 class="text-default mt-3">Back End Developer : JavaScript + MongoDB</h5>
+              <p>Enhance your chances of landing a Backend Developer job with this popular certification.</p>
+              <button class="btn bg-purple-dark text-white shadow" data-toggle="modal" data-target="#modal1">Get Certified <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 my-2">
+        <div class="card shadow-sm border-0" style="background-color: #EDF0FF;">
+            <div class="card-body text-center">
+              <img src="../../assets/img/icons/php.png" alt="" class="img-fluid">
+              <h5 class="text-default mt-3">Full Stack Developer : PHP + MySQL</h5>
+              <p>Showcase your programming skills to employers and enhance your job prospects</p>
+              <button class="btn bg-purple-dark text-white shadow" data-toggle="modal" data-target="#modal1">Get Certified <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+            </div>
+        </div>
+    </div>
+    <%- include('../includes/cert-modal.ejs') %>
+  </div>
+  </div>
+</section>
+<section class="py-5 bg-secondary">
+    <div class="container">
+      <h3 class="text-center text-default mb-4">How it works</h3>
+      <div class="row">
+        <div class="col-md-3 my-2 text-center">
+          <h5 class="text-default">Step 1</h5>
+          <p>
+            Buy the product to take assessment
+          </p>
+        </div>
+        <div class="col-md-3 my-2 text-center">
+          <h5 class="text-default">Step 2</h5>
+          <p>
+            Perform well to earn certification
+          </p>
+        </div>
+        <div class="col-md-3 my-2 text-center">
+          <h5 class="text-default">Step 3</h5>
+          <p>
+            Get feedback report to improve in weak areas
+          </p>
+        </div>
+        <div class="col-md-3 my-2 text-center">
+          <h5 class="text-default">Step 4</h5>
+          <p>
+            Publish your certificate on Linkedin via amcubes
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  </div>
+</main>
+<footer class="footer bg-dark">
+  <!-- <div style="margin-top:100px"></div> -->
+  <div class="container container-lg">
+    <div class="row row-grid">
+      <div class="col-lg-4 order-2 text-center mb-2 mb-lg-5">
+        <h3 class=" font-weight-light text-white">Follow us on</h3>
+        <div class=" btn-wrapper mt-3">
+            <a target="_blank" href="https://twitter.com/amcubes3?s=08" class="btn btn-neutral btn-icon-only btn-twitter btn-round rounded-circle btn-lg" data-toggle="tooltip" data-placement="bottom" title="Follow us">
+               <i class="fa fa-twitter mt-2 pt-1"></i>
+            </a>
+            <a target="_blank" href="https://facebook.com/amcubes2019" class="btn btn-neutral btn-icon-only btn-facebook btn-round rounded-circle btn-lg" data-toggle="tooltip" title="Like us">
+              <i class="fa fa-facebook-square mt-2 pt-1"></i>
+            </a>
+            <a target="_blank" href="https://www.linkedin.com/company/amcubes" class="btn btn-neutral btn-icon-only btn-linkedin rounded-circle btn-lg btn-round" data-toggle="tooltip" title="Follow us">
+              <i class="fa fa-linkedin mt-2 pt-1 "></i>
+            </a>
+            <a target="_blank" href="https://instagram.com/amcubes2019" class="btn btn-neutral btn-icon-only btn-instagram btn-round rounded-circle btn-lg" data-toggle="tooltip" title="Follow us">
+              <i class="fa fa-instagram mt-2 pt-1"></i>
+            </a>
+          </div>
+          <h5 class="text-white mt-3">Working Hours</h5>
+          <p class="font-weight-normal text-white">Mon - Sun, 9AM - 9PM</p>
+      </div>
+      <div class="col-lg-4  order-1 mb-2 mb-lg-5 contact" >
+          <h3 class="text-primary font-weight-light text-white">Contact us <br></br></h3>
+          <h5 class="mb-0  font-weight-light text-white">91 Springboard, Mytri Square, 2-41/11, 6/2, Gachibowli - Miyapur Rd, Prashanth Nagar Colony, Hyderabad, Telangana 500084</h5>
+            <a class="h5 mb-0 mt-1 font-weight-light text-white" href="mailto:hello@amcubes.com">hello@amcubes.com</a> <br></br>
+           <a class="h5 mb-0 mt-1 font-weight-normal text-white" href="tel:+917702535506">+91-7386890309</a>
+        </div>
+        <div class="col-lg-4 order-3">
+          <div id="map" class="rounded shadow"></div>
+        </div>
+    </div>
+  
+    <div class="row align-items-center justify-content-md-between">
+      <div class="col-md-6">
+        <div class="copyright text-white">Copyright 
+          &copy; <script>document.write(new Date().getFullYear())</script>
+          <a href="" class="text-white" target="_blank">amcubes</a>.
+        </div>
+      </div>
+      <div class="col-md-6">
+          <ul class="nav nav-footer justify-content-end">
+            <li class="nav-item">
+              <a href="" class="text-white mr-3">Amcubes</a>
+            </li>
+            <li class="nav-item">
+                <a href="#about" class="text-white mr-3">About Us</a>
+              </li>
+              <li class="nav-item">
+                  <a href="/terms&privacy" class="text-white" target="_blank">Terms & Privacy</a>
+                </li>
+          </ul>
+        </div>
+    </div>
+  </div>
+</footer>
+<script type="text/javascript" src="../assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="../assets/js/popper.min.js"></script>
+<script type="text/javascript" src="../assets/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../assets/js/bootstrap-datepicker.min.js"></script>
+<script type="text/javascript" src="../assets/js/headroom.min.js"></script>
+<script type="text/javascript" src="../assets/js/nouislider.min.js"></script>
+<script type="text/javascript" src="../assets/js/argon.min.js"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADzo1qNJPmONyIELJQa5Zs4oalk0nSJlw&callback=initMap"async defer></script>
+<script type="text/javascript" src="../assets/js/core/googlemaps.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+<script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="6ec3b1a6-40d5-4f49-89d7-e8bf8d1514fb";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
+</body>
+</html>

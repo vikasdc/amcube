@@ -61,9 +61,15 @@ router.get('/job-app-success', (req, res, next) => {
     })
 })
 router.get('/english-certification', userEnd.getEnglishCertification)
-router.get('/technical-cerification', userEnd.getTechnicalCertification)
-router.get('/resume-building', userEnd.getResumeBuilding)
-
+router.get('/technical-certification', userEnd.getTechnicalCertification)
+// router.get('/resume-building', userEnd.getResumeBuilding)
+router.post('/certification-course', userEnd.postCertification)
+router.get('/thankyounote', (req, res, next) => {
+    res.render('thank-you', {
+        docTitle:'Thank You',
+        path:'/thankyounote'
+    })
+})
 router.get('/terms&privacy', userEnd.getTermsPrivacy)
 
 module.exports = router;

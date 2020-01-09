@@ -2,6 +2,15 @@
 h1,h2,h3,h4,h5,h6{
     font-family: "Lato", sans-serif;
 }
+.sm-br{
+  font-family: "Lato", sans-serif;
+  color: #383651;
+  font-size: 32px;
+  line-height: 42px;
+  font-weight: 700;
+  text-align: left;
+  letter-spacing: -0.5px;
+}
 @media (max-width:576px){
   .br{
     font-family: "Lato", sans-serif;
@@ -92,6 +101,9 @@ h1,h2,h3,h4,h5,h6{
  .text-g{
    color:rgba(55, 151, 17, 0.856);
  }
+ .bg-light-grey{
+   background-color:#EDF0FF;
+ }
  .btn-round{
    border-radius: 20px;
  }
@@ -110,6 +122,15 @@ h1,h2,h3,h4,h5,h6{
  }
  .bg-prp{
    background-color: rgb(54, 80, 230);
+ }
+ .bg-purple-dark{
+   background-color: #4346E9;
+ }
+ .bg-deep-purple{
+background-color: #0B0156;
+ }
+ .bg-light-pink{
+   background-color: #FAEEF2;
  }
  .text-prp{
   color: rgb(54, 80, 230);

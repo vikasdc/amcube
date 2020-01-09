@@ -52,7 +52,7 @@
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <a class="dropdown-item" href="/english-certification">English Certification</a>
                             <a class="dropdown-item" href="/technical-certification">Technical Certification</a>
-                            <a class="dropdown-item" href="/resume-building">Resume Building</a>
+                            <!-- <a class="dropdown-item" href="/resume-building">Resume Building</a> -->
                           </div>
                   </li>
                   <% if(!isLoggedin){ %>
@@ -149,10 +149,111 @@
                     Give your job hunt the English advantage with Amcubes Certification. Assess and improve your English writing & speaking skills
                    </p>
                    <div class="mt-4 mb-2">
-                    <a href="" class="btn btn-warning">Buy Now <i class="fa fa-arrow-right ml-1" aria-hidden="true"></i></a>
+                    <button class="btn btn-warning" data-toggle="modal" data-target="#modal1">Buy Now <i class="fa fa-arrow-right ml-1" aria-hidden="true"></i></button>
                    </div>
                 </div>  
               </div>
+              <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="modal1" aria-hidden="true">
+                <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          <h5 class="modal-title" id="modal-title-default">Fill up the form to register</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">×</span>
+                          </button>
+                      </div> 
+                      <div class="modal-body">
+                            <form action="/certification-course" method="post">
+                            <div class="form-group">
+                              <label for="">Name</label>
+                              <div class="input-group input-group-alternative">
+                                  <div class="input-group-prepend">
+                                    <div class="input-group-text text-dark">
+                                     <i class="material-icons">face</i>
+                                    </div>
+                                  </div>
+                                  <input type="text" name="name" class="form-control" placeholder="Name" required>
+                                </div>
+                            </div>
+                                  <div class="form-group">
+                                    <label for="">Email</label>
+                                    <div class="input-group input-group-alternative">
+                                        <div class="input-group-prepend">
+                                          <div class="input-group-text text-dark">
+                                           <i class="material-icons">mail</i>
+                                          </div>
+                                        </div>
+                                        <input type="email" name="email" class="form-control" placeholder="Email" required>
+                                        
+                                      </div>
+                                      <small class="text-muted">We'll never share your email with anyone</small>
+                                  </div>
+                                      <div class="form-group">
+                                        <label for="">Phone</label>
+                                        <div class="input-group input-group-alternative">
+                                            <div class="input-group-prepend">
+                                              <div class="input-group-text text-dark">
+                                               <i class="material-icons">phone</i>
+                                              </div>
+                                            </div>
+                                            <input type="number" name="phone" class="form-control" placeholder="Phone" required>
+                                          </div>
+                                      </div>
+                                          <div class="form-group">
+                                            <label for="">College</label>
+                                            <div class="input-group input-group-alternative">
+                                                <div class="input-group-prepend">
+                                                  <div class="input-group-text text-dark">
+                                                   <i class="material-icons">school</i>
+                                                  </div>
+                                                </div>
+                                                <input type="text" name="college" class="form-control" placeholder="College Name" required>
+                                              </div>
+                                          </div>
+                                          <div class="form-group">
+                                            <label for="">Your City</label>
+                                            <div class="input-group input-group-alternative">
+                                                <div class="input-group-prepend">
+                                                  <div class="input-group-text text-dark">
+                                                   <i class="material-icons">my_location</i>
+                                                  </div>
+                                                </div>
+                                                <input type="text" name="city" class="form-control" placeholder="Present City" required>
+                                              </div>
+                                          </div>
+                                              <div class="form-group">
+                                                <label for="">Parent's Phone</label>
+                                                <div class="input-group input-group-alternative">
+                                                    <div class="input-group-prepend">
+                                                      <div class="input-group-text text-dark">
+                                                       <i class="material-icons">phone</i>
+                                                      </div>
+                                                    </div>
+                                                    <input type="number" name="parentphone" class="form-control" placeholder="Parent's Phone" required>
+                                                  </div>
+                                              </div>
+                                              <div class="form-group">
+                                                <label for="">Select Certification</label>
+                                                <select name="certification" id="" class="form-control form-control-alternative" required>
+                                                    <option value="English Certification" selected>English Certification Course</option>   
+                                                </select>
+                                              </div>
+                                              <div class="custom-control custom-checkbox mb-3">
+                                                  <input class="custom-control-input" id="customCheck2" type="checkbox" required>
+                                                  <label class="custom-control-label" for="customCheck2">By registering you accept <a href="/terms&privacy">terms&privacy</a></label>
+                                                </div>
+                
+                      </div>
+                
+                      <div class="modal-footer pb-4 pt-2">
+                            <input type="hidden" name="_csrf" value="<%=csrfToken%>">
+                            <button type="submit" class="btn btn-primary">Register</button>
+                          </form>
+                          <button type="button" class="btn btn-link  ml-auto" data-dismiss="modal">Close</button>
+                      </div>
+                  </div>
+                </div>
+                </div>
             </div>
           </div>
         </div>
@@ -160,10 +261,10 @@
 <section class="py-5">
   <div class="container">
     <div class="row justify-content-center">
-      <div class="col-md-3 my-2 mx-auto mx-lg-0 mr-lg-4">
-        <img src="../../assets/img/levels.png" alt="" class="img-fluid rounded">
+      <div class="col-md-5 my-2">
+        <img src="../../assets/img/speaking.jpg" alt="" class="img-fluid rounded">
       </div>
-      <div class="col-md-8 ml-md-4 align-self-center my-2">
+      <div class="col-md-7 align-self-center my-2">
         <h3 class="text-default ft">Do you have command over the language?</h3>
         <p>
           People with good English fluency are reported to earn 30-40% more than their peers who don't.
@@ -217,27 +318,27 @@ Using the latest Machine Learning and Artificial Intelligence technology, Amcube
 </section>
 <section class="py-5">
   <div class="container">
-    <h3 class="text-center text-default mb-5">How it works</h3>
+    <h3 class="text-center text-default mb-4">How it works</h3>
     <div class="row">
-      <div class="col-md-3 text-center">
+      <div class="col-md-3 my-2 text-center">
         <h5 class="text-default">Step 1</h5>
         <p>
           Assess your English skills with a computer based test for writing and speaking skills
         </p>
       </div>
-      <div class="col-md-3 text-center">
+      <div class="col-md-3 my-2 text-center">
         <h5 class="text-default">Step 2</h5>
         <p>
           Answer questions in form of text and audio responses
         </p>
       </div>
-      <div class="col-md-3 text-center">
+      <div class="col-md-3 my-2 text-center">
         <h5 class="text-default">Step 3</h5>
         <p>
           Get evaluated on range of parameters for your English skills & get detailed feedback report.
         </p>
       </div>
-      <div class="col-md-3 text-center">
+      <div class="col-md-3 my-2 text-center">
         <h5 class="text-default">Step 4</h5>
         <p>
           Earn amcubes Certification and showcase it to employers
@@ -249,16 +350,16 @@ Using the latest Machine Learning and Artificial Intelligence technology, Amcube
 <section class="py-5" style="background-color: #EDF0FF;">
   <div class="container">
     <div class="row">
-      <div class="col-md-7 mr-lg-4">
+      <div class="col-md-5 order-lg-2">
+        <img src="../../assets/img/icons/english-talk.png" alt="" class="img-fluid">
+      </div>
+      <div class="col-md-7 align-self-center">
         <h3 class="text-default ft">Importance of English Speaking and Writing Skills</h3>
         <p>
           People with good English fluency are reported to earn 30-40% more than their peers who don't.
 
           The ability to speak and write English efficiently is one of the most important skills a job-seeker must have in today’s job market. Those with strong English skills are employed much faster and earn higher than those with basic or weak English skills.
         </p>  
-      </div>
-      <div class="col-md-4">
-        <img src="../../assets/img/icons/english-talk.png" alt="" class="img-fluid">
       </div>
     </div>
   </div>

@@ -12,6 +12,7 @@ const Recruiter = require('../models/recruiters')
 const TestPaymentData = require('../models/testpaymentdata')
 const Keys = require('../config/keys')
 const {validationResult} = require('express-validator')
+const Certification = require('../models/certification-data')
 const Insta = require('instamojo-nodejs')
 Insta.setKeys(Keys.Instamojo.API_KEY,Keys.Instamojo.AUTH_KEY)
 //global functions 
@@ -459,12 +460,47 @@ exports.getTechnicalCertification = (req, res, next) => {
         path:'/technical-certification'
     })
 }
-exports.getResumeBuilding = (req, res, next) => {
-    res.render('certifications/resume-building',{
-        docTitle:'Resume-building',
-        path:'/resume-building'
+exports.postCertification = (req, res, next) => {
+    const { name, email, phone, college, city, parentphone, certification } = req.body;
+    const certif = new Certification({
+        name, 
+        email,
+        phone,
+        college,
+        city,
+        parentphone,
+        certification
     })
+    certif.save().then(cert => {
+        if(cert.certification == 'Full Stack Developer : Java'){
+            return res.redirect('https://www.instamojo.com/codemania/full-stack-developer-java/')
+        } else if(cert.certification == 'React Developer'){
+            return res.redirect('https://www.instamojo.com/codemania/react-developer-certification/')
+        } else if(cert.certification == 'Python Developer'){
+            return res.redirect('https://www.instamojo.com/codemania/python-developer-certification/')
+        } else if(cert.certification == 'Back End Developer : Java + MySQL'){
+            return res.redirect('https://www.instamojo.com/codemania/back-end-developer-java-mysql/')
+        } else if(cert.certification == 'Back End Developer : JavaScript + MongoDB'){
+            return res.redirect('https://www.instamojo.com/codemania/back-end-developer-javascript-mongodb-certif/')
+        } else if(cert.certification == 'Full Stack Developer : PHP + MySQL'){
+            return res.redirect('https://www.instamojo.com/codemania/full-stack-developer-php-mysql-certification/')
+        } else if(cert.certification == 'English Certification'){
+            return res.redirect('https://www.instamojo.com/codemania/english-certification/')
+        } else {
+              return res.redirect('/technical-certicication')
+        }
+    }).catch(err => {
+        const error = new Error(err)
+        error.httpStatusCode = 500
+        return next(error)
+     })
 }
+// exports.getResumeBuilding = (req, res, next) => {
+//     res.render('certifications/resume-building',{
+//         docTitle:'Resume-building',
+//         path:'/resume-building'
+//     })
+// }
 exports.postPurchaseTest = (req, res, next) => {
  const { testTime, testId } = req.body
  let testcity, testdate

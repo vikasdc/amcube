@@ -60,9 +60,9 @@ router.get('/job-app-success', (req, res, next) => {
         path:'/jobappsuccess'
     })
 })
-router.get('/english-certification', isAuth, userEnd.getEnglishCertification)
-router.get('/technical-cerification', isAuth, userEnd.getTechnicalCertification)
-router.get('/resume-building', isAuth, userEnd.getResumeBuilding)
+router.get('/english-certification', userEnd.getEnglishCertification)
+router.get('/technical-cerification', userEnd.getTechnicalCertification)
+router.get('/resume-building', userEnd.getResumeBuilding)
 
 router.get('/terms&privacy', userEnd.getTermsPrivacy)
 

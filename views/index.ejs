@@ -142,6 +142,9 @@
                             <!-- <a class="dropdown-item" href="/resume-building">Resume Building</a> -->
                           </div>
                   </li>
+                  <li class="nav-item <%= path === '/employers' ? 'active':'' %>">
+                    <a href="/employers" style="font-size:1em;" class=" nav-link ">Employers</a>
+                  </li>
                   <% if(!isLoggedin){ %>
                     <li class="nav-item <%= path === '/login' ? 'active':'' %>">
                       <a href="/login" style="font-size:1em;" class=" nav-link ">Login</a>
@@ -149,9 +152,7 @@
                     <li class="nav-item <%= path === '/signup' ? 'active':'' %>">
                         <a href="/signup" style="font-size:1em;" class=" nav-link ">Signup</a>
                       </li>
-                      <li class="nav-item <%= path === '/recruiters' ? 'active':'' %>">
-                        <a href="/recruiters" style="font-size:1em;" class=" nav-link ">Recruiters</a>
-                      </li>
+
                       <% } else { %>
                       <li class="nav-item d-none d-md-block dropdown <%= path === '/dashboard' || '/profile' || '/settings', '/bugreport', '/account' ? 'active':'' %>">
                             <a style="font-size:1em;" class=" nav-link text-capitalize  dropdown-toggle"id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= user.username %></a>
@@ -512,43 +513,43 @@
            <div class="col">
              <h2 class="ft text-black text-center mb-4">Amcubes Package</h2>
              <div class="row">
-               <div class="col-md-4 my-2">
-                 <div class="card shadow-sm border-0">
-                  <img src="../assets/img/english.jpg" alt="English Certification" class="card-img-top">
-                   <div class="card-body">
-                      <h4 class="text-black text-center">English Certification</h4>
-                      <p class="card-text text-black text-center">Our industry experts and advanced AI based resume analyzer can help highlight your strengths.</p>
-                     <div class="text-center">
-                      <a class="btn btn-danger bg-gradient-danger" href="/english-certification">View & Buy <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
-                     </div>
-                   </div>
-                 </div>
-               </div>
-               <div class="col-md-4 my-2">
+              <div class="col-md-4 my-2">
                 <div class="card shadow-sm border-0">
-                  <img src="../assets/img/technical.jpg" alt="Technical Certification" class="card-img-top">
+                 <img src="../assets/img/english.jpg" alt="English Certification" class="card-img-top">
                   <div class="card-body">
-                     <h4 class="text-black text-center">Technical Certification</h4>
+                     <h4 class="text-purple-dark text-center">English Certification</h4>
                      <p class="card-text text-black text-center">Our industry experts and advanced AI based resume analyzer can help highlight your strengths.</p>
                     <div class="text-center">
-                     <a class="btn btn-danger bg-gradient-danger" href="/technical-certification">View & Buy <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                     <a class="btn bg-purple-dark text-white d-block" href="/english-certification">View & Buy <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
                     </div>
                   </div>
                 </div>
               </div>
               <div class="col-md-4 my-2">
-                <div class="card shadow-sm border-0">
-                  <img src="../assets/img/resume.jpg" alt="Resume Building" class="card-img-top">
-                  <div class="card-body">
-                     <h4 class="text-black text-center">Resume Building</h4>
-                     <p class="card-text text-black text-center">Our industry experts and advanced AI based resume analyzer can help highlight your strengths.</p>
-                    <div class="text-center">
-                      <p class="text-muted">Coming soon..</p>
-                      <!-- <i class="btn btn-danger bg-gradient-danger" href="/resume-building">View & Buy <i class="fa fa-arrow-right" aria-hidden="true"></i></a> -->
-                    </div>
-                  </div>
-                </div>
-              </div>
+               <div class="card shadow-sm border-0">
+                 <img src="../assets/img/technical.jpg" alt="Technical Certification" class="card-img-top">
+                 <div class="card-body">
+                    <h4 class="text-purple-dark text-center">Technical Certification</h4>
+                    <p class="card-text text-black text-center">Our industry experts and advanced AI based resume analyzer can help highlight your strengths.</p>
+                   <div class="text-center">
+                    <a class="btn bg-purple-dark text-white d-block" href="/technical-certification">View & Buy <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                   </div>
+                 </div>
+               </div>
+             </div>
+             <div class="col-md-4 my-2">
+               <div class="card shadow-sm border-0">
+                 <img src="../assets/img/resume.jpg" alt="Resume Building" class="card-img-top">
+                 <div class="card-body">
+                    <h4 class="text-purple-dark text-center">Resume Building</h4>
+                    <p class="card-text text-black text-center">Our industry experts and advanced AI based resume analyzer can help highlight your strengths.</p>
+                   <div class="text-center">
+                     <p class="text-muted">Coming soon.</p>
+                    <!-- <i class="btn btn-danger bg-gradient-danger" href="/resume-building">View & Buy <i class="fa fa-arrow-right" aria-hidden="true"></i></a> -->
+                   </div>
+                 </div>
+               </div>
+             </div>
              </div>
            </div>
          </div>

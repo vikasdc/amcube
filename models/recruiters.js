@@ -11,8 +11,11 @@ const recruiterSchema = new Schema({
     phone:{
        type:Number
     },
-    jobtitle:String,
+    designation:String,
     company:String,
+    profile:String,
+    description:String,
+    plan:String,
     createdAt:{
         type:String,
         default:`${d.getDate()}/${mnth[d.getMonth()]}/${d.getFullYear()}`

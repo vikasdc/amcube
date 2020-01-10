@@ -27,20 +27,25 @@ exports.getIndex = (req,res,next) => {
         })
 }
 exports.postRecruiter = (req, res, next) => {
-    const { name, email, phone, company, jobtitle } = req.body;
+    const { name, email, phone, designation, company, profile, description, plan} = req.body;
     const recruiter = new Recruiter({
         name,
         email,
         phone,
+        designation,
         company,
-        jobtitle
+        profile,
+        description,
+        plan
     })
     recruiter.save().then(recruiter => {
-        res.render('recruiters', {
-            docTitle:'Recruiters',
-            path:'/recruiters',
-            recruiterSuccess:true
-        })
+        if(plan == 'intern'){
+          res.redirect('https://www.instamojo.com/codemania/amcubes-intern-plan/')
+        } else if(plan =='fulltime'){
+          res.redirect('https://www.instamojo.com/codemania/amcubes-full-time-plan/')
+        } else {
+            res.redirect('/recruiter-success')
+        }
     }).catch(err => {
         const error = new Error(err)
         error.httpStatusCode = 500

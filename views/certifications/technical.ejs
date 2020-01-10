@@ -30,9 +30,9 @@
                 <li class="nav-item <%= path === '/' ? 'active':'' %>">
                   <a href="/" style="font-size:1em;" class="nav-link">Home</a>
                 </li>
-                <li class="nav-item <%= path === '/courses' ? 'active':'' %>">
+                <!-- <li class="nav-item <%= path === '/courses' ? 'active':'' %>">
                   <a href="/courses" style="font-size:1em;" class=" nav-link ">Courses</a>
-                </li>   
+                </li>    -->
                   <li class="nav-item <%= path === '/tests' ? 'active':'' %>">
                     <a href="/tests" style="font-size:1em;" class=" nav-link ">Tests</a>
                   </li>
@@ -55,15 +55,15 @@
                             <!-- <a class="dropdown-item" href="/resume-building">Resume Building</a> -->
                           </div>
                   </li>
+                  <li class="nav-item <%= path === '/employers' ? 'active':'' %>">
+                    <a href="/employers" style="font-size:1em;" class=" nav-link ">Employers</a>
+                  </li>
                   <% if(!isLoggedin){ %>
                     <li class="nav-item <%= path === '/login' ? 'active':'' %>">
                       <a href="/login" style="font-size:1em;" class=" nav-link ">Login</a>
                     </li>      
                     <li class="nav-item <%= path === '/signup' ? 'active':'' %>">
                         <a href="/signup" style="font-size:1em;" class=" nav-link ">Signup</a>
-                      </li>
-                      <li class="nav-item <%= path === '/recruiters' ? 'active':'' %>">
-                        <a href="/recruiters" style="font-size:1em;" class=" nav-link ">Recruiters</a>
                       </li>
                       <% } else { %>
                       <li class="nav-item d-none d-md-block dropdown <%= path === '/dashboard' || '/profile' || '/settings', '/bugreport', '/account' ? 'active':'' %>">
@@ -162,9 +162,9 @@
           <div class="card shadow-sm border-0" style="background-color: #EDF0FF;">
               <div class="card-body text-center">
                 <img src="../../assets/img/icons/java.png" alt="" class="img-fluid">
-                <h5 class="text-default mt-3">Full Stack Developer : Java</h5>
+                <h5 class="text-purple-dark mt-3">Full Stack Developer : Java</h5>
                 <p>Turn your diverse programming knowledge into a full stack development job</p>
-                <button class="btn bg-purple-dark text-white shadow" data-toggle="modal" data-target="#modal1">Get Certified <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+                <a class="btn bg-purple-dark d-block  text-white shadow d-block" data-toggle="modal" data-target="#modal1">Get Certified <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
               </div>
           </div>
       </div>
@@ -172,9 +172,9 @@
         <div class="card shadow-sm border-0" style="background-color: #EDF0FF;">
             <div class="card-body text-center">
               <img src="../../assets/img/icons/react.ico" alt="" class="img-fluid">
-              <h5 class="text-default mt-3">React Developer</h5>
+              <h5 class="text-purple-dark mt-3">React Developer</h5>
               <p>Turn your passion for React into a full-time job by using this certification</p>
-              <button class="btn bg-purple-dark text-white shadow" data-toggle="modal" data-target="#modal1">Get Certified <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+              <a class="btn bg-purple-dark d-block  text-white shadow" data-toggle="modal" data-target="#modal1">Get Certified <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
             </div>
         </div>
     </div>
@@ -182,9 +182,9 @@
         <div class="card shadow-sm border-0" style="background-color: #EDF0FF;">
             <div class="card-body text-center">
               <img src="../../assets/img/icons/python.png" alt="" class="img-fluid">
-              <h5 class="text-default mt-3">Python Developer</h5>
+              <h5 class="text-purple-dark mt-3">Python Developer</h5>
               <p>Showcase your programming skills to employers and enhance your job prospects.</p>
-              <button class="btn bg-purple-dark text-white shadow" data-toggle="modal" data-target="#modal1">Get Certified <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+              <a class="btn bg-purple-dark d-block  text-white shadow" data-toggle="modal" data-target="#modal1">Get Certified <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
             </div>
         </div>
     </div>
@@ -192,9 +192,9 @@
         <div class="card shadow-sm border-0" style="background-color: #EDF0FF;">
             <div class="card-body text-center">
               <img src="../../assets/img/icons/mysql.png" alt="" class="img-fluid">
-              <h5 class="text-default mt-3">Back End Developer : Java + MySQL</h5>
+              <h5 class="text-purple-dark mt-3">Back End Developer : Java + MySQL</h5>
               <p>Showcase your programming skills to employers and enhance your job prospects</p>
-              <button class="btn bg-purple-dark text-white shadow" data-toggle="modal" data-target="#modal1">Get Certified <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+              <a class="btn bg-purple-dark d-block  text-white shadow" data-toggle="modal" data-target="#modal1">Get Certified <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
             </div>
         </div>
     </div>
@@ -202,9 +202,9 @@
         <div class="card shadow-sm border-0" style="background-color: #EDF0FF;">
             <div class="card-body text-center">
               <img src="../../assets/img/icons/mongodb.png" alt="" class="img-fluid">
-              <h5 class="text-default mt-3">Back End Developer : JavaScript + MongoDB</h5>
+              <h5 class="text-purple-dark mt-3">Back End Developer : JavaScript + MongoDB</h5>
               <p>Enhance your chances of landing a Backend Developer job with this popular certification.</p>
-              <button class="btn bg-purple-dark text-white shadow" data-toggle="modal" data-target="#modal1">Get Certified <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+              <a class="btn bg-purple-dark d-block  text-white shadow" data-toggle="modal" data-target="#modal1">Get Certified <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
             </div>
         </div>
     </div>
@@ -212,9 +212,9 @@
         <div class="card shadow-sm border-0" style="background-color: #EDF0FF;">
             <div class="card-body text-center">
               <img src="../../assets/img/icons/php.png" alt="" class="img-fluid">
-              <h5 class="text-default mt-3">Full Stack Developer : PHP + MySQL</h5>
+              <h5 class="text-purple-dark mt-3">Full Stack Developer : PHP + MySQL</h5>
               <p>Showcase your programming skills to employers and enhance your job prospects</p>
-              <button class="btn bg-purple-dark text-white shadow" data-toggle="modal" data-target="#modal1">Get Certified <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+              <a class="btn bg-purple-dark d-block  text-white shadow" data-toggle="modal" data-target="#modal1">Get Certified <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
             </div>
         </div>
     </div>

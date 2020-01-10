@@ -48,9 +48,9 @@ ol li:before {
                 <li class="nav-item <%= path === '/' ? 'active':'' %>">
                   <a href="/" style="font-size:1em;" class="nav-link">Home</a>
                 </li>
-                <li class="nav-item <%= path === '/courses' ? 'active':'' %>">
+                <!-- <li class="nav-item <%= path === '/courses' ? 'active':'' %>">
                   <a href="/courses" style="font-size:1em;" class=" nav-link ">Courses</a>
-                </li>   
+                </li>    -->
                   <li class="nav-item <%= path === '/tests' ? 'active':'' %>">
                     <a href="/tests" style="font-size:1em;" class=" nav-link ">Tests</a>
                   </li>
@@ -70,8 +70,11 @@ ol li:before {
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <a class="dropdown-item" href="/english-certification">English Certification</a>
                             <a class="dropdown-item" href="/technical-certification">Technical Certification</a>
-                            <a class="dropdown-item" href="/resume-building">Resume Building</a>
+                            <!-- <a class="dropdown-item" href="/resume-building">Resume Building</a> -->
                           </div>
+                  </li>
+                  <li class="nav-item <%= path === '/employers' ? 'active':'' %>">
+                    <a href="/employers" style="font-size:1em;" class=" nav-link ">Employers</a>
                   </li>
                   <% if(!isLoggedin){ %>
                     <li class="nav-item <%= path === '/login' ? 'active':'' %>">
@@ -79,9 +82,6 @@ ol li:before {
                     </li>      
                     <li class="nav-item <%= path === '/signup' ? 'active':'' %>">
                         <a href="/signup" style="font-size:1em;" class=" nav-link ">Signup</a>
-                      </li>
-                      <li class="nav-item <%= path === '/recruiters' ? 'active':'' %>">
-                        <a href="/recruiters" style="font-size:1em;" class=" nav-link ">Recruiters</a>
                       </li>
                       <% } else { %>
                       <li class="nav-item d-none d-md-block dropdown <%= path === '/dashboard' || '/profile' || '/settings', '/bugreport', '/account' ? 'active':'' %>">
@@ -130,196 +130,117 @@ ol li:before {
 </header>
 <main>
   <div class="position-relative">
-    <section class="section-shaped bg-primary my-0">
-      <div class="container  shape-container d-flex">
-        <div class="col px-0" style="margin-top:220px;margin-bottom:100px;">
+    <section class="section-shaped my-0">
+      <div class="shape shape-style-1 shape-skew bg-blue" style="background-image: url('../assets/img/hire-min.jpg');background-size:cover;background-repeat: no-repeat;filter: brightness(35%)">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="container container-lg shape-container d-flex">
+        <div class="col px-0">
           <div class="row">
-            <div class="col-lg-7 mt-0 mt-lg-5">
-               <h1 class="br text-white">Amcubes alumnus are qualified to meet your requirements</h1>
-               <div class="mt-4 mb-2">
-                <a href="#more" class="btn btn-success">Learn More About Hiring <i class="fa fa-arrow-right ml-1" aria-hidden="true"></i></a>
-               </div>
-              <%if(recruiterSuccess){ %>
-                <p class="text-white font-weight-bold ft" style="font-size: 1.5rem">Thank you for reaching us we'll get back to you soon.</p>
-                <% } %>
+            <div class="col-md-5 mt-0 mt-lg-5">
+               <h1 class="br text-white text-capitalize">Let's Build Your Team With Amcubes</h1>
+               <p style="font-size: 22px; font-weight:600; word-spacing: 1px;" class="text-white ">Whether you’re in need of a single key hire, a full team, or an entire division, we’re here for all your hiring needs.</p>
+               <!-- <div class="mt-4">
+                <a href="/tests" class="btn btn-white">Schedule Test <i class="fa fa-arrow-right ml-1" aria-hidden="true"></i> </a>
+               </div> -->
             </div>  
           </div>
         </div>
       </div>
     </section>
-<section class="py-5 bg-secondary">
+<section class="pt-3 pb-4">
   <div class="container">
-       <div class="row">
-           <div class="col-md-8 mx-auto">
-            <h1 class="text-center ft text-black font-weight-bold  mt-3 mb-5">How Our Alumnus Are Different From Others</h1>
+     <h2 class="text-black text-center mb-5 sm-br">Ready to get started</h2>
+     <div class="row">
+       <div class="col-md-4 my-3">
+         <div class="card shadow border-0">
+           <div class="card-header">
+            <h3 class="text-center text-black font-weight-700">Hiring Interns</h3>
            </div>
+           <div class="card-body bg-purple-dark">
+              <p class="text-white">Instant access to our highly targeted audience of professionals in your industry.</p>
+                <ul class="list-group">
+                  <li class="list-group-item active">Job posting validity - 90 days</li>
+                  <li class="list-group-item text-default">5 Jobs posting</li>
+                  <li class="list-group-item text-default">Expert advice for 90 days</li>
+                  <li class="list-group-item text-default">100 Verified profiles</li>
+                </ul>
+                <h3 class="text-center text-white sm-br mt-3 mb-0">INR 999</h3>
+                <p class="text-center text-white mt-0 mb-2">for 3 months</p>
+                <a href="#" class="btn btn-white text-purple-dark d-block mb-2" data-toggle="modal" data-target="#modal1">Buy Now <i class="fa fa-arrow-right ml-1" aria-hidden="true"></i></a href="#">
+                <%- include('includes/rec-modal1.ejs') %>
+              </div>
+           </div>
+         </div>
+         <div class="col-md-4 my-3">
+          <div class="card shadow border-0">
+            <div class="card-header">
+             <h3 class="text-center text-black font-weight-700">Hiring Full Time</h3>
+            </div>
+            <div class="card-body bg-g">
+               <p class="text-black font-weight-700">Instant access to our highly targeted audience of professionals in your industry.</p>
+                 <ul class="list-group">
+                   <li class="list-group-item bg-black text-white">Job posting validity - 90 days</li>
+                   <li class="list-group-item text-default">Unlimited job posting</li>
+                   <li class="list-group-item text-default">Unlimited job posting to meet your high volume needs</li>
+                   <li class="list-group-item text-default">Social media visibility</li>
+                   <li class="list-group-item text-default">Dedicated email to target audience for your need</li>
+                 </ul>
+                 <h3 class="text-center text-black sm-br mt-3 mb-0">INR 19,999</h3>
+                 <p class="text-center text-black mt-0 mb-2">for 3 months</p>
+                 <a href="#" class="btn btn-white text-black d-block mb-2" data-toggle="modal" data-target="#modal2">Buy Now <i class="fa fa-arrow-right ml-1" aria-hidden="true"></i></a href="#">
+                 <%- include('includes/rec-modal2.ejs') %>
+               </div>
+            </div>
+          </div>
+          <div class="col-md-4 my-3">
+            <div class="card shadow border-0">
+              <div class="card-header">
+               <h3 class="text-center text-black font-weight-700">Building Entire Team</h3>
+              </div>
+              <div class="card-body bg-purple-dark">
+                 <p class="text-white">Instant access to our highly targeted audience of professionals in your industry.</p>
+                   <ul class="list-group">
+                     <li class="list-group-item active">Job posting validity - 90 days</li>
+                     <li class="list-group-item text-default">5 Jobs posting</li>
+                     <li class="list-group-item text-default">Expert advice for 90 days</li>
+                     <li class="list-group-item text-default">100 Verified profiles</li>
+                   </ul>
+                   <h3 class="text-center text-white sm-br mt-3 mb-0">Custom Pricing</h3>
+                   <p class="text-center text-white mt-0 mb-2">for 6 months</p>
+                   <a href="#" class="btn btn-white text-purple-dark d-block mb-2" data-toggle="modal" data-target="#modal3">Contact us <i class="fa fa-arrow-right ml-1" aria-hidden="true"></i></a>
+                   <%- include('includes/rec-modal3.ejs') %>
+                 </div>
+              </div>
+            </div>
        </div>
-    <div class="row">
-        <div class="col-md-7 order-2 order-lg-1 align-self-center mt-3">
-            <ol>
-                <li class="my-2 text-dark ft" style="font-size:1.8rem;font-weight:600;word-spacing: 2">
-                      1000+ hours of real-time coding experience
-                </li>
-                <li class="my-2 text-dark ft" style="font-size:1.8rem;font-weight:600;word-spacing: 2">
-                    Cross-team collaboration skills
-              </li>
-              <li class="my-2 text-dark ft" style="font-size:1.8rem;font-weight:600;word-spacing: 2">
-                No upfront hiring fee
-          </li>
-            </ol>
-        </div>
-        <div class="col-md-5 order-1 order-md-2 my-3">
-              <img src="../assets/img/women-code.jpg" alt="" class="img-fluid">
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-5 my-3">
-              <img src="../assets/img/wc1.jpg" alt="" class="img-fluid">
-        </div>
-        <div class="col-md-6 ml-0 ml-md-5  align-self-center mt-3">
-            <h2 class="ft text-black font-weight-bold  mt-3 mb-5">1000+ hours of industry applicable code - experience</h1>
-        </div>
-    </div>
+     </div>
   </div>
 </section>
-<section class="py-5">
-  <div class="container my-2">
-    <div class="row">
-      <div class="col-md-8 mx-auto">
-        <h1 class="text-center ft text-black font-weight-bold  mt-3 mb-5">Our Graduates Have Mastered The Leatest Technologies</h1>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-4  my-2">
-           <div class="card shadow text-center">
-             <div class="card-body">
-              <img src="../assets/img/icons/android.png" alt="" class="img-fluid rounded-circle p-4" style="background-color: #DF173C;">
-              <h4 class="ft text-black mt-4">Android Development</h4>
-              <p class="font-weight-normal text-black ft">Java, Kotlin, React Native, Python and more</p>
-             </div>
-           </div>
-      </div>
-        <div class="col-md-4  my-2">
-          <div class="card shadow text-center">
-            <div class="card-body">
-            <img src="../assets/img/icons/data.png" alt="" class="img-fluid rounded-circle p-4 bg-primary">
-            <h4 class="ft text-black mt-4">Data Science</h4>
-            <p class="font-weight-normal text-black ft"> Python, SQL Database, Apache Spark, Machine Learning and AI, Data Visualization,  Unstructured data</p>
-            </div>
-          </div>
-      </div>
-      <div class="col-md-4  my-2">
-        <div class="card shadow text-center">
-          <div class="card-body">
-          <img src="../assets/img/icons/app.png" alt="" class="img-fluid rounded-circle p-4" style="background-color: #A020F0">
-          <h4 class="ft text-black mt-4">iOS Development</h4>
-          <p class="font-weight-normal text-black ft">Swift, Objective-C, and Cocoa Touch.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row justify-content-center">
-      <div class="col-md-5 my-4">
-          <div class="card shadow text-center">
-              <div class="card-body">
-              <img src="../assets/img/icons/web.png" alt="" class="img-fluid rounded-circle p-4 bg-gradient-green">
-              <h4 class="ft text-black mt-4">Full Stack Web Development</h4>
-              <p class="font-weight-normal text-black ft">HTML, CSS, Javascript, Bootstrap, React, NodeJs, Angular, Ruby, Ruby On Rails, Python, Django, Mysql, Mongodb</p>
-              </div>
-            </div>
-      </div>
-      <div class="col-md-5 my-4">
-          <div class="card shadow text-center">
-              <div class="card-body">
-              <img src="../assets/img/icons/ux.png" alt="" class="img-fluid rounded-circle p-4 bg-gradient-dark">
-              <h4 class="ft text-black mt-4">User Experience Design</h4>
-              <p class="font-weight-normal text-black ft">User Research Methods, Design Sketching, Design Validation and more</p>
-              </div>
-            </div>
-      </div>
-    </div>
-  </div>
-</section>
-<section class="py-5 bg-prp <%if(recruiterSuccess){%>bg-gradient-success<%}%>" id="more">
+<section class="py-5" style="background-color: #F7F7F7;">
   <div class="container">
     <div class="row">
-      <div class="col">
-        <h1 class="ft text-center text-white font-weight-bold  mt-2 mb-4">Learn More About Hiring</h1>
-          <div class="row">
-              <div class="col-md-10 mx-auto">
-                <%if(recruiterSuccess){ %>
-                    <p class="text-white font-weight-bold ft text-center" style="font-size: 1.8rem">Thank you for reaching us we'll get back to you soon.</p>
-                     <% } else { %> 
-                        <form action="/recruiter" method="post">
-                            <div class="form-group mb-3">
-                                    <label for="name" class="text-white">Full Name</label>
-                                    <div class="input-group input-group-alternative">
-                                        <div class="input-group-prepend">
-                                        <span class="input-group-text text-black"><i class="fa fa-user"></i></span>
-                                        </div>
-                                        <input class="form-control" placeholder="Name" type="text" name="name" required>
-                                    </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                                <div class="form-group mb-3">
-                                                        <label for="email" class="text-white">Email</label>
-                                                        <div class="input-group input-group-alternative">
-                                                            <div class="input-group-prepend">
-                                                            <span class="input-group-text text-black"><i class="fa fa-envelope"></i></span>
-                                                            </div>
-                                                            <input class="form-control" placeholder="Email" type="email" name="email" required>
-                                                        </div>
-                                                        </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                                <div class="form-group mb-3">
-                                                        <label for="phone" class="text-white">Phone</label>
-                                                        <div class="input-group input-group-alternative">
-                                                            <div class="input-group-prepend">
-                                                            <span class="input-group-text text-black"><i class="fa fa-phone"></i></span>
-                                                            </div>
-                                                            <input class="form-control" placeholder="Phone" type="number" name="phone" required>
-                                                        </div>
-                                                        </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                            <div class="col-md-6">
-                                                    <div class="form-group mb-3">
-                                                            <label for="company" class="text-white">Company</label>
-                                                            <div class="input-group input-group-alternative">
-                                                                <div class="input-group-prepend">
-                                                                <span class="input-group-text text-black"><i class="fa fa-building"></i></span>
-                                                                </div>
-                                                                <input class="form-control" placeholder="Company" type="text" name="company" required>
-                                                            </div>
-                                                            </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                    <div class="form-group mb-3">
-                                                            <label for="jobtitle" class="text-white">JobTitle</label>
-                                                            <div class="input-group input-group-alternative">
-                                                                <div class="input-group-prepend">
-                                                                <span class="input-group-text text-black"><i class="fa fa-briefcase"></i></span>
-                                                                </div>
-                                                                <input class="form-control" placeholder="JobTitle" type="text" name="jobtitle" required>
-                                                            </div>
-                                                            </div>
-                                            </div>
-                                        </div>
-                                        <input type="hidden" name="_csrf" value="<%=csrfToken%>">
-                                        <div class="text-center">
-                                                <button type="submit" class="btn btn-dark mt-2 ">Submit Details<i class="fa fa-arrow-right ml-2" aria-hidden="true"></i></button>
-                                          </div>
-                        </form>
-                        <% } %>
-              </div>
-          </div>
+      <div class="col-md-6">
+         <img src="../assets/img/recruit.jpg" alt="" class="img-fluid">
+      </div>
+      <div class="col-md-6 align-self-center">
+        <h3 class="text-black sm-br">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore, sit!</h3>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Autem temporibus deserunt voluptates ad in. Laboriosam cupiditate consequuntur sed illum, repudiandae ullam ad nam magnam rem!
+
+        </p>
       </div>
     </div>
   </div>
 </section>
+
   </div>
 </main>
 <footer class="footer bg-dark">
@@ -338,7 +259,7 @@ ol li:before {
             <a target="_blank" href="https://www.linkedin.com/company/amcubes" class="btn btn-neutral btn-icon-only btn-linkedin rounded-circle btn-lg btn-round" data-toggle="tooltip" title="Follow us">
               <i class="fa fa-linkedin mt-2 pt-1 "></i>
             </a>
-            <a target="_blank" href="https://instagram.com/amcubes2019" class="btn btn-neutral btn-icon-only btn-instagram btn-round rounded-circle btn-lg" data-toggle="tooltip" title="Follow us">
+            <a target="_blank" href="https://instagram.com/amcubes_india" class="btn btn-neutral btn-icon-only btn-instagram btn-round rounded-circle btn-lg" data-toggle="tooltip" title="Follow us">
               <i class="fa fa-instagram mt-2 pt-1"></i>
             </a>
           </div>
@@ -346,7 +267,7 @@ ol li:before {
           <p class="font-weight-normal text-white">Mon - Sun, 9AM - 9PM</p>
       </div>
       <div class="col-lg-4  order-1 mb-2 mb-lg-5 contact" >
-          <h3 class="text-primary font-weight-light text-white">Contact us <br></br></h3>
+          <h3 class="text-primary font-weight-light text-white">Contact us <br></h3>
           <h5 class="mb-0  font-weight-light text-white">91 Springboard, Mytri Square, 2-41/11, 6/2, Gachibowli - Miyapur Rd, Prashanth Nagar Colony, Hyderabad, Telangana 500084</h5>
             <a class="h5 mb-0 mt-1 font-weight-light text-white" href="mailto:hello@amcubes.com">hello@amcubes.com</a> <br></br>
            <a class="h5 mb-0 mt-1 font-weight-normal text-white" href="tel:+917702535506">+91-7386890309</a>

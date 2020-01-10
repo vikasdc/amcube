@@ -30,9 +30,9 @@
                 <li class="nav-item <%= path === '/' ? 'active':'' %>">
                   <a href="/" style="font-size:1em;" class="nav-link">Home</a>
                 </li>
-                <li class="nav-item <%= path === '/courses' ? 'active':'' %>">
+                <!-- <li class="nav-item <%= path === '/courses' ? 'active':'' %>">
                   <a href="/courses" style="font-size:1em;" class=" nav-link ">Courses</a>
-                </li>   
+                </li>    -->
                   <li class="nav-item <%= path === '/tests' ? 'active':'' %>">
                     <a href="/tests" style="font-size:1em;" class=" nav-link ">Tests</a>
                   </li>
@@ -55,6 +55,9 @@
                             <!-- <a class="dropdown-item" href="/resume-building">Resume Building</a> -->
                           </div>
                   </li>
+                  <li class="nav-item <%= path === '/employers' ? 'active':'' %>">
+                    <a href="/employers" style="font-size:1em;" class=" nav-link ">Employers</a>
+                  </li>
                   <% if(!isLoggedin){ %>
                     <li class="nav-item <%= path === '/login' ? 'active':'' %>">
                       <a href="/login" style="font-size:1em;" class=" nav-link ">Login</a>
@@ -62,9 +65,7 @@
                     <li class="nav-item <%= path === '/signup' ? 'active':'' %>">
                         <a href="/signup" style="font-size:1em;" class=" nav-link ">Signup</a>
                       </li>
-                      <li class="nav-item <%= path === '/recruiters' ? 'active':'' %>">
-                        <a href="/recruiters" style="font-size:1em;" class=" nav-link ">Recruiters</a>
-                      </li>
+
                       <% } else { %>
                       <li class="nav-item d-none d-md-block dropdown <%= path === '/dashboard' || '/profile' || '/settings', '/bugreport', '/account' ? 'active':'' %>">
                             <a style="font-size:1em;" class=" nav-link text-capitalize  dropdown-toggle"id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= user.username %></a>
@@ -149,7 +150,7 @@
                     Give your job hunt the English advantage with Amcubes Certification. Assess and improve your English writing & speaking skills
                    </p>
                    <div class="mt-4 mb-2">
-                    <button class="btn btn-warning" data-toggle="modal" data-target="#modal1">Buy Now <i class="fa fa-arrow-right ml-1" aria-hidden="true"></i></button>
+                    <button class="btn bg-purple-dark text-white" data-toggle="modal" data-target="#modal1">Buy Now <i class="fa fa-arrow-right ml-1" aria-hidden="true"></i></button>
                    </div>
                 </div>  
               </div>

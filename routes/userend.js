@@ -13,9 +13,15 @@ router.get('/courses/:courseId', userEnd.getCourseById)
 
 router.get('/jobs', userEnd.getJobs)
 
-router.get('/recruiters', userEnd.getRecruiters)
+router.get('/employers', userEnd.getRecruiters)
 router.post('/recruiter', userEnd.postRecruiter)
 
+router.get('/recruiter-success', (req, res, next) => {
+     res.render('success/recruiter-success', {
+         docTitle:'Application Success',
+         path:'/recruiter-success'
+     })
+})
 router.get('/test-preparation', userEnd.getTestPrep)
 
 router.get('/dashboard', isAuth,userEnd.getDashboard)

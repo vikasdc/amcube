@@ -15,7 +15,7 @@ const {validationResult} = require('express-validator')
 const Certification = require('../models/certification-data')
 const Insta = require('instamojo-nodejs')
 Insta.setKeys(Keys.Instamojo.API_KEY,Keys.Instamojo.AUTH_KEY)
-Insta.isSandboxMode(true);
+// Insta.isSandboxMode(true);
 //global functions 
 function isEmptyObject(obj) {
     return !Object.keys(obj).length;

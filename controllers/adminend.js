@@ -8,8 +8,9 @@ const Test = require('../models/tests')
 const Bug = require('../models/bug')
 const Recruiter = require('../models/recruiters')
 const Testpayment = require('../models/testpaymentdata')
+const CertificationData = require('../models/certification-data')
 exports.getAdminDashboard = (req, res, next) => {
-  let cl, jl, tl, ul, tal, cal, jal, bal, tpl;
+  let cl, jl, tl, ul, tal, cal, jal, bal, tpl, cdal;
 
     Course.find()
     .then(courses => {  
@@ -41,6 +42,9 @@ exports.getAdminDashboard = (req, res, next) => {
         return Recruiter.find()
     }).then(recruiter => {
         ral = recruiter.length
+        return CertificationData.find()
+    }).then(certData => {
+        cdal = certData.length;
         res.render('admin/admindashboard',{
             docTitle:'Dashboard',
             path:'/admin/dashboard',
@@ -53,7 +57,8 @@ exports.getAdminDashboard = (req, res, next) => {
             jobApplicationLength:jal,
             tpl,
             bal,
-            ral
+            ral,
+            cdal
         })
     })
     .catch(err => {
@@ -217,6 +222,33 @@ exports.postDeleteJobApplication = (req, res, next) => {
         return next(error)
      })
 }
+
+exports.getCertData = (req, res, next) => {
+    CertificationData.find().sort({_id:-1})
+    .then(certData => {
+        res.render('admin/applications', {
+            docTitle:'Certification Data',
+            path:'/admin/cert-data',
+            certDatas:certData   
+        })
+    })
+    .catch(err => {
+        const error = new Error(err)
+        error.httpStatusCode = 500
+        return next(error)
+     })
+}
+exports.postDeleteCertData = (req, res, next) => {
+    CertificationData.findByIdAndRemove(req.body.certDataId)
+    .then(jobApp => {
+        res.redirect('/admin/cert-data')
+    })
+    .catch(err => {
+         const error = new Error(err)
+         error.httpStatusCode = 500
+         return next(error)
+      })
+ }
 exports.getTestPayments = (req, res, next) => {
    Testpayment.find().sort({_id:-1}).then(testpayments => {
     res.render('admin/applications', {

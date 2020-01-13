@@ -79,13 +79,15 @@
                                 <thead>
                                   <tr>
                                     <th scope="col">#S.NO</th>
-                                    <th scope="col">NAME</th>
-                                    <th scope="col">EMAIL</th>
-                                    <th scope="col">PHONE</th>
-                                    <th scope="col">COMPANY</th>
-                                    <th scope="col">JOB-TITLE</th>
-                                    <th scope="col">DATE</th>
-                                    <th scope="col">DELETE</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Phone</th>
+                                    <th scope="col">Designation</th>
+                                    <th scope="col">Company</th>
+                                    <th scope="col">Profile</th>
+                                    <th scope="col">Description</th>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">Delete</th>
                                   </tr>
                                 </thead>
                                 <tbody>
@@ -96,8 +98,10 @@
                                                 <td class="text-capitalize"><%=recapp.name%></td>
                                                 <td><%=recapp.email%></td>
                                                 <td class="text-capitalize"><%=recapp.phone%></td>
+                                                <td class="text-capitalize"><%=recapp.designation%></td>
                                                 <td class="text-capitalize"><%=recapp.company%></td>
-                                                <td class="text-capitalize"><%=recapp.jobtitle%></td>
+                                                <td class="text-capitalize"><%=recapp.profile%></td>
+                                                <td class="text-capitalize"><%=recapp.description%></td>
                                                 <td class="text-capitalize"><%=recapp.createdAt%></td>
                                                 <td>
                                                     <form action="/admin/delete-recapp" method="POST" class="m-0 p-0">
@@ -237,7 +241,7 @@
                                             <th scope="col">CONTACT</th>
                                             <th scope="col">JOB-TITLE</th>
                                             <th scope="col">COMPANY</th>
-                                            <th scope="col">CITY</th>
+                                            <th scope="col">JOB-CITY</th>
                                             <th scope="col">SALARY PA</th>
                                             <th scope="col">APPLIED-DATE</th>
                                             <th scope="col">DELETE</th>
@@ -271,6 +275,55 @@
                             <% } else { %>
                               <h3 class="text-default"> No Job Applicants Found! :(</h3>
                               <% } %>
+                              <% } else if(path === '/admin/cert-data') { %>
+                                <h2 class="text-center mt-3 mb-5">Registered Certification Data </h2>
+                                <% if(certDatas.length>0) { %>
+                                    <% var x = 0; %>
+                                  <div class="table-responsive">
+                                        <table class="table table-hover table-striped table-bordered table-dark">
+                                                <caption>List of Cert Data</caption>
+                                                <thead>
+                                                  <tr>
+                                                    <th scope="col">#S.NO</th>
+                                                    <th scope="col">Name</th>
+                                                    <th scope="col">Email</th>
+                                                    <th scope="col">Phone</th>
+                                                    <th scope="col">College</th>
+                                                    <th scope="col">City</th>
+                                                    <th scope="col">Parent-Ph</th>
+                                                    <th scope="col">Cert-Course</th>
+                                                    <th scope="col">Applied-date</th>
+                                                    <th scope="col">DELETE</th>
+                                                  </tr>
+                                                </thead>
+                                                <tbody>
+                                            <% for(certData of certDatas){ %>
+                                                <% x++ %>
+                                                              <tr>
+                                                                <th scope="row"><%=x%></th>
+                                                                <td class="text-capitalize"><%=certData.name%></td>
+                                                                <td><%=certData.email%></td>
+                                                                <td class="text-capitalize"><%=certData.phone%></td>
+                                                                <td class="text-capitalize"><%=certData.college%></td>
+                                                                <td class="text-capitalize"><%=certData.city%></td>
+                                                                <td class="text-capitalize"><%=certData.parentphone%></td>
+                                                                <td class="text-capitalize"><%=certData.certification%></td>
+                                                                <td class="text-capitalize"><%=certData.createdAt%></td>
+                                                                <td>
+                                                                    <form action="/admin/delete-cert-data" method="POST" class="m-0 p-0">
+                                                                    <input type="hidden" name="_csrf" value="<%=csrfToken%>">
+                                                                    <input type="hidden" name="certDataId" value="<%=certData._id%>">
+                                                                    <button class="btn btn-danger bg-gradient-danger btn-sm">Delete</button>
+                                                                    </form>
+                                                                </td>
+                                                              </tr>
+                                                <% } %>
+                                            </tbody>
+                                        </table>
+                                  </div>
+                                    <% } else { %>
+                                      <h3 class="text-default"> Certification Data Not Found! :(</h3>
+                                      <% } %>
                               <% } else if(path === '/admin/manage-bugapplications') { %>
                                 <h2 class="text-center mt-3 mb-5">Reported Bugs In The Website </h2>
                                 <% if(bugApps.length>0) { %>

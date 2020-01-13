@@ -56,6 +56,10 @@ router.post('/delete-test-payment', isAuth, adminEnd.postDeleteTestPayment)
 
 router.get('/job-applications', isAuth,  adminEnd.getJobApplication)
 
+router.get('/cert-data', isAuth,  adminEnd.getCertData)
+
+router.post('/delete-cert-data', isAuth,  adminEnd.postDeleteCertData)
+
 router.post('/delete-job-application', isAuth,  adminEnd.postDeleteJobApplication)
 
 router.get('/course-applications', isAuth,  adminEnd.getCourseApplication)

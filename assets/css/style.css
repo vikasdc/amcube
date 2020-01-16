@@ -181,3 +181,11 @@ background-color: #0B0156;
 .dash-1{
   margin-top:70px; margin-bottom:100px;
 }
+
+.bg-img{
+  background-image: url('../img/ErrorPage404-05.jpg');
+  height: 100vh;
+  background-size:cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}

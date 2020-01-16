@@ -34,7 +34,7 @@
                                       <h5 class="text-dark mt-2"><%= job.title %></h5>
                                       <h6 class="text-dark"><i class="fa fa-building mr-1" aria-hidden="true"></i><%= job.company%></h6>
                                       <h6 class="text-dark"><i class="fa fa-map-marker mr-1" aria-hidden="true"></i><%= job.city%></h6>
-                                      <h6 class="text-dark"><i class="fa fa-money" aria-hidden="true"></i> <%=numberWithCommas(job.salary)%> PA</h6>
+                                      <h6 class="text-dark"><i class="fa fa-money" aria-hidden="true"></i>₹ <%=numberWithCommas(job.salary)%>/month</h6>
                                       <h6 class="text-dark"><i class="fa fa-calendar" aria-hidden="true"></i> Last Date to Apply: <%=job.lastdate%></h6>
                                       <% if(isLoggedin) { %>
                                        <form action="/job-application" method="post">

@@ -18,8 +18,8 @@ module.exports =  {
     },
     sgKey:'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',
     Instamojo:{
-       API_KEY:'e67a43d13a9d4992680d35ba80c2f373',
-       AUTH_KEY:'9f3b0d7ee40a50da9c514d3776b9b0c3'
+       API_KEY:'c29409895e63d29624a2b7697d1cde9f',
+       AUTH_KEY:'9671e9ba477e6ce4acb8b1d1abc895e5'
     // API_KEY:'test_514140dfaa05030f548a3aea45b',
     // AUTH_KEY:'test_eb8e4aa88705d968b7a08b6c3d7'
     }

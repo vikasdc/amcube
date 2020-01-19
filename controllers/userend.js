@@ -41,9 +41,9 @@ exports.postRecruiter = (req, res, next) => {
     })
     recruiter.save().then(recruiter => {
         if(plan == 'intern'){
-          res.redirect('https://www.instamojo.com/codemania/amcubes-intern-plan/')
+          res.redirect('https://www.instamojo.com/AmcubesIndia/amcubes-intern-plan-21477/')
         } else if(plan =='fulltime'){
-          res.redirect('https://www.instamojo.com/codemania/amcubes-full-time-plan/')
+          res.redirect('https://www.instamojo.com/AmcubesIndia/amcubes-full-time-plan-03467/')
         } else {
             res.redirect('/recruiter-success')
         }
@@ -479,19 +479,19 @@ exports.postCertification = (req, res, next) => {
     })
     certif.save().then(cert => {
         if(cert.certification == 'Full Stack Developer : Java'){
-            return res.redirect('https://www.instamojo.com/codemania/full-stack-developer-java/')
+            return res.redirect('https://www.instamojo.com/AmcubesIndia/full-stack-developer-java-certification/')
         } else if(cert.certification == 'React Developer'){
-            return res.redirect('https://www.instamojo.com/codemania/react-developer-certification/')
+            return res.redirect('https://www.instamojo.com/AmcubesIndia/react-developer-certification-25d65/')
         } else if(cert.certification == 'Python Developer'){
-            return res.redirect('https://www.instamojo.com/codemania/python-developer-certification/')
+            return res.redirect('https://www.instamojo.com/AmcubesIndia/python-developer-certification-5f32d/')
         } else if(cert.certification == 'Back End Developer : Java + MySQL'){
-            return res.redirect('https://www.instamojo.com/codemania/back-end-developer-java-mysql/')
+            return res.redirect('https://www.instamojo.com/AmcubesIndia/back-end-developer-java-mysql-certification/')
         } else if(cert.certification == 'Back End Developer : JavaScript + MongoDB'){
-            return res.redirect('https://www.instamojo.com/codemania/back-end-developer-javascript-mongodb-certif/')
+            return res.redirect('https://www.instamojo.com/AmcubesIndia/back-end-developer-javascript-mongodb-certif-1269d/')
         } else if(cert.certification == 'Full Stack Developer : PHP + MySQL'){
-            return res.redirect('https://www.instamojo.com/codemania/full-stack-developer-php-mysql-certification/')
+            return res.redirect('https://www.instamojo.com/AmcubesIndia/full-stack-developer-php-mysql-certification-a86b2/')
         } else if(cert.certification == 'English Certification'){
-            return res.redirect('https://www.instamojo.com/codemania/english-certification/')
+            return res.redirect('https://www.instamojo.com/AmcubesIndia/english-certification-1cdb2/')
         } else {
               return res.redirect('/technical-certicication')
         }

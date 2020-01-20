@@ -539,7 +539,7 @@ exports.postPurchaseTest = (req, res, next) => {
        testApplication.save().then(testApp => {
         const data = new Insta.PaymentData();
               data.purpose = 'For Amcubes MockTest Fee Payment'
-              data.amount = 999
+              data.amount = 599
               data.phone = req.user.contact
               data.buyer_name = req.user.username
               data.setRedirectUrl(`http://amcubes.com/dashboard?user_id=${req.user._id}`)
